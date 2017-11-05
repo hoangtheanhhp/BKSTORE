@@ -1,0 +1,536 @@
+body {
+  /* min-height: 2000px; */
+  /* background-image: url('bg.jpg') ; */
+  /* padding-top: 55px; */
+}
+
+/* menu */
+.caret-up {
+    width: 0; 
+    height: 0; 
+    border-left: 4px solid rgba(0, 0, 0, 0);
+    border-right: 4px solid rgba(0, 0, 0, 0);
+    border-bottom: 4px solid;    
+    display: inline-block;
+    margin-left: 2px;
+    vertical-align: middle;    
+}
+#main-mav-top ul li:hover a{
+	color: black;
+}
+#main-mav-top ul li ul li:hover a {
+	color: red;
+	background-color: #FFFFFF;
+}
+/* nav fixed top  */
+#main-mav-top-fixed ul li{
+    z-index: 1111;
+}
+#main-mav-top-fixed ul li a{
+    color: #FFFFFF;
+}
+#main-mav-top-fixed ul li:hover a{
+    color: black;
+}
+#main-mav-top-fixed ul li ul li:hover a {
+    color: red;
+    background-color: #FFFFFF;
+}
+.ul-sub li:last-child{
+  display: none;
+}
+/* fix top NAV */
+#fixNav{
+  width: 100%;
+  height: 25px;
+  display: block;
+  box-shadow: 0px 2px 2px rgba(0,0,0,0.5); /*Đổ bóng cho menu*/
+  position: fixed; /*Cho menu cố định 1 vị trí với top và left*/
+  top: 0; /*Nằm trên cùng*/
+  left: 0; /*Nằm sát bên trái*/
+  z-index: 100000; /*Hiển thị lớp trên cùng*/
+  display: none;
+}
+#main-mav-top ul li a{
+	color: #FFFFFF;
+}
+
+/* card style */
+.card-img{
+  width: 50px;
+  height: 40px;
+}
+/* / ====================================laptop */
+.thumbnail {
+  height: 370px;
+  position: relative;
+ }
+ .thumbnail .hienthi{
+    height: 220px;
+    transition: all ease 0.9s; 
+    padding: 0;
+ }
+ .thumbnail .hienthi img{
+  display: block;
+  height: 150px;
+  width: 55%;
+  transition: all ease 0.9s; 
+  display: block;
+  margin: 0 auto;
+ }
+.thumbnail .tomtat {
+    opacity: 0;
+    height: 300px; 
+    width: 100%;
+    /* background: #003300; */
+    color: black;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 5px 5px 0 0;
+    transition: all ease 0.9s;   
+    transform: rotate(0deg);
+    padding: 5px;
+ }
+ .thumbnail:hover .tomtat {
+    opacity: 1;
+    transition: all ease 0.9s; 
+    -webket-transform: rotate3d(30deg, 50deg, 180deg, angle);
+    
+ }
+  .thumbnail .tomtat .thongtin{
+    height: 280px;
+  }
+  .thumbnail .tomtat .price{
+    height: 70px;
+    
+ }
+ .thumbnail .tomtat .price span{
+  color: red;
+ }
+ .thumbnail:hover .hienthi {
+    opacity: 0;
+    transition: all ease 0.9s;
+    
+ }
+ .thumbnail .tomtat a li {
+  list-style-type: disc;
+  padding-left: 10px;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+ }
+ .caption {
+  height: 180px;
+  list-style: none;
+  display: block;
+}
+ .caption li {    
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+ }
+ .caption .title-pro{
+    color:#2980b9;
+ }
+  .caption h1{
+    margin: 0;
+    padding: 0;
+  }
+ .tomtat a:hover{
+  text-decoration: none;
+ }
+ .no-padding{
+  padding:1px;
+ }
+ .bot-nav {
+  
+  margin-bottom: 0;
+ }
+.bot-nav li {
+  display: inline-block;
+  float: left;
+  margin-top: -5px;
+}
+.bot-nav li a{
+  color: #FFFFFF;
+}
+.navbar-fixed-bottom {
+  border-radius: 5px 5px;
+  height: 35px;
+  z-index: 11111111111;
+}
+/* / =======================mobile thumbnail */
+.mobile{
+  height: 260px;
+  position: relative;
+}
+.mobile .bt{
+   height: 210px;
+  transition: all ease 0.9s; 
+  padding: 0;
+}
+.mobile .ct {
+    opacity: 0;
+    height: 200px; 
+    width: 98%;
+    /* background: #003300; */
+    color: black;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 5px 5px 0 0;
+    transition: all ease 0.9s;   
+    transform: rotate(0deg);
+    padding: 10px;
+}
+.mobile .ct li{
+  list-style: none;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mobile .ct a:hover {
+  text-decoration: none;
+}
+.mobile:hover .ct{
+  opacity: 1;
+}
+.mobile:hover .bt{
+  opacity: 0;
+}
+.mobile .image-m {
+  width: 40%;
+ height: 200px;
+}
+.mobile .image-m img {
+  width: 95%;
+  height: 155px;
+  margin: auto;
+}
+.mobile .intro {
+  width: 60%;
+  height: 200px;
+}
+.mobile .intro li {
+  list-style: none;
+}
+
+.mobile .intro li:last-child{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.title-mobile {
+  color: #2980b9;
+  font-size: 16px;
+}
+.add{
+  opacity: 0;
+  transition: all ease 0.9s;   
+}
+.mobile:hover .add{
+  opacity: 1;
+  transition: all ease 1.9s;    
+}
+/* /======================================pc thumbnail =============== */
+.pc{
+  height: 270px;
+  position: relative;
+}
+.pc .bt{
+   height: 200px;
+    padding: 0;
+}
+.pc .intro{
+    transition: all ease 0.4s; 
+}
+.pc .ct {
+    opacity: 0;
+    height: 200px; 
+    width: 60%;
+    color: black;
+    position: absolute;
+    top: 0px;
+    left: 40%;
+    border-radius: 5px 5px 0 0;
+    transition: all ease 0.9s;   
+    transform: rotate(0deg);
+    padding: 10px;
+}
+.pc .ct li{
+  list-style: none;
+}
+.pc .ct a:hover {
+  text-decoration: none;
+}
+.pc:hover .ct{
+  opacity: 1;
+}
+.pc:hover .intro{
+  opacity: 0;
+}
+.pc .image-m {
+  width: 40%;
+ height: 200px;
+}
+.pc .image-m img {
+  width: 95%;
+  height: 195px;
+}
+.pc .intro {
+  width: 60%;
+  height: 200px;
+  margin-top: 0;
+}
+.pc .intro li {
+  list-style: none;
+}
+.intro h1 .title-pc {
+  color: #2980b9;
+  font-size: 16px;
+
+}
+.add{
+  opacity: 0;
+  transition: all ease 0.9s;   
+}
+.pc:hover .add{
+  opacity: 1;
+  transition: all ease 1.9s;    
+}
+/*-------------------------------------------------- gioi thieu */
+.gioithieu li{
+  list-style: none;
+  font-size: 16px;
+  font-style: normal;
+}
+.gt-left{
+  width: 50%;
+  height: 100%;
+  font-style: normal;
+}
+.gt-right{
+  width: 50%;
+  height: 100%;
+  font-style: normal;
+}
+/* ========================back to top button ==================*/
+.back-to-top {
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display:none;
+    font-style: normal;
+}
+/* ------------------------------------------------footer r---------======================= */
+footer{
+  height: 30px;
+  text-align: center;
+}
+/* tin tun */
+.new-cat li{
+    list-style: none;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+.new-cat li a{
+    font-size: 15px;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.panel-title{
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 2px;
+    margin: 5px;
+}
+.sum{
+  padding-right:0;
+}
+/* ============== style san pham mobile================= */
+.khuyenmai,.chinhsach li{
+ list-style: none;
+}
+.khuyenmai span{
+  color: blue;
+}
+.chinhsach span{
+  color: #16a085;
+}
+.pro-detail-title{
+  font-size: 18px;
+  padding-left: 17px;
+  margin-top: 1px;
+  font-weight: bold;
+  margin-bottom: 0;
+  color: #2980b9;
+}
+.img-box{
+  height: 280px;
+}
+.img-mobile{
+  height: 270px;
+  width: 75%;
+  display: block;
+  margin: 0 auto;
+  transition: all ease 0.9s; 
+}
+.img-mobile:hover{
+  height: 279px;
+  width: 85%;
+  display: block;
+  margin: 0 auto
+}
+.mobile-price{
+ margin-left: 25%;
+ color: #FEFEFE;
+ font-size: 18px;
+}
+.btn-buy{
+  font-size: 20px;
+}
+.img-pro{
+  display: block;
+  width: 98%;
+  height: 250px;
+  margin: 0 auto;
+}
+
+.preview-products img{
+  display: block;
+  margin: 0 auto;
+  width: 95%;
+  height: 95%;
+}
+.SeeMore{
+  text-align: center;
+  margin-left: 45%;
+}
+/* ....... */
+#links a:hover{
+  text-decoration: none;
+}
+
+/* login dailog form */
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
+/****** LOGIN MODAL ******/
+.loginmodal-container {
+  padding: 30px;
+  max-width: 350px;
+  width: 100% !important;
+  background-color: #F7F7F7;
+  margin: 0 auto;
+  border-radius: 2px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  font-family: roboto;
+}
+
+.loginmodal-container h1 {
+  text-align: center;
+  font-size: 1.8em;
+  font-family: roboto;
+}
+
+.loginmodal-container input[type=submit] {
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.loginmodal-container input[type=text], input[type=password] {
+  height: 44px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-top: 1px solid #c0c0c0;
+  /* border-radius: 2px; */
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.loginmodal-container input[type=text]:hover, input[type=password]:hover {
+  border: 1px solid #b9b9b9;
+  border-top: 1px solid #a0a0a0;
+  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.loginmodal {
+  text-align: center;
+  font-size: 14px;
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+  height: 36px;
+  padding: 0 8px;
+/* border-radius: 3px; */
+/* -webkit-user-select: none;
+  user-select: none; */
+}
+
+.loginmodal-submit {
+  /* border: 1px solid #3079ed; */
+  border: 0px;
+  color: #fff;
+  text-shadow: 0 1px rgba(0,0,0,0.1); 
+  background-color: #4d90fe;
+  padding: 17px 0px;
+  font-family: roboto;
+  font-size: 14px;
+  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
+}
+
+.loginmodal-submit:hover {
+  /* border: 1px solid #2f5bb7; */
+  border: 0px;
+  text-shadow: 0 1px rgba(0,0,0,0.3);
+  background-color: #357ae8;
+  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
+}
+
+.loginmodal-container a {
+  text-decoration: none;
+  color: #666;
+  font-weight: 400;
+  text-align: center;
+  display: inline-block;
+  opacity: 0.6;
+  transition: opacity ease 0.5s;
+} 
+
+.login-help{
+  font-size: 12px;
+}
+.accordion-inner{
+  display: block;
+}
+.accordion-inner img{
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  max-width: 90%;
+  max-height: 70%;
+}
+.img-new{
+  display: block;
+  max-width: 90%;
+  max-height: 70%;
+  position: relative;
+  margin: 0 auto;
+}
