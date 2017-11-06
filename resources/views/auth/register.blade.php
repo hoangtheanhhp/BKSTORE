@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('back-end.layouts.master')
 
 @section('content')
 <div class="container">
@@ -90,6 +90,7 @@
                                     </span>
                                 @endif
                             </div>
+                            
                         </div>
 
                         <div class="form-group">

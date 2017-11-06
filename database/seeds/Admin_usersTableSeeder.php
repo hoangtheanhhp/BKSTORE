@@ -12,10 +12,10 @@ class Admin_usersTableSeeder extends Seeder
     public function run()
     {
         DB::table('admin_users')->insert([
-            'name' => 'SupperAdmin',
-            'email' => 'spa@gmail.com',
+            'name' => 'P712plus',
+            'email' => 'minhquang4334@gmail.com',
             'level' => '1',
-            'password' => bcrypt('1212123'),
+            'password' => bcrypt('111111'),
         ]);
     }
 }

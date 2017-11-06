@@ -14,4 +14,6 @@ class Admin_usersController extends Controller
    		$data = Admin_users::paginate(10);
     	return view('back-end.admin_mem.list',['data'=>$data]);
    }
+
+   
 }

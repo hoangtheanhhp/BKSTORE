@@ -8,7 +8,10 @@ Route::get('/user/edit', 'HomeController@edit');
 Route::get('admin/login', ['as'  => 'getlogin', 'uses' =>'Admin\AuthController@showLoginForm']);
 Route::post('admin/login', ['as'  => 'postlogin', 'uses' =>'Admin\AuthController@login']);
 Route::get('admin/password/reset', ['as'  => 'getreser', 'uses' =>'Admin\AuthController@email']);
-
+Route::post('admin/register','AdminController@create');
+Route::get('register',function( ) {
+    return view('back-end.auth.register');
+});
 Route::get('admin/logout', ['as'  => 'getlogin', 'uses' =>'Admin\AuthController@logout']);
 
 Route::get('/', ['as'  => 'index', 'uses' =>'PagesController@index']);

@@ -38,7 +38,7 @@ class PagesController extends Controller
                 ->select('products.*','pro_details.cpu','pro_details.ram','pro_details.screen','pro_details.vga','pro_details.storage','pro_details.exten_memmory','pro_details.cam1','pro_details.cam2','pro_details.sim','pro_details.connect','pro_details.pin','pro_details.os','pro_details.note')
                 ->paginate(4);
 
-    	return view('home',['mobile'=>$mobile,'laptop'=>$lap,'pc'=>$pc]);
+    	return view('back-end/home',['mobile'=>$mobile,'laptop'=>$lap,'pc'=>$pc]);
     }
     public function addcart($id)
     {

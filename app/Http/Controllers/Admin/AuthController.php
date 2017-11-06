@@ -35,6 +35,8 @@ class AuthController extends Controller
      */
     protected $redirectTo = '/admin/home';
 
+    protected $redirectAfterLogout = '/admin/login';
+
     /**
      * Create a new authentication controller instance.
      *
@@ -90,5 +92,7 @@ class AuthController extends Controller
     public function email($token)
     {
         $this->notify(new ResetPasswordNotification($token));
-    } 
+    }
+
+
 }

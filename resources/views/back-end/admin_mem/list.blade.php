@@ -49,7 +49,7 @@
 											<td>{!!$row->name!!}</td>
 											<td>{!!$row->email!!}</td>
 											<td>
-												@if($row->level ==100)
+												@if($row->level ==1)
 													<span style="color:#d35400;">Quản trị hệ thống</span>
 												@else
 													<span style="color:#27ae60;">Quản trị viên</span>
@@ -57,9 +57,12 @@
 											</td>										
 											<td>{!!$row->created_at!!}</td>											
 											<td>
-											    <a href="{!!url('admin/khachhang/edit/'.$row->id)!!}" title="Chi tiết"> Cập nhật</a> &nbsp;
-											    @if ($row->level !=100)
-											    	<a href="{!!url('admin/khachhang/del/'.$row->id)!!}"  title="Xóa" onclick="return xacnhan('Xóa danh mục này ?')">Xóa bỏ</a>
+												@if ($row->level !=1)
+											    <a href="{!!url('admin/khachhang/edit/'.$row->id)!!}" title="Chi tiết"> Cập nhật</a>
+											    @endif 
+											    &nbsp;
+											    @if ($row->level !=1)
+											    	<a href="{!!url('admin/nhanvien/del/'.$row->id)!!}"  title="Xóa" onclick="return xacnhan('Xóa danh mục này ?')">Xóa bỏ</a>
 											    @endif
 											</td>
 										</tr>
