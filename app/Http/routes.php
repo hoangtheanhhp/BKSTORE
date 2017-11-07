@@ -106,3 +106,8 @@ Route::group(['middleware' => 'admin'], function () {
       // ---------------van de khac ----------------------
     });
 });
+
+
+Route::get('register','Auth\AuthController@showRegistrationForm');
+
+Route::post('register','Auth\AuthController@postregister');

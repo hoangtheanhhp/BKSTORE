@@ -5,7 +5,7 @@
 		<div class="row">
 			<ol class="breadcrumb">
 				<li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
-				<li class="active">Dơn đặt hàng</li>
+				<li class="active">Nhân Viên</li>
 			</ol>
 		</div><!--/.row-->
 		<div class="row">

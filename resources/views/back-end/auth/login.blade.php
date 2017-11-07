@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Đăng nhập Admin</div>
+                <div class="panel-heading">Đăng nhập Admin/Staff</div>
                 <div class="panel-body">
                     @if (session('status'))
                         <div class="alert alert-success">
@@ -59,7 +59,10 @@
                                     <i class="fa fa-btn fa-sign-in"></i> Đăng nhập
                                 </button>
 
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">Bạn đã quên mật khẩu?</a>
+                                <a class="btn btn-link" href="{{ url('admin/password/reset') }}">Bạn đã quên mật khẩu?</a>
+
+                                <a class="btn btn-success" style="margin-top:10px;" href="{{url('admin/register')}}"> Register New Staff</a>
+
                             </div>
                         </div>
                     </form>

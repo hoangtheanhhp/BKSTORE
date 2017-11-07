@@ -22,7 +22,7 @@ class AuthController extends Controller
     */
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
-
+    protected $registerView='auth.register';
     /**
      * Where to redirect users after login / registration.
      *
@@ -94,4 +94,6 @@ class AuthController extends Controller
             'status' => '1',
         ]);
     }
+    
+
 }
