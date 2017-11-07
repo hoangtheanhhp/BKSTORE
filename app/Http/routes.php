@@ -8,13 +8,17 @@ Route::get('/user/edit', 'HomeController@edit');
 Route::get('admin/login', ['as'  => 'getlogin', 'uses' =>'Admin\AuthController@showLoginForm']);
 Route::post('admin/login', ['as'  => 'postlogin', 'uses' =>'Admin\AuthController@login']);
 Route::get('admin/password/reset', ['as'  => 'getreser', 'uses' =>'Admin\AuthController@email']);
-Route::post('admin/register','AdminController@create');
-Route::get('register',function( ) {
-    return view('back-end.auth.register');
+
+Route::get('admin/register',function(){
+  return view('back-end.auth.register');
 });
+Route::post('admin/register','Admin\AuthController@register');
+
 Route::get('admin/logout', ['as'  => 'getlogin', 'uses' =>'Admin\AuthController@logout']);
 
-Route::get('/', ['as'  => 'index', 'uses' =>'PagesController@index']);
+Route::get('/',function(){
+  return view('back-end.home');
+})->middleware('auth:admin');
 // cart - oder
 Route::get('gio-hang', ['as'  => 'getcart', 'uses' =>'PagesController@getcart']);
 // them vao gio hang
@@ -94,7 +98,7 @@ Route::group(['middleware' => 'admin'], function () {
         Route::group(['prefix' => '/nhanvien'], function() {;
 
            Route::get('',['as'       =>'getnv','uses' => 'Admin_usersController@getlist']);
-           Route::get('/del/{id}',['as'   =>'getdelnv','uses' => 'Admin_usersController@getdel'])->where('id','[0-9]+');
+           Route::get('/del/{id}',['as'   =>'getdelnv','uses' => 'Admin_usersController@getdel'])->middleware('CheckAdmin');
 
            Route::get('/edit/{id}',['as'  =>'geteditnv','uses' => 'Admin_usersController@getedit'])->where('id','[0-9]+');
            Route::post('/edit/{id}',['as' =>'posteditnv','uses' => 'Admin_usersController@postedit'])->where('id','[0-9]+');

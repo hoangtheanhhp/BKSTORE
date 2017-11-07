@@ -53,9 +53,6 @@
 					      			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 					      				Tác giả : <input type="text" name="txtAuth" id="inputTxtAuth" class="form-control" value="{{ old('txtAuth') }}" required="required">
 					      			</div>
-					      			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-					      				Tag : <input type="text" name="txttag" id="inputtag" value="{{ old('txttag') }}" class="form-control">
-					      			</div>
 				      			</div>
 				      		</div>
 				      		<div class="form-group">				      			

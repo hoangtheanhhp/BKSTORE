@@ -21,17 +21,20 @@ class NewsController extends Controller
     }
     public function getadd()
     {    	
-		$cat= Category::where('parent_id',13)->get();
+		$cat= Category::where('parent_id','>=',0)->get();
 
     	return view('back-end.news.add',['cat'=>$cat]);
     }
     public function postadd(AddNewsRequest $rq)
     {
     	$n = new News();
+
+            if(var_dump($rq->txttag))
+                $rq->txttag = 'Không có';
     	$n->title = $rq->txtTitle;
     	$n->slug = str_slug($rq->txtTitle,'-');
     	$n->author = $rq->txtAuth;
-    	$n->tag = $rq->txttag;
+    	/*$n->tag = $rq->txttag;*/
     	$n->status = $rq->slstatus;
     	$n->source = $rq->txtSource;
     	$n->intro = $rq->txtIntro;
@@ -86,4 +89,11 @@ class NewsController extends Controller
     	return redirect('admin/news')
       	->with(['flash_level'=>'result_msg','flash_massage'=>' Đã sửa thành công !']);
     }
+    
+    public function getdel($id)
+   {
+        News::find($id)->delete();
+        return redirect()->action('NewsController@getlist')
+                ->with('success','News deleted successfully');
+   }
 }

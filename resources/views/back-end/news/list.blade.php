@@ -16,6 +16,11 @@
 						Danh sách tin bản tin
 						<a href="{!!url('admin/news/add')!!}" title=""><button type="button" class="btn btn-primary pull-right">Thêm tin mới</button></a>
 					</div>
+					@if (session('success'))
+                        				<div class="alert alert-success">
+			                            {{ session('success') }}
+			                        </div>
+			                   @endif
 					@if (count($errors) > 0)
 					    <div class="alert alert-danger">
 					        <ul>
@@ -53,12 +58,16 @@
 										<td><small>{!!$row->intro!!}</small></td>
 										<td style="width: 90px;">
 											@if($row->status==1)
+											<span style="color: green">
 											Hiển thị
+											</span>
 											@else
+											<span style="color: #333">
 											Tạm ẩn
+											</span>
 											@endif
 										</td>
-										<td style="width: 120px;">
+										<td style="width: 200px;">
 										    <a href="{!!url('admin/news/edit/'.$row->id)!!}" title="Sửa"><span class="glyphicon glyphicon-edit">edit</span> </a>
 										    <a href="{!!url('admin/news/del/'.$row->id)!!}"  title="Xóa" onclick="return xacnhan('Xóa danh mục này ?')"><span class="glyphicon glyphicon-remove">remove</span> </a>
 										</td>

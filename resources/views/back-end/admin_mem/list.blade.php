@@ -11,8 +11,18 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel-heading">
-					Danh sách đơn đặt hàng						
+					Danh sách nhân viên						
 				</div>
+				@if ($message = Session::get('success'))
+			        <div class="alert alert-success">
+			            <p>{{ $message }}</p>
+			        </div>
+			    @endif
+			    	@if ($message = Session::get('danger'))
+			        <div class="alert alert-danger">
+			            <p>{{ $message }}</p>
+			        </div>
+			    @endif
 				<div class="panel panel-default">					
 					@if (count($errors) > 0)
 					    <div class="alert alert-danger">
@@ -43,9 +53,10 @@
 									</tr>
 								</thead>
 								<tbody>
+									{{$i=0}}
 									@foreach($data as $row)
 										<tr>
-											<td>{!!$row->id!!}</td>
+											<td>{!!++$i!!}</td>
 											<td>{!!$row->name!!}</td>
 											<td>{!!$row->email!!}</td>
 											<td>
@@ -61,7 +72,7 @@
 											    <a href="{!!url('admin/khachhang/edit/'.$row->id)!!}" title="Chi tiết"> Cập nhật</a>
 											    @endif 
 											    &nbsp;
-											    @if ($row->level !=1)
+											    @if ($row->level !=1 && $row->name != Auth::guard('admin')->user()->name)
 											    	<a href="{!!url('admin/nhanvien/del/'.$row->id)!!}"  title="Xóa" onclick="return xacnhan('Xóa danh mục này ?')">Xóa bỏ</a>
 											    @endif
 											</td>

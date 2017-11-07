@@ -130,7 +130,7 @@
 								
 		<div class="row">
 			<div class="col-md-8">
-				<small>Coppyright 2016</small>
+				<small>Coppyright 2017</small>
 			</div><!--/.col-->
 		</div><!--/.row-->
 	</div>	<!--/.main-->

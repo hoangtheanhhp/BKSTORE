@@ -26,7 +26,7 @@ class CreateProDetailsTable extends Migration
             $table->string('connect');
             $table->string('pin');            
             $table->string('os');            
-            $table->text('note');            
+            $table->text('note')->nullable();            
             $table->integer('pro_id')->unsigned();
             $table->foreign('pro_id')->references('id')->on('products')->onDelete('cascade');;     
             $table->timestamps();

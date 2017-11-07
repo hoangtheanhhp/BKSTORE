@@ -33,10 +33,8 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/home';
-
     protected $redirectAfterLogout = '/admin/login';
-
+ 
     /**
      * Create a new authentication controller instance.
      *
@@ -53,6 +51,8 @@ class AuthController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+        protected $redirectTo = '/admin/home';
+
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -86,13 +86,14 @@ class AuthController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'level' => '1',
+            'level' => '2',
         ]);
     }   
     public function email($token)
     {
         $this->notify(new ResetPasswordNotification($token));
     }
+
 
 
 }

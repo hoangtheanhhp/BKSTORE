@@ -25,6 +25,6 @@ class UsersController extends Controller
    {
         User::find($id)->delete();
         return redirect()->route('admin.khachhang')
-                ->with('success','Student deleted successfully');
+                ->with('success','KH deleted successfully');
    }
 }
