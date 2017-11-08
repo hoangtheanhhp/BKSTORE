@@ -70,7 +70,7 @@ class ProductsController extends Controller
     	$f = $rq->file('txtimg')->getClientOriginalName();
     	$filename = time().'_'.$f;
     	$pro->images = $filename;    	
-    	$rq->file('txtimg')->move('uploads/products/',$filename);
+    	$rq->file('txtimg')->move('images/phone/',$filename);
     	$pro->save();    	
     	$pro_id =$pro->id;
 
@@ -106,7 +106,7 @@ class ProductsController extends Controller
     	$detail->connect = $rq->txtConnect;
     	$detail->pin = $rq->txtPin;
     	$detail->os = $rq->txtOs;
-      $detail->note = $rq->note;
+            $detail->note = $rq->note;
     	$detail->pro_id = $pro_id;
 
       
