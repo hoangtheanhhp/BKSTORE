@@ -21,7 +21,7 @@ class CreateOdersTable extends Migration
             $table->decimal('total', 13, 2);
             $table->integer('status');
             $table->string('type',50);
-            $table->string('note');            
+            $table->string('note');
             $table->timestamps();
         });
     }

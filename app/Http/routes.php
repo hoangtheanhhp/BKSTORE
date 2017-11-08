@@ -12,6 +12,9 @@ Route::get('admin/password/reset', ['as'  => 'getreser', 'uses' =>'Admin\AuthCon
 Route::get('admin/logout', ['as'  => 'getlogin', 'uses' =>'Admin\AuthController@logout']);
 
 Route::get('/', ['as'  => 'index', 'uses' =>'PagesController@index']);
+Route::get('products', ['as'  => 'getproducts', 'uses' =>'PagesController@getProducts']);
+Route::get('detail/{id}', ['as'  => 'getdetail', 'uses' =>'PagesController@getDetail']);
+
 // cart - oder
 Route::get('gio-hang', ['as'  => 'getcart', 'uses' =>'PagesController@getcart']);
 // them vao gio hang
@@ -21,7 +24,7 @@ Route::get('gio-hang/delete/{id}', ['as'  => 'getdeletecart', 'uses' =>'PagesCon
 Route::get('gio-hang/xoa', ['as'  => 'getempty', 'uses' =>'PagesController@xoa']);
 
 // tien hanh dat hang
-Route::get('dat-hang', ['as'  => 'getoder', 'uses' =>'PagesController@getoder']);
+Route::get('dat-hang',  ['as'  => 'getoder', 'uses' =>'PagesController@getoder']);
 Route::post('dat-hang', ['as'  => 'postoder', 'uses' =>'PagesController@postoder']);
 // category
 Route::get('/{cat}', ['as'  => 'getcate', 'uses' =>'PagesController@getcate']);

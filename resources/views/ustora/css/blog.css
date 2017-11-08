@@ -1,0 +1,34 @@
+.single-product-area .element{
+	clear: both;
+	overflow: hidden;
+	margin-bottom: 50px;
+}
+
+.single-product-area .imgs{
+	overflow: hidden;
+}
+.single-product-area img{
+	width: 100%;
+	height: auto;
+}
+
+.single-product-area .right .element{
+	border: 1px solid #7da1d5;
+	padding-bottom: 5px;
+}
+li{
+	list-style: none;
+}
+
+.single-product-area .right .element > span{
+	background: #7da1d5;
+	width: 100%;
+	height: 30px;
+	line-height: 25px;
+	padding-left: 20px;
+	color: white;
+} 
+
+.single-product-area .right .element li{
+	margin-bottom: 20px;
+}

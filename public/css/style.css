@@ -83,13 +83,15 @@ z-index: 999;}
 
 .logo h1 {
     font-size: 40px;
-   font-weight: 400;
-}
-.logo h1 a {
-    color: #999;
+    margin: 0 !important;
+    font-weight: 400;
 }
 .logo img{
   width: 150px;
+  height: auto;
+}
+.logo h1 a {
+    color: #999;
 }
 .logo h1 a:hover {text-decoration: none;opacity: .7}
 .logo h1 a span {
