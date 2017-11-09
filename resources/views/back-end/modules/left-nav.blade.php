@@ -18,7 +18,9 @@
 
 			<li><a href="{!!url('admin/khachhang')!!}"><svg class="glyph stroked app-window"><use xlink:href="#stroked-line-graph"></use></svg>  Khách hàng</a></li>
 
-			<li><a href="{!!url('admin/nhanvien')!!}"><svg class="glyph stroked female user"><use xlink:href="#stroked-female-user"/></svg> Slide</a></li>
+{{--
+			<li><a href="{!!url('admin/slide')!!}"><svg class="glyph stroked female user"><use xlink:href="#stroked-female-user"/></svg> Slide</a></li>
+--}}
 			<li><a href="{!!url('admin/nhanvien')!!}"><svg class="glyph stroked female user"><use xlink:href="#stroked-female-user"/></svg> Nhân Viên</a></li>
 
 			<li role="presentation" class="divider"></li>
