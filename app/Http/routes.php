@@ -22,6 +22,7 @@ Route::get('/',function(){
 Route::get('/', ['as'  => 'index', 'uses' =>'PagesController@index']);
 Route::get('products', ['as'  => 'getproducts', 'uses' =>'PagesController@getProducts']);
 Route::get('detail/{id}', ['as'  => 'getdetail', 'uses' =>'PagesController@getDetail']);
+Route::get('blog',['as'=>'getblog','uses'=>'PagesController@getNews']);
 // cart - oder
 Route::get('gio-hang', ['as'  => 'getcart', 'uses' =>'PagesController@getcart']);
 // them vao gio hang

@@ -40,8 +40,9 @@ class PagesController extends Controller
     }
     public function addcart($id, Request $request)
     {
-        $pro = Products::where('id',$id)->first();
-        Cart::add(['id' => $pro->id, 'name' => $pro->name, 'qty' => $request->qty, 'price' => $pro->price,'options' => ['img' => $pro->imagestext]]);
+        $pro = Products::find($id);
+          Cart::add(['id' => $pro->id, 'name' => $pro->name, 'qty' => $request->qty, 'price' => $pro->price,'options' => ['img' => $pro->imagestext]]);
+
         return redirect()->route('getcart');
     }
     public function getupdatecart($id,Request $request)
@@ -112,6 +113,11 @@ class PagesController extends Controller
         Cart::destroy();
         return redirect()->route('getcart')
             ->with(['flash_level'=>'result_msg','flash_massage'=>' Đơn hàng của bạn đã được gửi đi !']);
+    }
+
+    public function getNews() {
+      $news = News::join('admin_users','news.user_id','=','admin_users.id')->select('news.*','admin_users.name')->orderBy('created_at','desc')->paginate(3);
+      return view('front-end.modules.blog',['news'=>$news]);
     }
     public function getcate($cat)
     {

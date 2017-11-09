@@ -33,7 +33,7 @@
                     <li><a href="/products">Shop page</a></li>
                     <li><a href="/gio-hang">Cart</a></li>
                     <li><a href="/dat-hang">Checkout</a></li>
-                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="/blog">Blog</a></li>
                 </ul>
             </div>
         </div>

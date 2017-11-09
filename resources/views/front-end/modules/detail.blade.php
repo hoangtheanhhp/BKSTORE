@@ -89,7 +89,6 @@
                                   </div>
 
                                   <form action="/gio-hang/addcart/{{$phone->id}}" class="cart">
-                                      <input name="_method" type="hidden" value="PATCH">
                                       {{ csrf_field() }}
                                       <div class="quantity">
                                           <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="qty" min="1" step="1">
