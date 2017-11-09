@@ -22,7 +22,6 @@ Route::get('/',function(){
 Route::get('/', ['as'  => 'index', 'uses' =>'PagesController@index']);
 Route::get('products', ['as'  => 'getproducts', 'uses' =>'PagesController@getProducts']);
 Route::get('detail/{id}', ['as'  => 'getdetail', 'uses' =>'PagesController@getDetail']);
-
 // cart - oder
 Route::get('gio-hang', ['as'  => 'getcart', 'uses' =>'PagesController@getcart']);
 // them vao gio hang
@@ -30,7 +29,6 @@ Route::get('gio-hang/addcart/{id}', ['as'  => 'getcartadd', 'uses' =>'PagesContr
 Route::get('gio-hang/update/{id}/{qty}-{dk}', ['as'  => 'getupdatecart', 'uses' =>'PagesController@getupdatecart']);
 Route::get('gio-hang/delete/{id}', ['as'  => 'getdeletecart', 'uses' =>'PagesController@getdeletecart']);
 Route::get('gio-hang/xoa', ['as'  => 'getempty', 'uses' =>'PagesController@xoa']);
-
 // tien hanh dat hang
 Route::get('dat-hang',  ['as'  => 'getoder', 'uses' =>'PagesController@getoder']);
 Route::post('dat-hang', ['as'  => 'postoder', 'uses' =>'PagesController@postoder']);
