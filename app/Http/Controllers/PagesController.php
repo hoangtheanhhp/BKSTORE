@@ -5,35 +5,17 @@ use App\Http\Requests;
 use Auth;
 use App\Products;
 use App\Category;
-use App\Pro_detail;
+use App\Pro_details;
 use App\News;
 use App\Oders;
 use App\Slide;
 use App\Oders_detail;
+use App\Detail_img;
 use DB,Cart,Datetime;
 class PagesController extends Controller
 {
     public function index()
     {
-        // mobile
-        // $mobile = DB::table('products')
-        //         ->join('category', 'products.cat_id', '=', 'category.id')
-        //         ->join('pro_details', 'pro_details.pro_id', '=', 'products.id')
-        //         ->where('category.parent_id','=','1')
-        //         ->select('products.*','pro_details.cpu','pro_details.ram','pro_details.screen','pro_details.vga','pro_details.storage','pro_details.exten_memmory','pro_details.cam1','pro_details.cam2','pro_details.sim','pro_details.connect','pro_details.pin','pro_details.os','pro_details.note')
-        //         ->paginate(9);
-        // $lap = DB::table('products')
-        //         ->join('category', 'products.cat_id', '=', 'category.id')
-        //         ->join('pro_details', 'pro_details.pro_id', '=', 'products.id')
-        //         ->where('category.parent_id','=','2')
-        //         ->select('products.*','pro_details.cpu','pro_details.ram','pro_details.screen','pro_details.vga','pro_details.storage','pro_details.exten_memmory','pro_details.cam1','pro_details.cam2','pro_details.sim','pro_details.connect','pro_details.pin','pro_details.os','pro_details.note')
-        //         ->paginate(6);
-        // $pc = DB::table('products')
-        //         ->join('category', 'products.cat_id', '=', 'category.id')
-        //         ->join('pro_details', 'pro_details.pro_id', '=', 'products.id')
-        //         ->where('category.parent_id','=','19')
-        //         ->select('products.*','pro_details.cpu','pro_details.ram','pro_details.screen','pro_details.vga','pro_details.storage','pro_details.exten_memmory','pro_details.cam1','pro_details.cam2','pro_details.sim','pro_details.connect','pro_details.pin','pro_details.os','pro_details.note')
-        //         ->paginate(4);
         $slides = Slide::all();
         $phones = Products::all();
         return view('front-end.home',['slides'=>$slides, 'phones'=>$phones]);
@@ -184,11 +166,16 @@ class PagesController extends Controller
         }
     }
     public function getProducts() {
-        $products = Products::paginate(10);
+        $products = Products::latest()->paginate(10);
         return view('front-end.modules.shop',['products'=>$products]);
     }
     public function getDetail($id) {
         $phone = Products::find($id);
-        return view('front-end.modules.detail',['phone'=>$phone]);
+        $phone_detail = DB::table('detail_img')->where('pro_id',$id)->get();
+        $phone_info = Pro_details::find($id);
+        return view('front-end.modules.detail',['phone'=>$phone,
+                                                      'phone_detail'=>$phone_detail,
+                                                      'phone_info' => $phone_info
+        ]);
     }
 }

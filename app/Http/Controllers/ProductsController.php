@@ -106,7 +106,7 @@ class ProductsController extends Controller
     	$detail->connect = $rq->txtConnect;
     	$detail->pin = $rq->txtPin;
     	$detail->os = $rq->txtOs;
-            $detail->note = $rq->note;
+        $detail->note = $rq->note;
     	$detail->pro_id = $pro_id;
 
       
@@ -123,7 +123,7 @@ class ProductsController extends Controller
     				$img_detail->images_url = $name_img;
     				$img_detail->pro_id = $pro_id;
     				$img_detail->created_at = new datetime;
-    				$row->move('uploads/products/details/',$name_img);
+    				$row->move('images/phone/',$name_img);
     				$img_detail->save();
     			}
     		}

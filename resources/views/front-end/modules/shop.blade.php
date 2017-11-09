@@ -1,5 +1,5 @@
 @extends('front-end.layout.master')
-@section('pageTitle', 'Anh the anh dep zai')
+@section('pageTitle', 'Quang pro')
 @section('content')
 
     <div class="product-big-title-area">
@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="product-bit-title text-center">
-                        <h2>Shop</h2>
+                        <h2>BK STORE</h2>
                     </div>
                 </div>
             </div>
@@ -23,11 +23,11 @@
                   <div class="col-md-3 col-sm-6">
                     <div class="single-shop-product">
                         <div class="product-upper">
-                            <img src="/image/phone/{{$product->image}}" alt="">
+                            <img src="/images/phone/{{$product->images}}" alt="">
                         </div>
-                        <h2><a href="">{{$product->title}}</a></h2>
+                        <h2><a href="">{{$product->name}}</a></h2>
                         <div class="product-carousel-price">
-                            <ins>{{$product->prime}}</ins> <del>{{$product->prime}}</del>
+                            <ins>{{$product->price}}</ins> <del>{{$product->price}}</del>
                         </div>
 
                         <div class="product-option-shop">

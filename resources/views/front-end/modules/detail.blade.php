@@ -17,29 +17,29 @@
                   <div class="single-sidebar">
                       <h2 class="sidebar-title">Products</h2>
                       <div class="thubmnail-recent">
-                          <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                          <h2><a href="">Sony Smart TV - 2015</a></h2>
+                          <img src="images/phone/1.jpg" class="recent-thumb" alt="">
+                          <h2><a href="">Iphone 8</a></h2>
                           <div class="product-sidebar-price">
                               <ins>$700.00</ins> <del>$100.00</del>
                           </div>
                       </div>
                       <div class="thubmnail-recent">
-                          <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                          <h2><a href="">Sony Smart TV - 2015</a></h2>
+                          <img src=src="images/phone/2.jpg" class="recent-thumb" alt="">
+                          <h2><a href="">Iphone X</a></h2>
                           <div class="product-sidebar-price">
                               <ins>$700.00</ins> <del>$100.00</del>
                           </div>
                       </div>
                       <div class="thubmnail-recent">
-                          <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                          <h2><a href="">Sony Smart TV - 2015</a></h2>
+                          <img src="src="images/phone/3.jpg"" class="recent-thumb" alt="">
+                          <h2><a href="">Iphone 8+</a></h2>
                           <div class="product-sidebar-price">
                               <ins>$700.00</ins> <del>$100.00</del>
                           </div>
                       </div>
                       <div class="thubmnail-recent">
-                          <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                          <h2><a href="">Sony Smart TV - 2015</a></h2>
+                          <img src="src="images/phone/4.jpg"" class="recent-thumb" alt="">
+                          <h2><a href="">Iphone 8 plus - 2015</a></h2>
                           <div class="product-sidebar-price">
                               <ins>$700.00</ins> <del>$100.00</del>
                           </div>
@@ -63,7 +63,7 @@
                       <div class="product-breadcroumb">
                           <a href="">Home</a>
                           <a href="">Category Name</a>
-                          <a href="">Sony Smart TV - 2015</a>
+                          <a href="">{{$phone->name}}</a>
                       </div>
 
                       <div class="row">
@@ -72,18 +72,17 @@
                                   <div class="product-main-img">
                                       <img src="/images/phone/{{ $phone->images}}" alt="">
                                   </div>
-
-                                  <div class="product-gallery">
-                                      <img src="/img/product-thumb-1.jpg" alt="">
-                                      <img src="/img/product-thumb-2.jpg" alt="">
-                                      <img src="/img/product-thumb-3.jpg" alt="">
+                                  @foreach($phone_detail as $detail)
+                                  <div class="product-gallery" style="float: left; ">
+                                      <img src="/images/phone/{{$detail->images_url}}" alt="">
                                   </div>
+                                  @endforeach
                               </div>
                           </div>
 
                           <div class="col-sm-6">
                               <div class="product-inner">
-                                  <h2 class="product-name">Sony Smart TV - 2015</h2>
+                                  <h2 class="product-name" style="color: #0088bb;">{{$phone->name}}</h2>
                                   <div class="product-inner-price">
                                       <ins>$700.00</ins> <del>$100.00</del>
                                   </div>
@@ -108,43 +107,43 @@
                                              <table>
                                                  <tr>
                                                      <td><span class="text-muted">Màn hình:</span></td>
-                                                     <td>Super AMOLED, 5.5", Full HD</td>
+                                                     <td>{{$phone_info->screen}}</td>
                                                  </tr>
                                                  <tr>
                                                      <td><span class="text-muted">Hệ điều hành:</span></td>
-                                                     <td>Android 7.0</td>
+                                                     <td>{{$phone_info->os}}</td>
                                                  </tr>
                                                  <tr>
                                                      <td><span class="text-muted">Camera sau:</span></td>
-                                                     <td>13 MP và 5 MP (2 camera)</td>
+                                                     <td>{{$phone_info->cam1}}</td>
                                                  </tr>
                                                  <tr>
                                                      <td><span class="text-muted">Camera trước:</span></td>
-                                                     <td>16 MP</td>
+                                                     <td>{{$phone_info->cam2}}</td>
                                                  </tr>
                                                  <tr>
                                                      <td><span class="text-muted">CPU:</span></td>
-                                                     <td>Mediatek Helio P25 Lite</td>
+                                                     <td>{{$phone_info->cpu}}</td>
                                                  </tr>
                                                  <tr>
                                                      <td><span class="text-muted">RAM:</span></td>
-                                                     <td>4 GB</td>
+                                                     <td>{{$phone_info->ram}}</td>
                                                  </tr>
                                                  <tr>
                                                      <td><span class="text-muted">Bộ nhớ trong:</span></td>
-                                                     <td>32 GB</td>
+                                                     <td>{{$phone_info->storage}}</td>
                                                  </tr>
                                                  <tr>
                                                      <td><span class="text-muted">Thẻ nhớ:</span></td>
-                                                     <td>MicroSD, hỗ trợ tối đa 256 GB</td>
+                                                     <td>{{$phone_info->exten_memmory}}</td>
                                                  </tr>
                                                  <tr>
                                                      <td><span class="text-muted">Thẻ SIM:</span></td>
-                                                     <td>2 Nano SIM (SIM 2 chung khe thẻ nhớ), hỗ trợ 4G</td>
+                                                     <td>{{$phone_info->sim}}</td>
                                                  </tr>
                                                  <tr>
                                                      <td><span class="text-muted">Dung lượng pin:</span></td>
-                                                     <td>3000 mAh</td>
+                                                     <td>{{$phone_info->pin}}  </td>
                                                  </tr>
                                              </table>
                                           </div>

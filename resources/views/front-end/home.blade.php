@@ -66,10 +66,10 @@
                                     </div>
                                 </div>
 
-                                <h2><a href="{{ url('/products') }}">{{$phone->title}}</a></h2>
+                                <h2><a href="{{ url('/products') }}">{{$phone->name}}</a></h2>
 
                                 <div class="product-carousel-price">
-                                    <ins>{{ $phone->prime }}</ins> <del>{{$phone->prime}}</del>
+                                    <ins>{{ $phone->price }}</ins> <del>{{$phone->price}}</del>
                                 </div>
                             </div>
                           @endforeach

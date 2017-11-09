@@ -4,8 +4,8 @@
         <div class="row">
             <div class="col-md-3 col-sm-6">
                 <div class="footer-about-us">
-                    <h2>u<span>Stora</span></h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis magni at?</p>
+                    <h2>BK<span>Store</span></h2>
+                    <p>BK Store doing business as BK team is an BK VN web service team in HUST, HN that was founded by Minh Quang, The Anh, Thanh Binh and Van Duy on July 5, 2017.</p>
                     <div class="footer-social">
                         <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
                         <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
@@ -62,7 +62,7 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="copyright">
-                    <p>&copy; 2015 uCommerce. All Rights Reserved. <a href="http://www.freshdesignweb.com" target="_blank">freshDesignweb.com</a></p>
+                    <p>&copy; 2015 P712Plus. All Rights Reserved. <a href="http://www.freshdesignweb.com" target="_blank">freshDesignweb.com</a></p>
                 </div>
             </div>
 

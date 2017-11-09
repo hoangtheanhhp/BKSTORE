@@ -12,7 +12,6 @@
   <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
 
   <!-- Bootstrap -->
-<<<<<<< HEAD:resources/views/layout/master.blade.php
   <link rel="stylesheet" href="../css/bootstrap.min.css">
 
   <!-- Font Awesome -->
@@ -22,7 +21,6 @@
   <link rel="stylesheet" href="../ustora/css/owl.carousel.css">
   <link rel="stylesheet" href="../ustora/style.css">
   <link rel="stylesheet" href="../ustora/css/responsive.css">
-=======
   <link rel="stylesheet" href="/css/bootstrap.min.css">
 
   <!-- Font Awesome -->
@@ -32,7 +30,6 @@
   <link rel="stylesheet" href="/css/owl.carousel.css">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/responsive.css">
->>>>>>> 69da456c624063295269b99badef9a6e62179748:resources/views/front-end/layout/master.blade.php
 
   <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -67,17 +64,6 @@
   <!-- Slider -->
   <script type="text/javascript" src={{ asset('js/bxslider.min.js') }}></script>
   <script type="text/javascript" src="/js/script.slider.js"></script>
-	<script>
-	// $(document).ready(function($) {
-	// 	$(window).scroll(function(){
-	// 		if($(this).scrollTop()>150){
-	// 		$(".header-bottom").addClass('fixNav')
-	// 		}else{
-	// 			$(".header-bottom").removeClass('fixNav')
-	// 		}}
-	// 	)
-  //
-	// })
-	</script>
+
 </body>
 </html>
