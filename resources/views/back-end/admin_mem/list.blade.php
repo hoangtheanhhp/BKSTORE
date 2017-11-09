@@ -11,8 +11,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel-heading">
-<<<<<<< HEAD
-					Danh sách nhân viên						
+					Danh sách nhân viên
 				</div>
 				@if ($message = Session::get('success'))
 			        <div class="alert alert-success">
@@ -24,12 +23,7 @@
 			            <p>{{ $message }}</p>
 			        </div>
 			    @endif
-				<div class="panel panel-default">					
-=======
-					Danh sách đơn đặt hàng
-				</div>
 				<div class="panel panel-default">
->>>>>>> 69da456c624063295269b99badef9a6e62179748
 					@if (count($errors) > 0)
 					    <div class="alert alert-danger">
 					        <ul>

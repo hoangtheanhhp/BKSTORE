@@ -17,8 +17,8 @@ class PagesController extends Controller
     public function index()
     {
         $slides = Slide::all();
-        $phones = Products::all();
-        return view('front-end.home',['slides'=>$slides, 'phones'=>$phones]);
+        $phones = Products::latest()->paginate(4);
+        return view('front-end.home',['slides'=>$slides, 'phones'=>$phones])->with('i', (request()->input('page', 1) - 1) * 4);
     }
     public function addcart($id, Request $request)
     {

@@ -20,7 +20,7 @@
                           <img src="images/phone/1.jpg" class="recent-thumb" alt="">
                           <h2><a href="">Iphone 8</a></h2>
                           <div class="product-sidebar-price">
-                              <ins>$700.00</ins> <del>$100.00</del>
+                              <ins>{{$phone->price}}</ins> <del>{{$phone->promo1}}}</del>
                           </div>
                       </div>
                       <div class="thubmnail-recent">
@@ -84,7 +84,7 @@
                               <div class="product-inner">
                                   <h2 class="product-name" style="color: #0088bb;">{{$phone->name}}</h2>
                                   <div class="product-inner-price">
-                                      <ins>$700.00</ins> <del>$100.00</del>
+                                      <ins>{{$phone->price}}$</ins> <del>{{$phone->promo1}}$</del>
                                   </div>
 
                                   <form action="/gio-hang/addcart/{{$phone->id}}" class="cart">

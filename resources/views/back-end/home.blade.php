@@ -127,7 +127,7 @@
 				</div>
 			</div>
 		</div><!--/.row-->
-								
+
 		<div class="row">
 			<div class="col-md-8">
 				<small>Coppyright 2017</small>

@@ -75,6 +75,8 @@
                           @endforeach
                         </div>
                     </div>
+                    {!! $phones->links() !!}
+
                 </div>
             </div>
         </div>
