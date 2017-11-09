@@ -22,8 +22,9 @@ class PagesController extends Controller
     }
     public function addcart($id, Request $request)
     {
-        $pro = Products::where('id',$id)->first();
-        Cart::add(['id' => $pro->id, 'name' => $pro->name, 'qty' => $request->qty, 'price' => $pro->price,'options' => ['img' => $pro->images]]);
+        $pro = Products::find($id);
+          Cart::add(['id' => $pro->id, 'name' => $pro->name, 'qty' => $request->qty, 'price' => $pro->price,'options' => ['img' => $pro->imagestext]]);
+
         return redirect()->route('getcart');
     }
     public function getupdatecart($id,Request $request)
@@ -52,27 +53,36 @@ class PagesController extends Controller
     }
     public function getcart()
     {
-        return view ('front-end.modules.cart');
+        $cart = Cart::content();
+        return view ('front-end.modules.cart',['cart'=>$cart]);
     }
     public function getoder()
     {
-        return view ('front-end.modules.checkout');
+        $cart = Cart::content();
+        return view ('front-end.modules.checkout',['cart'=>$cart]);
     }
-    public function postoder(Request $rq)
+    public function postoder(Request $request)
     {
+        $u = User::where('email',$request->email)->first();
+        if (is_null($u)) {
+          $user = new User();
+          $user->name = $request->name;
+          $user->email = $request->email;
+          $user->phone = $request->phone;
+          $user->address = $request->address;
+          $user->save();
+        }
         $oder = new Oders();
         $total =0;
         foreach (Cart::content() as $row) {
             $total = $total + ( $row->qty * $row->price);
         }
-        $oder->c_id = Auth::user()->id;
+        $oder->c_id = $user->id;
         $oder->qty = Cart::count();
         $oder->sub_total = floatval($total);
         $oder->total =  floatval($total);
-        $oder->note = $rq->txtnote;
         $oder->status = 0;
-        $oder->type = 'cod';
-        $oder->created_at = new datetime;
+        $oder->type = $request->payment_method;
         $oder->save();
         $o_id =$oder->id;
         foreach (Cart::content() as $row) {
@@ -80,12 +90,16 @@ class PagesController extends Controller
             $detail->pro_id = $row->id;
             $detail->qty = $row->qty;
             $detail->o_id = $o_id;
-            $detail->created_at = new datetime;
             $detail->save();
         }
         Cart::destroy();
         return redirect()->route('getcart')
             ->with(['flash_level'=>'result_msg','flash_massage'=>' Đơn hàng của bạn đã được gửi đi !']);
+    }
+
+    public function getNews() {
+      $news = News::join('admin_users','news.user_id','=','admin_users.id')->select('news.*','admin_users.name')->orderBy('created_at','desc')->paginate(3);
+      return view('front-end.modules.blog',['news'=>$news]);
     }
     public function getcate($cat)
     {

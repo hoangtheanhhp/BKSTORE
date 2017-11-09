@@ -17,42 +17,23 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="single-sidebar">
-                        <h2 class="sidebar-title">Products</h2>
-                        <div class="thubmnail-recent">
-                            <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                            <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
-                            <div class="product-sidebar-price">
-                                <ins>$700.00</ins> <del>$800.00</del>
-                            </div>
-                        </div>
-                        <div class="thubmnail-recent">
-                            <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                            <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
-                            <div class="product-sidebar-price">
-                                <ins>$700.00</ins> <del>$800.00</del>
-                            </div>
-                        </div>
-                        <div class="thubmnail-recent">
-                            <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                            <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
-                            <div class="product-sidebar-price">
-                                <ins>$700.00</ins> <del>$800.00</del>
-                            </div>
-                        </div>
-                        <div class="thubmnail-recent">
-                            <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                            <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
-                            <div class="product-sidebar-price">
-                                <ins>$700.00</ins> <del>$800.00</del>
-                            </div>
-                        </div>
-                    </div>
+                  <div class="single-sidebar">
+                      <h2 class="sidebar-title">Products</h2>
+                      @foreach($cart as $row)
+                      <div class="thubmnail-recent">
+                          <img src="images/phone/$row->img" class="recent-thumb" alt="">
+                          <h2><a href="single-product.html">{{$row->name}}</a></h2>
+                          <div class="product-sidebar-price">
+                              <ins>{{$row->prime}}</ins>
+                          </div>
+                      </div>
+                      @endforeach
+                  </div>
                 </div>
                 <div class="col-md-8">
                     <div class="product-content-right">
                         <div class="woocommerce">
-                            <form method="post" action="#">
+                            <form action="/dat-hang">
                                 <table cellspacing="0" class="shop_table cart">
                                     <thead>
                                         <tr>
@@ -65,47 +46,38 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach($cart as $row)
                                         <tr class="cart_item">
                                             <td class="product-remove">
-                                                <a title="Remove this item" class="remove" href="#">×</a>
-                                                <script type="text/javascript">
-                                                    $(".cart_item .remove").on("click",function () {
-                                                        $(this).parents(".cart_item").remove();
-                                                    })
-                                                </script>
+                                                <a title="Remove this item" class="remove" href="gio-hang/delete/{{$row->id}}">×</a>
                                             </td>
 
                                             <td class="product-thumbnail">
-                                                <a href="single-product.html"><img width="150" height="300" alt="poster_1_up" class="shop_thumbnail" src="img/product-thumb-2.jpg"></a>
+                                                <a href="detail/{{$row->id}}"><img width="150" height="400" alt="none" class="shop_thumbnail" src="images/phone/{{$row->img}}"></a>
                                             </td>
 
                                             <td class="product-name">
-                                                <a href="single-product.html">Ship Your Idea</a>
+                                                <a href="single-product.html">{{$row->name}}</a>
                                             </td>
 
                                             <td class="product-price">
-                                                <span class="amount">£15.00</span>
+                                                <span class="amount">{{$row->prime}}</span>
                                             </td>
 
                                             <td class="product-quantity">
                                                 <div class="quantity buttons_added">
-                                                    <input type="number" size="4" class="input-text qty text" title="Qty" value="1" min="0" step="1">
+                                                    <input type="number" size="4" class="input-text qty text" title="Qty" value="{{$row->qty}}" min="0" step="1">
                                                 </div>
                                             </td>
 
                                             <td class="product-subtotal">
-                                                <span class="amount">£15.00</span>
+                                                <span class="amount">{{$row->qty*$row->prime}}</span>
                                             </td>
                                         </tr>
+                                        @endforeach
                                         <tr>
                                             <td class="actions" colspan="6">
-                                                <div class="coupon">
-                                                    <label for="coupon_code">Coupon:</label>
-                                                    <input type="text" placeholder="Coupon code" value="" id="coupon_code" class="input-text" name="coupon_code">
-                                                    <input type="submit" value="Apply Coupon" name="apply_coupon" class="button">
-                                                </div>
-                                                <input type="submit" value="Update Cart" name="update_cart" class="button">
-                                                <input type="submit" value="Checkout" name="proceed" class="checkout-button button alt wc-forward">
+                                                <input type="submit" value="Checkout" class="checkout-button button alt wc-forward">
                                             </td>
                                         </tr>
                                     </tbody>
