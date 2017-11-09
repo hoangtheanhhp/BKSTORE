@@ -1126,3 +1126,27 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
 .pagination > li > a, .pagination > li > span {
   color: #5a88ca;
 }
+
+
+.single-product > h2, .single-product > div,.single-shop-product > h2,.single-shop-product>div{
+  text-align: center;
+}
+.single-product > h2 >a,.single-shop-product > h2 > a{
+  color: red;
+}
+
+.pagination{
+  float: right;
+}
+
+.product-bit-title > h2{
+  font-weight: bold;
+}
+
+.product-gallery{
+  margin-right: 10px;
+}
+
+#home table tr >td:last-child{
+  padding-left: 30px;
+}

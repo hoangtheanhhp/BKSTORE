@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="logo">
-                    <h1><a href="/"><img src="images/logo.png" class="img-reponsive"></a></h1>
+                    <h1><a href="/"><img src="/images/logo.png" class="img-reponsive"></a></h1>
                 </div>
             </div>
 
@@ -30,7 +30,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="/">Home</a></li>
-                    <li><a href="/products">Shop page</a></li>
+                    <li><a href="/products">Shop</a></li>
                     <li><a href="/gio-hang">Cart</a></li>
                     <li><a href="/dat-hang">Checkout</a></li>
                     <li><a href="blog.html">Blog</a></li>
