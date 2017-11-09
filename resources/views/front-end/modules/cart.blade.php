@@ -21,10 +21,10 @@
                       <h2 class="sidebar-title">Products</h2>
                       @foreach($cart as $row)
                       <div class="thubmnail-recent">
-                          <img src="images/phone/$row->img" class="recent-thumb" alt="">
+                          <img src="/images/phone/{{$row->images}}" class="recent-thumb" alt="">
                           <h2><a href="single-product.html">{{$row->name}}</a></h2>
                           <div class="product-sidebar-price">
-                              <ins>{{$row->prime}}</ins>
+                              <ins>{{$row->price}}</ins>
                           </div>
                       </div>
                       @endforeach
@@ -37,8 +37,7 @@
                                 <table cellspacing="0" class="shop_table cart">
                                     <thead>
                                         <tr>
-                                            <th class="product-remove">&nbsp;</th>
-                                            <th class="product-thumbnail">&nbsp;</th>
+
                                             <th class="product-name">Product</th>
                                             <th class="product-price">Price</th>
                                             <th class="product-quantity">Quantity</th>
@@ -46,22 +45,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    {{$sum_cart = 0}}
                                         @foreach($cart as $row)
                                         <tr class="cart_item">
-                                            <td class="product-remove">
-                                                <a title="Remove this item" class="remove" href="gio-hang/delete/{{$row->id}}">×</a>
-                                            </td>
-
-                                            <td class="product-thumbnail">
-                                                <a href="detail/{{$row->id}}"><img width="150" height="400" alt="none" class="shop_thumbnail" src="images/phone/{{$row->img}}"></a>
-                                            </td>
 
                                             <td class="product-name">
                                                 <a href="single-product.html">{{$row->name}}</a>
                                             </td>
 
                                             <td class="product-price">
-                                                <span class="amount">{{$row->prime}}</span>
+                                                <span class="amount">{{$row->price}}$</span>
                                             </td>
 
                                             <td class="product-quantity">
@@ -71,9 +64,13 @@
                                             </td>
 
                                             <td class="product-subtotal">
-                                                <span class="amount">{{$row->qty*$row->prime}}</span>
+                                                <span class="amount">{{$row->qty*$row->price}}$</span>
                                             </td>
                                         </tr>
+                                        @endforeach
+
+                                        @foreach($cart as $row)
+                                            {{$sum_cart += $row->price * $row->qty}}
                                         @endforeach
                                         <tr>
                                             <td class="actions" colspan="6">
@@ -115,11 +112,11 @@
                                     <tbody>
                                         <tr class="cart-subtotal">
                                             <th>Cart Subtotal</th>
-                                            <td><span class="amount">£15.00</span></td>
+                                            <td><span class="amount">{{$sum_cart}}$</span></td>
                                         </tr>
                                         <tr class="order-total">
                                             <th>Order Total(    +10% VAT)</th>
-                                            <td><strong><span class="amount">£15.00</span></strong> </td>
+                                            <td><strong><span class="amount">{{$sum_cart*1.1}}$</span></strong> </td>
                                         </tr>
                                     </tbody>
                                 </table>

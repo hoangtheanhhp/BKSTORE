@@ -12,13 +12,14 @@ use App\Slide;
 use App\Oders_detail;
 use App\Detail_img;
 use DB,Cart,Datetime;
+use App\User;
 class PagesController extends Controller
 {
     public function index()
     {
         $slides = Slide::all();
-        $phones = Products::latest()->paginate(4);
-        return view('front-end.home',['slides'=>$slides, 'phones'=>$phones])->with('i', (request()->input('page', 1) - 1) * 4);
+        $phones = Products::latest()->paginate(5);
+        return view('front-end.home',['slides'=>$slides, 'phones'=>$phones])->with('i', (request()->input('page', 1) - 1) * 5);
     }
     public function addcart($id, Request $request)
     {
