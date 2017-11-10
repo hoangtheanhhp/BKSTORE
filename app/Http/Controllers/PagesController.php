@@ -24,7 +24,7 @@ class PagesController extends Controller
     public function addcart($id, Request $request)
     {
         $pro = Products::find($id);
-          Cart::add(['id' => $pro->id, 'name' => $pro->name, 'qty' => $request->qty, 'price' => $pro->price,'options' => ['img' => $pro->imagestext]]);
+          Cart::add(['id' => $pro->id, 'name' => $pro->name, 'qty' => $request->qty, 'price' => $pro->price,'options' => ['img' => $pro->images]]);
 
         return redirect()->route('getcart');
     }
@@ -55,12 +55,16 @@ class PagesController extends Controller
     public function getcart()
     {
         $cart = Cart::content();
-        return view ('front-end.modules.cart',['cart'=>$cart]);
+        $total = Cart::total();
+        $subtotal = Cart::subtotal();
+        return view ('front-end.modules.cart',['cart'=>$cart,'total'=>$total,'subtotal'=>$subtotal]);
     }
     public function getoder()
     {
         $cart = Cart::content();
-        return view ('front-end.modules.checkout',['cart'=>$cart]);
+        $total = Cart::total();
+        $subtotal = Cart::subtotal();
+        return view ('front-end.modules.checkout',['cart'=>$cart,'total'=>$total,'subtotal'=>$subtotal]);
     }
     public function postoder(Request $request)
     {

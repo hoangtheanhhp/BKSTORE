@@ -30,8 +30,19 @@
                             </div>
                         </div>
                         @endforeach
-
                     </div>
+                    <table cellspacing="0">
+                        <tbody>
+                            <tr class="cart-subtotal">
+                                <th>Cart Subtotal</th>
+                                <td><span class="amount">{{$subtotal}}$</span></td>
+                            </tr>
+                            <tr class="order-total">
+                                <th>Order Total     (+12.1%VAT)</th>
+                                <td><strong><span class="amount">{{$total}}$</span></strong> </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
                 <div class="col-md-8">

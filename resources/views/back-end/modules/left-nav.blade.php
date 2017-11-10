@@ -24,9 +24,7 @@
 			<li><a href="{!!url('admin/nhanvien')!!}"><svg class="glyph stroked female user"><use xlink:href="#stroked-female-user"/></svg> Nhân Viên</a></li>
 
 			<li role="presentation" class="divider"></li>
-			<li><a href="{!!url('admin/khohang')!!}"><svg class="glyph stroked notepad "><use xlink:href="#stroked-notepad"/></svg>  Thông tin kho hàng</a></li>
-
-			<li><a href="{!!url('admin/lichsu')!!}"><svg class="glyph stroked table"><use xlink:href="#stroked-table"/></svg> Lịch sử mua hàng</a></li>
+			
 		</ul>
 
 	</div><!--/.sidebar-->

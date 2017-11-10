@@ -114,5 +114,3 @@ Route::group(['middleware' => 'admin'], function () {
 Route::get('register','Auth\AuthController@showRegistrationForm');
 
 Route::post('register','Auth\AuthController@postregister');
-
-Route::get('admin/slide','AdminSlide@index');
