@@ -8,7 +8,7 @@ class Products extends Model
 {
    	protected $table ='products';
 	protected $guarded =[];
-
+    public $incrementing = true;
 	public function category()
 	{
 		return $this->belongsTo('App\Category','cat_id');
@@ -24,5 +24,10 @@ class Products extends Model
     public function oders_detail()
     {
         return $this->hasOne('App\Oders_detail','pro_id');
+    }
+
+    public function Admin_users()
+    {
+        return $this->belongsToMany(Admin_users::class, 'admin_products', 'pro_id','admin_id');
     }
 }

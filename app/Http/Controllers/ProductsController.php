@@ -10,8 +10,8 @@ use App\Products;
 use App\Category;
 use App\Pro_details;
 use App\Detail_img;
-use Auth;
 use DateTime,File,Input,DB;
+use Illuminate\Support\Facades\Auth;
 
 
 class ProductsController extends Controller
@@ -20,7 +20,7 @@ class ProductsController extends Controller
 	{
             
         if ($id!='all') {
-            $pro = Products::where('cat_id',$id)->paginate(10);
+            $pro = Products::where('cat_id',$id)->orderby('id')->paginate(10);
             $cat= Category::all();
             return view('back-end.products.list',['data'=>$pro,'cat'=>$cat,'loai'=>$id]);                    
         } else {
@@ -54,6 +54,7 @@ class ProductsController extends Controller
 
     	$pro->name = $rq->txtname;
     	$pro->slug = str_slug($rq->txtname,'-');
+    	$pro->number = $rq->txtnumber;
     	$pro->intro = $rq->txtintro;
     	$pro->promo1 = $rq->txtpromo1;
     	$pro->promo2 = $rq->txtpromo2;
@@ -64,18 +65,18 @@ class ProductsController extends Controller
     	$pro->tag = $rq->txttag;
     	$pro->price = $rq->txtprice;
     	$pro->cat_id = $rq->sltCate;
-    	$pro->user_id = Auth::guard('admin')->user()->id;
     	$pro->created_at = new datetime;
     	$pro->status = '1';
     	$f = $rq->file('txtimg')->getClientOriginalName();
     	$filename = time().'_'.$f;
-    	$pro->images = $filename;    	
+    	$pro->images = $filename;
     	$rq->file('txtimg')->move('images/phone/',$filename);
-    	$pro->save();    	
-    	$pro_id =$pro->id;
-
-    	$detail = new Pro_details();
-
+    	$pro_id = $pro->id;
+        $pro->save();
+    	//them vao bang admin_product
+    	$admin_user = Auth::guard('admin')->user();
+    	$admin_user->products()->attach($pro->id, ['created_at' => $pro->created_at]);
+        $detail = new Pro_details();
        if ($rq->txtCam1=='') {
             $rq->cam1='không có';
         }
@@ -107,12 +108,12 @@ class ProductsController extends Controller
     	$detail->pin = $rq->txtPin;
     	$detail->os = $rq->txtOs;
         $detail->note = $rq->note;
-    	$detail->pro_id = $pro_id;
+    	$detail->pro_id = $pro->id;
 
-      
+
 
     	$detail->created_at = new datetime;
-    	$detail->save();    	
+    	$detail->save();
 
     	if ($rq->hasFile('txtdetail_img')) {
     		$df = $rq->file('txtdetail_img');
@@ -121,7 +122,7 @@ class ProductsController extends Controller
     			if (isset($row)) {
     				$name_img= time().'_'.$row->getClientOriginalName();
     				$img_detail->images_url = $name_img;
-    				$img_detail->pro_id = $pro_id;
+    				$img_detail->pro_id = $pro->id;
     				$img_detail->created_at = new datetime;
     				$row->move('images/phone/',$name_img);
     				$img_detail->save();
@@ -129,7 +130,7 @@ class ProductsController extends Controller
     		}
 		}
 	return redirect('admin/sanpham/all')
-      ->with(['flash_level'=>'result_msg','flash_massage'=>' Đã thêm thành công !']);    	
+      ->with(['flash_level'=>'result_msg','flash_massage'=>' Đã thêm thành công !']);
 
     }
     public function getdel($id)
@@ -182,6 +183,7 @@ class ProductsController extends Controller
         $pro->name = $rq->txtname;
         $pro->slug = str_slug($rq->txtname,'-');
         $pro->intro = $rq->txtintro;
+        $pro->number += $rq->txtnumber;
         $pro->promo1 = $rq->txtpromo1;
         $pro->promo2 = $rq->txtpromo2;
         $pro->promo3 = $rq->txtpromo3;
@@ -191,7 +193,6 @@ class ProductsController extends Controller
         $pro->tag = $rq->txttag;
         $pro->price = $rq->txtprice;
         $pro->cat_id = $rq->sltCate;
-        $pro->user_id = Auth::guard('admin')->user()->id;
         $pro->updated_at = new datetime;
         $pro->status = '1';
         $file_path = public_path('uploads/products/').$pro->images;        
@@ -206,8 +207,11 @@ class ProductsController extends Controller
             $pro->images = $filename;       
             $rq->file('txtimg')->move('uploads/products/',$filename);
         }       
-        $pro->save(); 
-        
+        $pro->save();
+
+        $admin_user = Auth::guard('admin')->user();
+        $admin_user->products()->attach($id, ['updated_at' => $pro->updated_at]);
+
         $detail = new Pro_details();
 
        if ($rq->txtCam1=='') {

@@ -56,6 +56,10 @@
 				      			<label for="input-id">Gồm có : </label>
 				      			<input type="text" name="txtpacket" id="inputtxtpacket" value="{{ old('txtpacket') }}" class="form-control" >
 				      		</div>
+							<div class="form-group">
+								<label for="input-id">Số lượng sản phẩm : </label>
+								<input type="text" name="txtnumber" id="inputtxtnumber" value="{{ old('txtnumber') }}" class="form-control" >
+							</div>
 				      		<div class="form-group">
 				      			<label for="input-id">Khuyễn mãi (tối đa 3 mục)</label>
 				      			<div class="row">

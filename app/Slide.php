@@ -8,5 +8,5 @@ class Slide extends Model
 {
     //
     protected $table ='slides';
-  protected $guarded =[];
+    protected $guarded =[];
 }

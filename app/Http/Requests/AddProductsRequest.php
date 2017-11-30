@@ -24,6 +24,7 @@ class AddProductsRequest extends Request
     public function rules()
     {
         return [
+            'txtnumber' => 'required|integer|between: 1, 10000',
             'sltCate' => 'required',
             'txtname'=>'required',
             'txtintro'=>'required',
@@ -38,8 +39,10 @@ class AddProductsRequest extends Request
             'txtname.required' => ' Hãy nhập tên sản phẩm',
             'txtintro.required' => ' Hãy nhập tóm tắt chức năng cho sản phẩm',
             'txtimg.required' => ' Hãy nhập chọn một hình ảnh cho sản phẩm',
-            'txtprice.required' => ' Hãy nhập giá cho sản phẩm'
-            
+            'txtprice.required' => ' Hãy nhập giá cho sản phẩm',
+            'txtnumber.integer' => 'Hãy nhập một số nguyên dương',
+            'txtnumber.between' => 'Hãy nhập số sản phẩm nằm trong khoảng từ 1->10000',
+            'txtnumber.required' => 'Hãy nhập số sản phẩm vào'
         ];
     }
 }

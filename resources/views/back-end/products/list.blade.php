@@ -13,9 +13,9 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<div class="row">
-							<div class="col-md-10"><div class="form-group">
-								<label for="inputLoai" class="col-sm-3 control-label"><strong> Chọn sản phẩm </strong></label>
-								<div class="col-md-6">
+							<div class="col-md-4">
+                                <div class="form-group">
+								<div class="col-md-12">
 									<select name="sltCate" id="inputLoai" class="form-control">
 						      			<option value="0">- CHỌN MỘT THƯƠNG HIỆU --</option>
 						      			<?php MenuMulti($cat,0,$str='---| ',$loai); ?>   		
@@ -28,18 +28,23 @@
 									    };
 									</script>
 								</div>
-								<div class="col-md-3">
-									<input type="search" name="txttk" id="inputTxttk" class="form-control" value="" placeholder="Tìm sản phẩm..." required="required" title="">
-								</div>
 							</div>
-								
-								
-							</div>
+                            </div>
 							<div class="col-md-2">
 								@if ($loai !='all')
 									<a href="{!!url('admin/sanpham/'.$loai.'/add')!!}" title=""><button type="button" class="btn btn-primary pull-right">Thêm Mới Sản Phẩm</button></a>
 								@endif
 							</div>
+                            <div class="col-sm-offset-1 col-sm-5 col-md-offset-1 col-md-5">
+                                <form class="form-inline" method="POST" action="{{url('admin/sanpham/search-products')}}">
+                                    {{ csrf_field() }}
+                                    <div class="form-group">
+                                        <label for="search-products"></label>
+                                        <input type="text" class="form-control" id="search-products" placeholder="Products Name" name="search-products">
+                                        <button type="submit" class="btn btn-success">Search Products</button>
+                                    </div>
+                                </form>
+                            </div>
 						</div> 
 						
 					</div>
@@ -66,30 +71,36 @@
 										<th>ID</th>										
 										<th>Hình ảnh</th>
 										<th>Tên sản phẩm</th>
-										<th>Tóm tắt chức năng</th>
+										<th>Created_at</th>
+                                        <th>Admin</th>
 										<th>Thương hiệu</th>
 										<th>Giá bán</th>
 										<th>Trạng thái</th>
+										<th>Số lượng sản phẩm</th>
 										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
-									{{$i=0}}
 									@foreach($data as $row)
 										<tr>	
 
-											<td>{!!++$i!!}</td>
+											<td>{!! $row->id!!}</td>
 											<td> <img src="{!!url('images/phone/'.$row->images)!!}" alt="iphone" width="50" height="40"></td>
 											<td>{!!$row->name!!}</td>
-											<td>{!!$row->intro!!}</td>
+											<td>{!!$row->created_at!!}</td>
+                                            <td>{!! App\Admin_users::find(DB::table('admin_products')->Where('pro_id', '=', $row->id)
+                                            ->Where('created_at','=', $row->created_at)->first()->admin_id)->first()->name !!}</td>
 											<td>{!!$row->category->name!!}</td>
-											<td>{!!$row->price!!} đ</td>
+											<td>{!!$row->price!!} $</td>
 											<td>
 												@if($row->status ==1)
 													<span style="color:blue;">Còn hàng</span>
 												@else
 													Tạm hết hàng
 												@endif
+											</td>
+											<td>
+												{{$row->number}}
 											</td>
 											<td>
 											    <a href="{!!url('admin/sanpham/mobile/edit/'.$row->id)!!}" title="Sửa"><span class="glyphicon glyphicon-edit">edit</span> </a>

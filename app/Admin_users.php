@@ -23,4 +23,12 @@ class Admin_users extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function products()
+    {
+        return $this->belongsToMany(Products::class, 'admin_products', 'admin_id','pro_id')
+            ;
+    }
 }
+
+

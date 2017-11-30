@@ -40,8 +40,8 @@
 					      		<select name="sltCate" id="inputSltCate" required class="form-control">
 					      			<option value="">--Chọn thương hiệu--</option>
 					      			@foreach($cat as $dt)
-					      				<option value="{!!$dt->id!!}" >{!!'--|--|'.$dt->name!!}</option> 	
-					      			@endforeach	
+					      				<option value="{!!$dt->id!!}" >{!!'--|--|'.$dt->name!!}</option>
+					      			@endforeach
 					      		</select>
 				      		</div>
 				      		<div class="form-group">
@@ -56,6 +56,10 @@
 				      			<label for="input-id">Gồm có : </label>
 				      			<input type="text" name="txtpacket" id="inputtxtpacket" value="{!! old('txtpacket',isset($pro["packet"]) ? $pro["packet"] : null) !!}" class="form-control" >
 				      		</div>
+							<div class="form-group">
+								<label for="input-id">Số lượng sản phẩm thêm vào: </label>
+								<input type="text" name="txtnumber" id="inputtxtnumber" value="{{ old('txtnumber') }}" class="form-control" >
+							</div>
 				      		<div class="form-group">
 				      			<label for="input-id">Khuyễn mãi (tối đa 3 mục vào 3 ô)</label>
 				      			<div class="row">
