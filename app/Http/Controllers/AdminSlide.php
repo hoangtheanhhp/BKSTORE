@@ -10,16 +10,37 @@ use App\Http\Requests;
 
 class AdminSlide extends Controller
 {
-    public function index()
+    public function list()
     {
-        $data = Slide::paginate(10);
-        return view('back-end.news.list',['data'=>$data]);
+        $slide = Slide::latest()->paginate(5);
+        return view('back-end.slide.list')->with(['slide' => $slide]);
     }
 
-    public function add()
+    public function getAdd()
     {
-        $cat= Category::where('parent_id','>=',0)->get();
-        return view('back-end.news.add',['cat'=>$cat]);
+        return view('back-end.slide.add');
+    }
+
+    public function postAdd(Request $request)
+    {
+        $slide = new Slide();
+        $slide->title = $request->txttitle;
+        dd($request);
+        $f = $request->file('txtimg')->getClientOriginalName();
+        $filename = time().'_'.$f;
+        $slide->link = 1;
+        $slide->image = $filename;
+        $request->file('txtimg')->move('images/slide/',$filename);
+        $slide->save();
+        return redirect()->action('AdminSlide@list')->with(['success', 'Create Slide Successfully!!']);
+    }
+
+    public function del($id)
+    {
+        $slide = Slide::find($id)->first();
+        if($slide->count() == 0) return back()->withErrors('そのスライドがありません！！');
+        $slide->delete();
+        return back()->with(['success' => 'Delete Slide Successfully!!']);
     }
     //
 }

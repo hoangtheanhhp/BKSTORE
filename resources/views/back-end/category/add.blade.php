@@ -34,7 +34,7 @@
 						        </ul>
 						    </div>
 						@endif
-						<form action="" method="POST" role="form">
+						<form action="{{url('admin/danhmuc/add')}}" method="POST" role="form" enctype="multipart/form-data">
 				      		{{ csrf_field() }}
 				      		<div class="form-group">
 					      		<label for="input-id">Danh mục cha</label>
@@ -47,7 +47,12 @@
 				      			<label for="input-id">Tên danh mục</label>
 				      			<input type="text" name="txtCateName" id="inputTxtCateName" class="form-control" value="" required="required">
 				      		</div>
-				      		<input type="submit" name="btnCateAdd" class="btn btn-primary" value="Thêm danh mục" class="button" />
+							<div class="row">
+								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+									Hình ảnh : <input type="file" name="txtimg" accept="image/*" id="inputtxtimg" value="{{ old('txtimg') }}" class="form-control" required="required">
+								</div>
+							</div>
+							<input type="submit" name="btnCateAdd" class="btn btn-primary" value="Thêm danh mục" />
 				      	</form>			      	
 					</div>
 				</div>

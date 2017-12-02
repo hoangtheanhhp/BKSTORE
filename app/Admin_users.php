@@ -26,8 +26,7 @@ class Admin_users extends Authenticatable
 
     public function products()
     {
-        return $this->belongsToMany(Products::class, 'admin_products', 'admin_id','pro_id')
-            ;
+        return $this->belongsToMany(Products::class, 'admin_products', 'admin_id','pro_id')->withTimestamps();
     }
 }
 

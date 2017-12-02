@@ -37,14 +37,23 @@
 								<thead>
 									<tr>										
 										<th>ID</th>										
-										<th>Tên danh mục</th>										
+										<th>Tên danh mục</th>
+										<th>Images</th>
 										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
+								@foreach($data as $row)
 									<tr>
-										<?php listcate ($data,$id_cha =0,$str=""); ?>  
-									</tr>									
+										<td>{!!$row->id!!}</td>
+										<td>{!!$row->name!!}</td>
+										<td> <img src="{!!url('images/category/'.$row->slug)!!}" alt="" width="120" height="40">  </td>
+										<td style="width: 200px;">
+											<a href="{!!url('admin/danhmuc/edit/'.$row->id)!!}"  title="Sua"><span class="glyphicon glyphicon-edit">edit</span> </a>
+											<a href="{!!url('admin/danhmuc/del/'.$row->id)!!}"  title="Xóa" onclick="return xacnhan('Xóa danh mục này ?')"><span class="glyphicon glyphicon-remove">remove</span> </a>
+										</td>
+									</tr>
+								@endforeach
 								</tbody>
 							</table>
 						</div>

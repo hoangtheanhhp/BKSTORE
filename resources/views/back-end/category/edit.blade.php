@@ -11,7 +11,7 @@
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header"><small>Thêm mới danh mục</small></h1>
+				<h1 class="page-header"><small>Sua danh mục</small></h1>
 			</div>
 		</div><!--/.row-->
 		
@@ -34,7 +34,7 @@
 						        </ul>
 						    </div>
 						@endif
-						<form action="" method="POST" role="form">
+						<form action="{{url('admin/danhmuc/edit/'.$data['id'])}}" method="POST" role="form" enctype="multipart/form-data">
 				      		{{ csrf_field() }}
 				      		<div class="form-group">
 					      		<label for="input-id">Danh mục cha</label>
@@ -47,7 +47,13 @@
 				      			<label for="input-id">Tên danh mục</label>
 				      			<input type="text" name="txtCateName" id="inputTxtCateName" class="form-control" value="{!! old('txtCateName', isset($data['name']) ? $data['name'] : null)!!}" required="required">
 				      		</div>
-				      		<input type="submit" name="btnCateAdd" class="btn btn-primary" value="Thêm danh mục" class="button" />
+							<div class="row">
+								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+									Hình ảnh : <input type="file" name="txtimg" accept="image/*" id="inputtxtimg" class="form-control" required="required">
+									Ảnh cũ: <img src="{!!url('images/category/'.$data['slug'])!!}" alt="" width="80" height="60">
+								</div>
+							</div>
+				      		<input type="submit" name="btnCateAdd" class="btn btn-primary" value="Sua danh mục" class="button" />
 				      	</form>					      	
 					</div>
 				</div>

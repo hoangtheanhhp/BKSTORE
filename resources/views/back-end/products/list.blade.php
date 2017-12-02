@@ -35,7 +35,7 @@
 									<a href="{!!url('admin/sanpham/'.$loai.'/add')!!}" title=""><button type="button" class="btn btn-primary pull-right">Thêm Mới Sản Phẩm</button></a>
 								@endif
 							</div>
-                            <div class="col-sm-offset-1 col-sm-5 col-md-offset-1 col-md-5">
+                            <div class="col-sm-offset-0 col-sm-5 col-md-offset-0 col-md-5">
                                 <form class="form-inline" method="POST" action="{{url('admin/sanpham/search-products')}}">
                                     {{ csrf_field() }}
                                     <div class="form-group">
@@ -45,6 +45,7 @@
                                     </div>
                                 </form>
                             </div>
+
 						</div> 
 						
 					</div>
@@ -68,7 +69,6 @@
 							<table class="table table-hover">
 								<thead>
 									<tr>										
-										<th>ID</th>										
 										<th>Hình ảnh</th>
 										<th>Tên sản phẩm</th>
 										<th>Created_at</th>
@@ -76,15 +76,15 @@
 										<th>Thương hiệu</th>
 										<th>Giá bán</th>
 										<th>Trạng thái</th>
-										<th>Số lượng sản phẩm</th>
+										<th>Last Update</th>
+										<th>Số lượng</th>
 										<th>Action</th>
+										<th>Xem lịch sử</th>
 									</tr>
 								</thead>
 								<tbody>
 									@foreach($data as $row)
 										<tr>	
-
-											<td>{!! $row->id!!}</td>
 											<td> <img src="{!!url('images/phone/'.$row->images)!!}" alt="iphone" width="50" height="40"></td>
 											<td>{!!$row->name!!}</td>
 											<td>{!!$row->created_at!!}</td>
@@ -100,11 +100,17 @@
 												@endif
 											</td>
 											<td>
+												{!! DB::table('admin_products')->Where('pro_id', '=',$row->id)->orderby('updated_at')->first()->updated_at !!}
+											</td>
+											<td>
 												{{$row->number}}
 											</td>
 											<td>
 											    <a href="{!!url('admin/sanpham/mobile/edit/'.$row->id)!!}" title="Sửa"><span class="glyphicon glyphicon-edit">edit</span> </a>
 											    <a href="{!!url('admin/sanpham/del/'.$row->id)!!}"  title="Xóa" onclick="return xacnhan('Xóa danh mục này ?')"><span class="glyphicon glyphicon-remove">remove</span> </a>
+											</td>
+											<td>
+												<a class="btn btn-info" href="{{url('admin/sanpham/history/'.$row->id)}}">Lịch sử</a>
 											</td>
 										</tr>
 									@endforeach								

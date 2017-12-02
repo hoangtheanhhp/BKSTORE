@@ -7,7 +7,7 @@
 
 				<ul class="" id="bxslider-home4">
           @foreach($slides as $slide)
-					<li><img src="/images/slides/{{ $slide->image }}" alt="Slide">
+					<li><img src="/images/slide/{{ $slide->image }}" width="90%" alt="Slide">
 
 					</li>
           @endforeach
@@ -48,6 +48,39 @@
         </div>
     </div> <!-- End promo area -->
 
+    <div class="maincontent-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="latest-product">
+                        <h2 class="section-title">Latest Products</h2>
+                        <div class="product-carousel">
+                            @foreach($phones as $phone)
+                                <div class="single-product">
+                                    <div class="product-f-image">
+                                        <img src="images/phone/{{$phone->images}}" alt="">
+                                        <div class="product-hover">
+                                            <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                            <a href="/detail/{{$phone->id}}" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                        </div>
+                                    </div>
+
+                                    <h2><a href="{{ url('/products') }}">{{$phone->name}}</a></h2>
+
+                                    <div class="product-carousel-price">
+                                        <ins>{{ $phone->price }}</ins> <del>{{$phone->price}}</del>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    {!! $phones->links() !!}
+
+                </div>
+            </div>
+        </div>
+    </div> <!-- End main content area -->
 
     <div class="brands-area">
         <div class="zigzag-bottom"></div>
@@ -56,14 +89,9 @@
                 <div class="col-md-12">
                     <div class="brand-wrapper">
                         <div class="brand-list">
-                            <img src="img/brand1.png" alt="">
-                            <img src="img/brand2.png" alt="">
-                            <img src="img/brand3.png" alt="">
-                            <img src="img/brand4.png" alt="">
-                            <img src="img/brand5.png" alt="">
-                            <img src="img/brand6.png" alt="">
-                            <img src="img/brand1.png" alt="">
-                            <img src="img/brand2.png" alt="">
+                            @foreach($category as $row)
+                            <img src="{!!url('images/category/'.$row->slug)!!}" alt="" >
+                                @endforeach
                         </div>
                     </div>
                 </div>

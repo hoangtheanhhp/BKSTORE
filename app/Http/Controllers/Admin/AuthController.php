@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Admin_users;
+use App\Http\Requests\Request;
+use function bcrypt;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -25,7 +27,6 @@ class AuthController extends Controller
 
     protected $guard = 'admin';
     protected $loginView = 'back-end.auth.login';
-    protected $registerView = 'back-end.auth.register';
     protected $passwordView = 'back-end.auth.password.email';
     protected $emailView = 'back-end.auth.login';
     /**

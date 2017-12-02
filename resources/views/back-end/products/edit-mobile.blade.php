@@ -78,7 +78,7 @@
 				      			<div class="row">
 					      			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 					      				Hình ảnh : <input type="file" name="txtimg" accept="image/png" id="inputtxtimg"  class="form-control" >
-					      				Ảnh cũ: <img src="{!!url('uploads/products/'.$pro->images)!!}" alt="{!!$pro->images!!}" width="80" height="60">
+					      				Ảnh cũ: <img src="{!!url('images/phone/'.$pro->images)!!}" alt="{!!$pro->images!!}" width="80" height="60">
 					      			</div>
 					      			<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
 					      				Giá bán : <input type="number" name="txtprice" id="inputtxtprice" class="form-control" value="{!! old('txtproname',isset($pro["price"]) ? $pro["price"] : null) !!}" required="required">
@@ -185,7 +185,7 @@
 					      			@foreach($pro->detail_img as $row)
 					      				<?php $stt++; ?>
 					      				<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">						 
-						      				Ảnh cũ: {!!$stt!!}<img src="{!!url('uploads/products/details/'.$row->images_url)!!}" alt="{!!$row->images_url!!}" width="80" height="60">
+						      				Ảnh cũ: {!!$stt!!}<img src="{!!url('images/phone/details/'.$row->images_url)!!}" alt="{!!$row->images_url!!}" width="80" height="60">
 						      			</div>
 					      			@endforeach
 					      		</div>

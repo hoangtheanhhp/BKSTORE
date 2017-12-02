@@ -11,7 +11,7 @@
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header"><small>Sửa thông tin khách hàng</small></h1>
+				<h1 class="page-header"><small>Sửa thông tin</small></h1>
 			</div>
 		</div><!--/.row-->
 		
@@ -34,20 +34,20 @@
 						        </ul>
 						    </div>
 						@endif
-						<form action="" method="POST" role="form">
+						<form action="{{url('admin/nhanvien/edit/'.$data->id)}}" method="POST" role="form">
 				      		{{ csrf_field() }}
 				      		<div class="form-group">
 					      		<label for="input-id"> Chọn Quyền </label>
-					      		<select name="sltCate" id="inputSltCate" class="form-control">
+					      		<select name="level" id="inputlevel" class="form-control">
 					      			<option value="1">- Quản trị --</option> 	
 					      			<option value="2">- Nhân viên --</option> 		
 					      		</select>
 				      		</div>
 				      		<div class="form-group">
-				      			<label for="input-id">Tên Khách hàng</label>
+				      			<label for="input-id">Tên</label>
 				      			<input type="text" name="txtName" id="inputTxtName" class="form-control" value="{!! old('txtCateName', isset($data['name']) ? $data['name'] : null)!!}" required="required">
 				      		</div>
-				      		<input type="submit" name="btnCateAdd" class="btn btn-primary" value="Thêm danh mục" class="button" />
+				      		<input type="submit" name="btnCateAdd" class="btn btn-primary" value="Sửa" class="button" />
 				      	</form>					      	
 					</div>
 				</div>

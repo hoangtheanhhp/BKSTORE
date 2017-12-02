@@ -10,9 +10,18 @@
 		</div><!--/.row-->
 		<div class="row">
 			<div class="col-lg-12">
-				<div class="panel-heading">
+				<div class="row">
+				<div class="col-md-4 panel-heading">
 					Danh sách nhân viên
 				</div>
+				@if(Auth::guard('admin')->user()->level == 1)
+                        <div class="col-md-offset-2 col-md-3">
+						<a type="submit" class="btn btn-success" href="{{url('admin/getRegister')}}">
+						Đăng ký nhân viên mới
+				        </a>
+						</div>
+				</div>
+				@endif
 				@if ($message = Session::get('success'))
 			        <div class="alert alert-success">
 			            <p>{{ $message }}</p>
@@ -44,7 +53,6 @@
 							<table class="table table-hover">
 								<thead>
 									<tr>
-										<th>ID</th>
 										<th>Tên nhân viên</th>
 										<th>Email</th>
 										<th>Quyền</th>
@@ -53,10 +61,8 @@
 									</tr>
 								</thead>
 								<tbody>
-									{{$i=0}}
 									@foreach($data as $row)
 										<tr>
-											<td>{!!++$i!!}</td>
 											<td>{!!$row->name!!}</td>
 											<td>{!!$row->email!!}</td>
 											<td>
@@ -68,12 +74,9 @@
 											</td>
 											<td>{!!$row->created_at!!}</td>
 											<td>
-												@if ($row->level !=1)
-											    <a href="{!!url('admin/khachhang/edit/'.$row->id)!!}" title="Chi tiết"> Cập nhật</a>
-											    @endif 
-											    &nbsp;
 											    @if ($row->level !=1 && $row->name != Auth::guard('admin')->user()->name)
-											    	<a href="{!!url('admin/nhanvien/del/'.$row->id)!!}"  title="Xóa" onclick="return xacnhan('Xóa danh mục này ?')">Xóa bỏ</a>
+                                                    <a href="{!!url('admin/nhanvien/edit/'.$row->id)!!}" title="Chi tiết"> Cập nhật</a>
+                                                    <a href="{!!url('admin/nhanvien/del/'.$row->id)!!}"  title="Xóa" onclick="return xacnhan('Xóa danh mục này ?')">Xóa bỏ</a>
 											    @endif
 											</td>
 										</tr>

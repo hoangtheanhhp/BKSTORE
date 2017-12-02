@@ -20,13 +20,16 @@ class CategoryController extends Controller
 		$data = Category::all();
 		return View ('back-end.category.add',['data'=>$data]);
    }
-   public function postadd(AddCategoryRequest $rq)
+   public function postadd(Request $rq)
    {
-		$cat = new Category();
+      $cat = new Category();
       $cat->parent_id= $rq->sltCate;
       $cat->name= $rq->txtCateName;
-      $cat->slug = str_slug($rq->txtCateName,'-');
-         $cat->created_at = new DateTime;
+       $f = $rq->file('txtimg')->getClientOriginalName();
+       $filename = time().'_'.$f;
+       $cat->slug = $filename;
+       $rq->file('txtimg')->move('images/category/', $filename);
+      $cat->created_at = new DateTime;
       $cat->save();
       return redirect()->route('getcat')
       ->with(['flash_level'=>'result_msg','flash_massage'=>' Đã thêm thành công !']);
@@ -37,12 +40,23 @@ class CategoryController extends Controller
       $data = Category::findOrFail($id)->toArray();
       return View ('back-end.category.edit',['cat'=>$cat,'data'=>$data]);
    }
-   public function postedit($id,AddCategoryRequest $request)
+   public function postedit($id,Request $request)
    {
       $cat = category::find($id);
       $cat->name = $request->txtCateName;
-      $cat->slug = str_slug($request->txtCateName,'-');
-      $cat->parent_id = $request->sltCate;
+       $file_path = public_path('images/category/').$cat->slug;
+       if ($request->hasFile('txtimg')) {
+           if (file_exists($file_path))
+           {
+               unlink($file_path);
+           }
+
+           $f = $request->file('txtimg')->getClientOriginalName();
+           $filename = time().'_'.$f;
+           $cat->slug = $filename;
+           $request->file('txtimg')->move('images/category/',$filename);
+       }
+       $cat->parent_id = $request->sltCate;
       $cat->updated_at = new DateTime;
       $cat->save();
       return redirect()->route('getcat')
@@ -57,7 +71,8 @@ class CategoryController extends Controller
          $category->delete();
          return redirect()->route('getcat')
          ->with(['flash_level'=>'result_msg','flash_massage'=>'Đã xóa !']);
-      } else{
+      }
+      else{
          echo '<script type="text/javascript">
                   alert("Không thể xóa danh mục này !");                
                 window.location = "';

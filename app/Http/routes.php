@@ -9,10 +9,11 @@ Route::get('admin/login', ['as'  => 'getlogin', 'uses' =>'Admin\AuthController@s
 Route::post('admin/login', ['as'  => 'postlogin', 'uses' =>'Admin\AuthController@login']);
 Route::get('admin/password/reset', ['as'  => 'getreser', 'uses' =>'Admin\AuthController@email']);
 
-Route::get('admin/register',function(){
+Route::get('admin/getRegister',function(){
   return view('back-end.auth.register');
-});
-Route::post('admin/register','Admin\AuthController@register');
+})->middleware('CheckAdmin');
+Route::post('admin/register', 'Admin_usersController@register')->middleware('CheckAdmin');
+
 
 Route::get('admin/logout', ['as'  => 'getlogin', 'uses' =>'Admin\AuthController@logout']);
 
@@ -67,7 +68,8 @@ Route::group(['middleware' => 'admin'], function () {
 
            Route::get('/{loai}/edit/{id}',['as'  =>'geteditpro','uses' => 'ProductsController@getedit'])->where('id','[0-9]+');
            Route::post('/{loai}/edit/{id}',['as' =>'posteditpro','uses' => 'ProductsController@postedit'])->where('id','[0-9]+');
-      });
+           Route::get('history/{id}', 'ProductsController@history');
+        });
        // -------------------- quan ly danh muc-----------------------------
         Route::group(['prefix' => '/news'], function() {
            Route::get('/add',['as'        =>'getaddnews','uses' => 'NewsController@getadd']);
@@ -103,9 +105,15 @@ Route::group(['middleware' => 'admin'], function () {
            Route::get('',['as'       =>'getnv','uses' => 'Admin_usersController@getlist']);
            Route::get('/del/{id}',['as'   =>'getdelnv','uses' => 'Admin_usersController@getdel'])->middleware('CheckAdmin');
 
-           Route::get('/edit/{id}',['as'  =>'geteditnv','uses' => 'Admin_usersController@getedit'])->where('id','[0-9]+');
-           Route::post('/edit/{id}',['as' =>'posteditnv','uses' => 'Admin_usersController@postedit'])->where('id','[0-9]+');
+           Route::get('/edit/{id}',['as'  =>'geteditnv','uses' => 'Admin_usersController@getEdit'])->where('id','[0-9]+')->middleware('CheckAdmin');
+           Route::post('/edit/{id}',['as' =>'posteditnv','uses' => 'Admin_usersController@postEdit'])->where('id','[0-9]+')->middleware('CheckAdmin');
       });
+        Route::group(['prefix' => '/slide'], function(){
+           Route::get('', 'AdminSlide@list');
+           Route::get('/add', 'AdminSlide@getAdd');
+           Route::post('/add', 'AdminSlide@postAdd');
+           Route::get('/del/{id}', 'AdminSlide@del');
+        });
       // ---------------van de khac ----------------------
     });
 });

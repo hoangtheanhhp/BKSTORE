@@ -28,6 +28,7 @@ class Products extends Model
 
     public function Admin_users()
     {
-        return $this->belongsToMany(Admin_users::class, 'admin_products', 'pro_id','admin_id');
+        return $this->belongsToMany(Admin_users::class, 'admin_products', 'pro_id','admin_id')
+            ->withTimestamps();
     }
 }

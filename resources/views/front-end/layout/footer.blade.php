@@ -7,9 +7,9 @@
                     <h2>BK<span>Store</span></h2>
                     <p>BK Store doing business as BK team is an BK VN web service team in HUST, HN that was founded by Minh Quang, The Anh, Thanh Binh and Van Duy on July 5, 2017.</p>
                     <div class="footer-social">
-                        <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-                        <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                        <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/quang.peter.7" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="https://twitter.com/Quang4334" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/channel/UCBa-hBRDwTLAxCmXq_r9rpg?view_as=subscriber" target="_blank"><i class="fa fa-youtube"></i></a>
                         <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="copyright">
-                    <p>&copy; 2015 P712Plus. All Rights Reserved. <a href="http://www.freshdesignweb.com" target="_blank">freshDesignweb.com</a></p>
+                    <p>&copy; 2017 P712Plus. All Rights Reserved. <a href="https://laravel.com/" target="_blank">Laravel Web</a></p>
                 </div>
             </div>
 

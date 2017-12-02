@@ -11,6 +11,7 @@
 
 			<li id="sanpham"><a href="{!!url('admin/sanpham/all')!!}"><svg class="glyph stroked bag"><use xlink:href="#stroked-bag"></use></svg> Sản phẩm </a></li>
 			<li><a href="{!!url('admin/news')!!}"><span class="glyphicon glyphicon-file"></span> Tin tức</a></li>
+			<li><a href="{!!url('admin/slide')!!}"><svg class="glyph stroked imac"><use xlink:href="#stroked-imac"/></svg> Slide</a></li>
 
 			{{-- <li><a href="{!!url('admin/nhaphang')!!}"><svg class="glyph stroked download"><use xlink:href="#stroked-download"/></svg> Nhập hàng</a></li> --}}
 
@@ -22,9 +23,7 @@
 			<li><a href="{!!url('admin/slide')!!}"><svg class="glyph stroked female user"><use xlink:href="#stroked-female-user"/></svg> Slide</a></li>
 --}}
 			<li><a href="{!!url('admin/nhanvien')!!}"><svg class="glyph stroked female user"><use xlink:href="#stroked-female-user"/></svg> Nhân Viên</a></li>
-
 			<li role="presentation" class="divider"></li>
-			
 		</ul>
 
 	</div><!--/.sidebar-->

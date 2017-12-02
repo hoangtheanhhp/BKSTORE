@@ -12,6 +12,7 @@ use App\Pro_details;
 use App\Detail_img;
 use DateTime,File,Input,DB;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 
 class ProductsController extends Controller
@@ -124,7 +125,7 @@ class ProductsController extends Controller
     				$img_detail->images_url = $name_img;
     				$img_detail->pro_id = $pro->id;
     				$img_detail->created_at = new datetime;
-    				$row->move('images/phone/',$name_img);
+    				$row->move('images/phone/details',$name_img);
     				$img_detail->save();
     			}
     		}
@@ -138,7 +139,7 @@ class ProductsController extends Controller
         $detail = Detail_img::where('pro_id',$id)->get();
         foreach ($detail as $row) {                
                $dt = Detail_img::find($row->id);
-               $pt = public_path('uploads/products/details/').$dt->images_url; 
+               $pt = public_path('images/phone/details').$dt->images_url;
                // dd($pt);   
                 if (file_exists($pt))
                 {
@@ -195,7 +196,7 @@ class ProductsController extends Controller
         $pro->cat_id = $rq->sltCate;
         $pro->updated_at = new datetime;
         $pro->status = '1';
-        $file_path = public_path('uploads/products/').$pro->images;        
+        $file_path = public_path('images/phone/').$pro->images;
         if ($rq->hasFile('txtimg')) {
             if (file_exists($file_path))
                 {
@@ -205,7 +206,7 @@ class ProductsController extends Controller
             $f = $rq->file('txtimg')->getClientOriginalName();
             $filename = time().'_'.$f;
             $pro->images = $filename;       
-            $rq->file('txtimg')->move('uploads/products/',$filename);
+            $rq->file('txtimg')->move('images/phone/',$filename);
         }       
         $pro->save();
 
@@ -254,7 +255,7 @@ class ProductsController extends Controller
             $df = $rq->file('txtdetail_img');
             foreach ($details as $row) {                
                $dt = Detail_img::find($row->id);
-               $pt = public_path('uploads/products/details/').$dt->images_url; 
+               $pt = public_path('images/phone/details/').$dt->images_url;
                // dd($pt);   
                 if (file_exists($pt))
                 {
@@ -269,7 +270,7 @@ class ProductsController extends Controller
                     $img_detail->images_url = $name_img;
                     $img_detail->pro_id = $id;
                     $img_detail->created_at = new datetime;
-                    $row->move('uploads/products/details/',$name_img);
+                    $row->move('images/phone/details/',$name_img);
                     $img_detail->save();
                 }
             }
@@ -277,5 +278,23 @@ class ProductsController extends Controller
     $detail->save();
     return redirect('admin/sanpham/all')
       ->with(['flash_level'=>'result_msg','flash_massage'=>' Đã lưu !']);       
+    }
+
+    public function history($id)
+    {
+        $product = Products::find($id)->first();
+        $admin = $product->admin_users;
+        $adminPros = $product->admin_users()->orderby('pivot_updated_at')
+            ->get();
+        foreach($adminPros as $adminPro) {
+            if ($adminPro->pivot->created_at != null) {
+                {
+                    $admin = $adminPro->name;
+                }
+            }
+        }
+        return view('back-end.products.history')->with(['adminPros' => $adminPros,
+                                                                'product' => $product,
+                                                                'admin' => $admin]);
     }
 }
