@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Review;
 use Illuminate\Http\Request;
 use App\Http\Requests\AddProductsRequest;
 use App\Http\Requests\EditProductsRequest;
@@ -282,7 +283,7 @@ class ProductsController extends Controller
 
     public function history($id)
     {
-        $product = Products::find($id)->first();
+        $product = Products::where('id','=',$id)->first();
         $admin = $product->admin_users;
         $adminPros = $product->admin_users()->orderby('pivot_updated_at')
             ->get();
@@ -296,5 +297,37 @@ class ProductsController extends Controller
         return view('back-end.products.history')->with(['adminPros' => $adminPros,
                                                                 'product' => $product,
                                                                 'admin' => $admin]);
+    }
+
+    public function searchProducts(Request $request, $id)
+    {
+
+        $products = Products::where('name', 'like', '%'.$request->search.'%')->get();
+        $cat= Category::all();
+        if($products->count() == 0 || $request->search == '') return view('back-end.products.list',['data'=>$products,'cat'=>$cat,'loai'=>$id])
+            ->withErrors('This item not exists! Try again by other words!!');
+        return view('back-end.products.list',['data'=>$products,'cat'=>$cat,'loai'=>'all'])
+            ->with('success','Search Successfully!!');
+    }
+
+    public function reviewProducts($id){
+	    $product = Products::where('id','=',$id)->first();
+	    $reviews = Review::select('reviews.*','admin_users.name')->where('pro_id','=',$id)->where('status','>=','0')->leftJoin('admin_users','admin_users.id','=','reviews.admin_id')->get();
+        return view('back-end.products.review')->with(['product' => $product,
+                                                            'reviews' => $reviews
+        ]);
+    }
+
+    public function upReview($id, $review_id) {
+        $product = Products::where('id','=',$id)->first();
+        $review = Review::where('id','=',$review_id)->first();
+        $admin = Auth::guard('admin')->user();
+        if($review->status == 0) return back()->withErrors('Không thể up được comment này vì chưa xác thực email');
+        if($review->status == 2) return back()->withErrors('Review này đã được up lên!!');
+        $review->status = 2;
+        $review->admin_id = $admin->id;
+        $review->updated_at = new datetime();
+        $review->save();
+        return back()->with(['success' => 'Up Review Successfully!!']);
     }
 }

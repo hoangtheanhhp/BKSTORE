@@ -23,8 +23,8 @@
                         <h2 class="sidebar-title">Products</h2>
                         @foreach($cart as $row)
                         <div class="thubmnail-recent">
-                            <img src="images/phone/$row->img" class="recent-thumb" alt="">
-                            <h2><a href="single-product.html">{{$row->name}}</a></h2>
+                            <img src="/images/phone/{{$row->options['img']}}" class="recent-thumb" alt="">
+                            <h2><a href="single-product.html" style="color: #5bc0de;">{{strtoupper($row->name)}}</a></h2>
                             <div class="product-sidebar-price">
                                 <ins>{{$row->prime}}</ins>
                             </div>
@@ -38,8 +38,8 @@
                                 <td><span class="amount">{{$subtotal}}$</span></td>
                             </tr>
                             <tr class="order-total">
-                                <th>Order Total     (+12.1%VAT)</th>
-                                <td><strong><span class="amount">{{$total}}$</span></strong> </td>
+                                <th>Order Total     (+12.1%VAT): </th>
+                                <td><strong><span class="amount"> {{$total}}$ </span></strong> </td>
                             </tr>
                         </tbody>
                     </table>
@@ -92,13 +92,6 @@
                                                         <label for="payment_method_bacs">Direct Bank Transfer </label>
                                                         <div class="payment_box payment_method_bacs">
                                                             <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
-                                                        </div>
-                                                    </li>
-                                                    <li class="payment_method_cheque">
-                                                        <input type="radio" data-order_button_text="" value="cheque" name="payment_method" class="input-radio" id="payment_method_cheque">
-                                                        <label for="payment_method_cheque">Cheque Payment </label>
-                                                        <div style="display:none;" class="payment_box payment_method_cheque">
-                                                            <p>Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
                                                         </div>
                                                     </li>
                                                     <li class="payment_method_paypal">

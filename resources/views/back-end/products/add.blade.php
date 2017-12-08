@@ -33,7 +33,7 @@
 					        </ul>
 					    </div>
 					@endif
-						<form action="" method="POST" role="form" enctype="multipart/form-data">
+						<form action="{{url('admin/sanpham/'.$loai.'/add')}}" method="POST" role="form" enctype="multipart/form-data">
 				      		{{ csrf_field() }}
 				      		<div class="form-group">
 					      		<label for="input-id">Chọn danh mục</label>

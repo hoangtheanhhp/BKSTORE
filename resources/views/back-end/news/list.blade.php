@@ -41,10 +41,13 @@
 							<table class="table table-hover">
 								<thead>
 									<tr>										
-										<th>ID</th>										
-										<th>image</th>										
+										<th>ID</th>
+										<th>Tác giả</th>
+										<th>Người đăng</th>
+										<th>Image</th>
 										<th>Tiêu đề bản tin</th>										
-										<th>Tóm tắt</th>										
+										<th>Tóm tắt</th>
+										<th>Thời gian</th>
 										<th>Trạng thái</th>										
 										<th>Action</th>
 									</tr>
@@ -53,9 +56,12 @@
 								@foreach($data as $row)
 									<tr>
 										<td>{!!$row->id!!}</td>
+										<td>{!! $row->author !!}</td>
+										<td>{!! $row->name !!}</td>
 										<td> <img src="{!!url('uploads/news/'.$row->images)!!}" alt="" width="40" height="40"> </td>
 										<td>{!!$row->title!!}</td>
 										<td><small>{!!$row->intro!!}</small></td>
+										<td>{!! $row->created_at !!}</td>
 										<td style="width: 90px;">
 											@if($row->status==1)
 											<span style="color: green">

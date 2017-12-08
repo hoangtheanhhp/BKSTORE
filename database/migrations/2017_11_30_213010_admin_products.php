@@ -31,6 +31,7 @@ class AdminProducts extends Migration
      */
     public function down()
     {
+        Schema::drop('admin_products');
         //
     }
 }

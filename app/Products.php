@@ -31,4 +31,9 @@ class Products extends Model
         return $this->belongsToMany(Admin_users::class, 'admin_products', 'pro_id','admin_id')
             ->withTimestamps();
     }
+
+    public function Review()
+    {
+        return $this->hasMany(Review::class,'pro_id');
+    }
 }

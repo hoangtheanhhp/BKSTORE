@@ -10,7 +10,7 @@
 		</div><!--/.row-->
 		<div class="row">
 			<div class="col-lg-12">
-				<form action="" method="POST" role="form">	
+				<form action="" method="POST" role="form">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">				
 					<div class="panel panel-default">
 						@if (count($errors) > 0)
@@ -34,6 +34,7 @@
 										<tr>
 											<th>ID</th>
 											<th> Họ-tên khách hàng</th>
+											<th>Email</th>
 											<th>Địa chỉ</th>
 											<th>Điện thoại</th>
 											<th>Ngày đặt</th>
@@ -44,10 +45,11 @@
 										<tr>
 											<td>{!!$oder->id!!}</td>
 											<td>{!!$oder->user->name!!}</td>
+											<td>{{$oder->user->email}}</td>
 											<td>{!!$oder->user->address!!}</td>
 											<td>{!!$oder->user->phone!!}</td>
 											<td>{!!$oder->created_at!!}</td>
-											<td>{!! number_format($oder->total) !!} Vnđ</td>
+											<td>{!! number_format($oder->total) !!} $</td>
 										</tr>
 									</tbody>
 								</table>
@@ -74,11 +76,17 @@
 										@foreach($data as $row)
 											<tr>
 												<td>{!!$row->id!!}</td>
-												<td> <img src="{!!url('uploads/products/'.$row->images)!!}" alt="iphone" width="50" height="40"></td>
+												<td> <img src="{!!url('/images/phone/'.$row->images)!!}" alt="iphone" width="50" height="40"></td>
 												<td>{!!$row->name!!}</td>
 												<td>{!!$row->intro!!}</td>
 												<td>{!!$row->qty!!} </td>
-												<td>{!! number_format($row->price) !!} Vnđ</td>
+												<td>
+													@if($row->promo1 == '')
+														<ins>{{ $row->price }}</ins>
+													@else
+														<ins>{{ $row->price - $row->promo1/100 * $row->price }}$</ins>
+													@endif
+												</td>
 												<td>
 													@if($row->status ==1)
 														<span style="color:blue;">Còn hàng</span>

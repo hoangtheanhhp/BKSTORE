@@ -32,15 +32,15 @@
                             </div>
 							<div class="col-md-2">
 								@if ($loai !='all')
-									<a href="{!!url('admin/sanpham/'.$loai.'/add')!!}" title=""><button type="button" class="btn btn-primary pull-right">Thêm Mới Sản Phẩm</button></a>
+									<a href="{!!url('admin/sanpham/'.$loai.'/getadd')!!}" title=""><button type="button" class="btn btn-primary pull-right">Thêm Mới Sản Phẩm</button></a>
 								@endif
 							</div>
                             <div class="col-sm-offset-0 col-sm-5 col-md-offset-0 col-md-5">
-                                <form class="form-inline" method="POST" action="{{url('admin/sanpham/search-products')}}">
+                                <form class="form-inline" method="POST" action="{{url('admin/sanpham/search-products/'.$loai)}}">
                                     {{ csrf_field() }}
                                     <div class="form-group">
                                         <label for="search-products"></label>
-                                        <input type="text" class="form-control" id="search-products" placeholder="Products Name" name="search-products">
+                                        <input type="text" class="form-control" id="search" placeholder="Products Name" name="search" value="{{old('search')}}">
                                         <button type="submit" class="btn btn-success">Search Products</button>
                                     </div>
                                 </form>
@@ -49,6 +49,11 @@
 						</div> 
 						
 					</div>
+					@if (session('success'))
+						<div class="alert alert-success">
+							{{ session('success') }}
+						</div>
+					@endif
 					@if (count($errors) > 0)
 					    <div class="alert alert-danger">
 					        <ul>
@@ -79,7 +84,8 @@
 										<th>Last Update</th>
 										<th>Số lượng</th>
 										<th>Action</th>
-										<th>Xem lịch sử</th>
+										<th>Lịch sử</th>
+										<th>Nhận xét</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -112,12 +118,12 @@
 											<td>
 												<a class="btn btn-info" href="{{url('admin/sanpham/history/'.$row->id)}}">Lịch sử</a>
 											</td>
+											<td> <a class="btn btn-primary" href="{{url('admin/sanpham/review/'.$row->id)}}">Review </a></td>
 										</tr>
 									@endforeach								
 								</tbody>
 							</table>
 						</div>
-						{!! $data->render() !!}
 					</div>
 				</div>
 			</div>

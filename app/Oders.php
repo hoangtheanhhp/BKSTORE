@@ -17,4 +17,8 @@ class Oders extends Model
 	{
 		return $this->hasMany('App\Oders_detail','o_id');
 	}
+	public function admin_users()
+    {
+        return $this->belongsTo('App\Admin_users', 'admin_id');
+    }
 }

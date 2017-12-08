@@ -1,7 +1,7 @@
 @extends('front-end.layout.master')
 @section('pageTitle','handsome')
 @section('content')
-    <div class="product-big-title-area">
+    {{--<div class="product-big-title-area">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -11,7 +11,22 @@
                 </div>
             </div>
         </div>
-    </div> <!-- End Page title area -->
+    </div> <!-- End Page title area -->--}}
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @elseif (Session()->has('flash_level'))
+        <div class="alert alert-success">
+            <ul>
+                {!! Session::get('flash_massage') !!}
+            </ul>
+        </div>
+    @endif
     <div class="single-product-area">
         <div class="zigzag-bottom"></div>
         <div class="container">
@@ -22,9 +37,13 @@
                       @foreach($cart as $row)
                       <div class="thubmnail-recent">
                           <img src="/images/phone/{{$row->options->img}}" class="recent-thumb" alt="">
-                          <h2><a href="single-product.html">{{$row->name}}</a></h2>
+                          <h2><a href="detal/{{$row->id}}">{{strtoupper($row->name)}}</a></h2>
                           <div class="product-sidebar-price">
-                              <ins>{{$row->price}}</ins>
+                              @if($row->promo1 == '')
+                                  <ins>{{ $row->price }}$</ins>
+                              @else
+                                  <ins>{{ $row->price - $row->promo1/100 * $row->price }}$</ins> <del>{{$row->price}}$</del>
+                              @endif
                           </div>
                       </div>
                       @endforeach
@@ -33,12 +52,13 @@
                 <div class="col-md-8">
                     <div class="product-content-right">
                         <div class="woocommerce">
-                            <form action="/dat-hang">
+                            <form action="/cart-dat-hang" method="POST">
+                                {{csrf_field()}}
                                 <table cellspacing="0" class="shop_table cart">
                                     <thead>
                                         <tr>
-                                            <th></th>
-                                            <th></th>
+                                            <th>Actions</th>
+                                            <th>Image</th>
                                             <th class="product-name">Product</th>
                                             <th class="product-price">Price</th>
                                             <th class="product-quantity">Quantity</th>
@@ -66,7 +86,7 @@
 
                                             <td class="product-quantity">
                                                 <div class="quantity buttons_added">
-                                                    <input type="number" size="4" class="input-text qty text" title="Qty" value="{{$row->qty}}" min="0" step="1">
+                                                    <input type="number" name="{{$row->id}}" size="4" class="input-text qty text" title="Qty" value="{{$row->qty}}" min="0" step="1">
                                                 </div>
                                             </td>
 
@@ -75,33 +95,35 @@
                                             </td>
                                         </tr>
                                         @endforeach
+
+                                        <div class="cart-collaterals col-md-offset-3 c">
+
+                                            <div class="cart_totals ">
+                                                <table cellspacing="0">
+                                                    <h2>Cart Totals</h2>
+
+                                                    <tbody>
+                                                    <tr class="cart-subtotal">
+                                                        <th>Cart Subtotal</th>
+                                                        <td><span class="amount">{{$subtotal}}$</span></td>
+                                                    </tr>
+                                                    <tr class="order-total">
+                                                        <th>Order Total     (+12.1%VAT)</th>
+                                                        <td><strong><span class="amount">{{$total}}$</span></strong> </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                        </div>
                                         <tr>
                                             <td class="actions" colspan="6">
                                                 <input type="submit" value="Checkout" class="checkout-button button alt wc-forward">
                                             </td>
                                         </tr>
-                                    </tbody>
+
                                 </table>
                             </form>
-                            <div class="cart-collaterals">
-                          
-                            <div class="cart_totals ">
-                                <h2>Cart Totals</h2>
-
-                                <table cellspacing="0">
-                                    <tbody>
-                                        <tr class="cart-subtotal">
-                                            <th>Cart Subtotal</th>
-                                            <td><span class="amount">{{$subtotal}}$</span></td>
-                                        </tr>
-                                        <tr class="order-total">
-                                            <th>Order Total     (+12.1%VAT)</th>
-                                            <td><strong><span class="amount">{{$total}}$</span></strong> </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            </div>
                         </div>
                     </div>
                 </div>

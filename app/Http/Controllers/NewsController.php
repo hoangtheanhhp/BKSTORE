@@ -16,7 +16,7 @@ class NewsController extends Controller
 {
     public function getlist()
     {
-    	$data = News::paginate(10);
+        $data = News::join('admin_users','news.user_id','=','admin_users.id')->select('news.*','admin_users.name')->orderBy('created_at','desc')->paginate(10);
     	return view('back-end.news.list',['data'=>$data]);
     }
     public function getadd()
@@ -28,13 +28,9 @@ class NewsController extends Controller
     public function postadd(AddNewsRequest $rq)
     {
     	$n = new News();
-
-            if(var_dump($rq->txttag))
-                $rq->txttag = 'Không có';
     	$n->title = $rq->txtTitle;
     	$n->slug = str_slug($rq->txtTitle,'-');
     	$n->author = $rq->txtAuth;
-    	/*$n->tag = $rq->txttag;*/
     	$n->status = $rq->slstatus;
     	$n->source = $rq->txtSource;
     	$n->intro = $rq->txtIntro;
@@ -53,8 +49,9 @@ class NewsController extends Controller
       	->with(['flash_level'=>'result_msg','flash_massage'=>' Đã thêm thành công !']);    	
     }
     public function getedit($id)
-    {	$cat= Category::where('parent_id',13)->get();
-    	$n = News::where('id',$id)->first();
+    {
+        $n = News::where('id',$id)->first();
+        $cat= Category::where('parent_id','>=',0)->get();
     	return view('back-end.news.edit',['data'=>$n,'cat'=>$cat]);
     }
     public function postedit(EditNewsRequest $rq,$id)
@@ -63,7 +60,6 @@ class NewsController extends Controller
     	$n->title = $rq->txtTitle;
     	$n->slug = str_slug($rq->txtTitle,'-');
     	$n->author = $rq->txtAuth;
-    	$n->tag = $rq->txttag;
     	$n->status = $rq->slstatus;
     	$n->source = $rq->txtSource;
     	$n->intro = $rq->txtIntro;

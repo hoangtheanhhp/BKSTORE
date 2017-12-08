@@ -5,7 +5,7 @@
 		<div class="row">
 			<ol class="breadcrumb">
 				<li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
-				<li class="active">Dơn đặt hàng</li>
+				<li class="active">Đơn đặt hàng</li>
 			</ol>
 		</div><!--/.row-->
 		<div class="row">
@@ -42,6 +42,7 @@
 										<th>Ngày đặt</th>
 										<th>Thành tiền</th>
 										<th>Trạng thái</th>
+										<th>Người xử lý</th>
 										<th>Action</th>
 									</tr>
 								</thead>
@@ -52,14 +53,21 @@
 											<td>{!!$row->user->name!!}</td>
 											<td>{!!$row->user->address!!}</td>
 											<td>{!!$row->user->phone!!}</td>
-											<td>{!!$row->user->email!!}</td>											
+											<td>{!!$row->user->email!!}</td>
 											<td>{!!$row->created_at!!}</td>
-											<td>{!!$row->total!!} Vnd</td>
+											<td>{!!$row->total!!} $</td>
 											<td>
 												@if($row->status ==0)
 													<span style="color:#d35400;">Chưa xác nhận</span>
 												@else
 													<span style="color:#27ae60;"> Đã xác nhận</span>
+												@endif
+											</td>
+											<td>
+												@if($row->status == 1 && $row->admin_id != null)
+													{{App\Admin_users::where('id','=',$row->admin_id)->first()->name}}
+												@else
+													---------
 												@endif
 											</td>
 											<td>

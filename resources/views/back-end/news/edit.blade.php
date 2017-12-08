@@ -57,10 +57,7 @@
 					      			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 					      				Tác giả : <input type="text" name="txtAuth" id="inputTxtAuth" class="form-control" value="{!! old('txtAuth',isset($data["author"]) ? $data["author"] : null) !!}" required="required">
 					      			</div>
-					      			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-					      				Tag : <input type="text" name="txttag" id="inputtag" value="{!! old('txttag',isset($data["tag"]) ? $data["tag"] : null) !!}" class="form-control">
-					      			</div>
-				      			</div>
+								</div>
 				      		</div>
 				      		<div class="form-group">				      			
 				      			<div class="row">
@@ -113,7 +110,7 @@
 					      		</div>				      			
 				      		</div>		      				      		
 
-				      		<input type="submit" name="btnCateAdd" class="btn btn-primary" value="Thêm sản phẩm" class="button" />
+				      		<input type="submit" name="btnCateAdd" class="btn btn-primary" value="Sửa tin tức" class="button" />
 				      	</form>			      	
 					</div>
 				</div>

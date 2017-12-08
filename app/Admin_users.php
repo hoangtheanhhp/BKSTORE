@@ -28,6 +28,13 @@ class Admin_users extends Authenticatable
     {
         return $this->belongsToMany(Products::class, 'admin_products', 'admin_id','pro_id')->withTimestamps();
     }
+    public function oder()
+    {
+        return $this->hasMany('App\Oders', 'admin_id');
+    }
+    public function reviews(){
+        return $this->hasMany(Review::class, 'admin_id');
+    }
 }
 
 

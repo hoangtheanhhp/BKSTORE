@@ -13,7 +13,7 @@ Route::get('admin/getRegister',function(){
   return view('back-end.auth.register');
 })->middleware('CheckAdmin');
 Route::post('admin/register', 'Admin_usersController@register')->middleware('CheckAdmin');
-
+Route::post('products/search', 'PagesController@searchProducts');
 
 Route::get('admin/logout', ['as'  => 'getlogin', 'uses' =>'Admin\AuthController@logout']);
 
@@ -21,8 +21,10 @@ Route::get('/',function(){
   return view('back-end.home');
 })->middleware('auth:admin');
 Route::get('/', ['as'  => 'index', 'uses' =>'PagesController@index']);
-Route::get('products', ['as'  => 'getproducts', 'uses' =>'PagesController@getProducts']);
+Route::get('products/{id}', ['as'  => 'getproducts', 'uses' =>'PagesController@getProducts']);
 Route::get('detail/{id}', ['as'  => 'getdetail', 'uses' =>'PagesController@getDetail']);
+Route::post('detail/{id}/message', 'PagesController@message');
+Route::get('detail/{id}/{review_id}/{token}', 'PagesController@activeReview');
 Route::get('blog',['as'=>'getblog','uses'=>'PagesController@getNews']);
 // cart - oder
 Route::get('gio-hang', ['as'  => 'getcart', 'uses' =>'PagesController@getcart']);
@@ -32,7 +34,9 @@ Route::get('gio-hang/update/{id}/{qty}-{dk}', ['as'  => 'getupdatecart', 'uses' 
 Route::get('gio-hang/delete/{id}', ['as'  => 'getdeletecart', 'uses' =>'PagesController@getdeletecart']);
 Route::get('gio-hang/xoa', ['as'  => 'getempty', 'uses' =>'PagesController@xoa']);
 // tien hanh dat hang
+
 Route::get('dat-hang',  ['as'  => 'getoder', 'uses' =>'PagesController@getoder']);
+Route::post('cart-dat-hang',  ['as'  => 'getoder', 'uses' =>'PagesController@getoder']);
 Route::post('dat-hang', ['as'  => 'postoder', 'uses' =>'PagesController@postoder']);
 // category
 Route::get('/{cat}', ['as'  => 'getcate', 'uses' =>'PagesController@getcate']);
@@ -60,7 +64,7 @@ Route::group(['middleware' => 'admin'], function () {
     	});
          // -------------------- quan ly danh muc--------------------
         Route::group(['prefix' => '/sanpham'], function() {
-           Route::get('/{loai}/add',['as'        =>'getaddpro','uses' => 'ProductsController@getadd']);
+           Route::get('/{loai}/getadd',['as'        =>'getaddpro','uses' => 'ProductsController@getadd']);
            Route::post('/{loai}/add',['as'       =>'postaddpro','uses' => 'ProductsController@postadd']);
 
            Route::get('/{loai}',['as'       =>'getpro','uses' => 'ProductsController@getlist']);
@@ -69,6 +73,9 @@ Route::group(['middleware' => 'admin'], function () {
            Route::get('/{loai}/edit/{id}',['as'  =>'geteditpro','uses' => 'ProductsController@getedit'])->where('id','[0-9]+');
            Route::post('/{loai}/edit/{id}',['as' =>'posteditpro','uses' => 'ProductsController@postedit'])->where('id','[0-9]+');
            Route::get('history/{id}', 'ProductsController@history');
+           Route::post('/search-products/{id}', 'ProductsController@searchProducts');
+           Route::get('/review/{id}', 'ProductsController@reviewProducts');
+           Route::get('/review/{id}/{review_id}', 'ProductsController@upReview');
         });
        // -------------------- quan ly danh muc-----------------------------
         Route::group(['prefix' => '/news'], function() {
@@ -80,7 +87,8 @@ Route::group(['middleware' => 'admin'], function () {
 
            Route::get('/edit/{id}',['as'  =>'geteditnews','uses' => 'NewsController@getedit'])->where('id','[0-9]+');
            Route::post('/edit/{id}',['as' =>'posteditnews','uses' => 'NewsController@postedit'])->where('id','[0-9]+');
-      });
+
+        });
         // -------------------- quan ly đơn đặt hàng--------------------
         Route::group(['prefix' => '/donhang'], function() {;
 
