@@ -76,7 +76,7 @@ class PagesController extends Controller
     public function getcart()
     {
         $cart = Cart::content();
-        $total = Cart::total();
+        $total = Cart::subtotal();
         $subtotal = Cart::subtotal();
         return view ('front-end.modules.cart',['cart'=>$cart,'total'=>$total,'subtotal'=>$subtotal]);
     }
@@ -98,7 +98,7 @@ class PagesController extends Controller
         if($cart->count() == 0)
             return redirect()->action('PagesController@getProducts', ['id' => 'all'])->withErrors('Please buy any things before checkout!!');
 
-        $total = Cart::total();
+        $total = Cart::subtotal();
         $subtotal = Cart::subtotal();
 
         return view ('front-end.modules.checkout',['cart'=>$cart,'total'=>$total,'subtotal'=>$subtotal]);

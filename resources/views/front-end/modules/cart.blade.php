@@ -37,7 +37,7 @@
                       @foreach($cart as $row)
                       <div class="thubmnail-recent">
                           <img src="/images/phone/{{$row->options->img}}" class="recent-thumb" alt="">
-                          <h2><a href="detal/{{$row->id}}">{{strtoupper($row->name)}}</a></h2>
+                          <h2><a href="detail/{{$row->id}}">{{strtoupper($row->name)}}</a></h2>
                           <div class="product-sidebar-price">
                               @if($row->promo1 == '')
                                   <ins>{{ $row->price }}$</ins>
@@ -104,11 +104,11 @@
 
                                                     <tbody>
                                                     <tr class="cart-subtotal">
-                                                        <th>Cart Subtotal</th>
+                                                        <th>Cart total</th>
                                                         <td><span class="amount">{{$subtotal}}$</span></td>
                                                     </tr>
                                                     <tr class="order-total">
-                                                        <th>Order Total     (+12.1%VAT)</th>
+                                                        <th>Order Total     (+ 0%VAT)</th>
                                                         <td><strong><span class="amount">{{$total}}$</span></strong> </td>
                                                     </tr>
                                                     </tbody>

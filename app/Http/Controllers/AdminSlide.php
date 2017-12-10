@@ -25,7 +25,7 @@ class AdminSlide extends Controller
     {
         $slide = new Slide();
         $slide->title = $request->txttitle;
-        dd($request);
+        // dd($request);
         $f = $request->file('txtimg')->getClientOriginalName();
         $filename = time().'_'.$f;
         $slide->link = 1;
