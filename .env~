@@ -1,14 +1,15 @@
 APP_ENV=local
 APP_DEBUG=true
-APP_KEY=base64:rGUg9GZGocdtjXCOQ21Uo0BwQNyYgwLr9YptNLzZqFo=
-APP_URL=https://salty-lowlands-33631.herokuapp.com/
+APP_KEY=base64:9d/lm69f1eDy6OwPDf4JfMMzVbDDqd+SgHCRZxkcneE=
+APP_URL=http://localhost/
 
 DB_CONNECTION=pgsql
 DB_HOST=localhost
-*DB_PORT=54320*
+DB_PORT=5432
 DB_DATABASE=myshop
 DB_USERNAME=postgres
 DB_PASSWORD=4334
+DB_URL=postgres://jvolckdsemhxkv:89bb98264f21ac23551549dc3c57218ae10ca0ebaa45f44044907f6271ac1567@ec2-50-16-228-232.compute-1.amazonaws.com:5432/d1b0o6eqev5j3q
 
 CACHE_DRIVER=file
 SESSION_DRIVER=file
