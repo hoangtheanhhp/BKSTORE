@@ -5,7 +5,7 @@ APP_URL=https://salty-lowlands-33631.herokuapp.com/
 
 DB_CONNECTION=pgsql
 DB_HOST=localhost
-DB_PORT=5432
+DB_PORT=*54320*
 DB_DATABASE=myshop
 DB_USERNAME=postgres
 DB_PASSWORD=4334
