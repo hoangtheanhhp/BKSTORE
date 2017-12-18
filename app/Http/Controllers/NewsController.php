@@ -21,7 +21,7 @@ class NewsController extends Controller
     }
     public function getadd()
     {    	
-		$cat= Category::where('parent_id','>=',0)->get();
+		$cat= Category::all();
 
     	return view('back-end.news.add',['cat'=>$cat]);
     }

@@ -1,4 +1,5 @@
 @extends('back-end.layouts.master')
+@section('pagesTitle','BKSTORE:Admin')
 @section('content')
 <!-- main content - noi dung chinh trong chu -->
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
@@ -36,22 +37,15 @@
 						@endif
 						<form action="{{url('admin/danhmuc/add')}}" method="POST" role="form" enctype="multipart/form-data">
 				      		{{ csrf_field() }}
-				      		<div class="form-group">
-					      		<label for="input-id">Danh mục cha</label>
-					      		<select name="sltCate" id="inputSltCate" class="form-control">
-					      			<option value="0">- ROOT --</option>
-					      			<?php MenuMulti($data,0,$str='---| ',old('sltCate')); ?>   		
-					      		</select>
-				      		</div>
+				      		
 				      		<div class="form-group">
 				      			<label for="input-id">Tên danh mục</label>
 				      			<input type="text" name="txtCateName" id="inputTxtCateName" class="form-control" value="" required="required">
 				      		</div>
-							<div class="row">
-								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-									Hình ảnh : <input type="file" name="txtimg" accept="image/*" id="inputtxtimg" value="{{ old('txtimg') }}" class="form-control" required="required">
-								</div>
-							</div>
+							<div class="form-group">
+				      			<label for="input-id">Hình ảnh</label>
+				      			<input type="file" name="txtimg"  value="{{old('txtimg')}}">
+				      		</div>
 							<input type="submit" name="btnCateAdd" class="btn btn-primary" value="Thêm danh mục" />
 				      	</form>			      	
 					</div>

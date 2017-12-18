@@ -98,9 +98,7 @@
 					      			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 					      				RAM : <input type="text" name="txtRam" id="inputtxtRam" value="{{ old('txtRam') }}" class="form-control" >
 					      			</div>
-					      			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-					      				VGA : <input type="text" name="txtVga" id="inputtxtVga" value="{{ old('txtVga') }}" class="form-control">
-					      			</div>
+					      			
 					      		</div>
 					      		<div class="row">					      			
 					      			<div class="col-xs-12 col-sm-3 col-md-4 col-lg-4">

@@ -26,27 +26,35 @@ class PagesController extends Controller
     public function index()
     {
         $slides = Slide::all();
-        $phones = Products::latest()->paginate(15);
+        $phones = Products::Join('pro_details','products.id','=',
+        'pro_details.pro_id')->
+        select('products.*','pro_details.screen as screen',
+        'pro_details.os as os','pro_details.cpu as cpu',
+        'pro_details.cam1 as cam1',
+        'pro_details.cam2 as cam2',
+        'pro_details.storage as rom',
+        'pro_details.pin as pin',
+        'pro_details.sim as sim')->distinct()->latest()->paginate(15);
         $category = Category::all();
         $cart = Cart::content();
         $phone_sell = Products::orderBy('sell_number','desc')->get();
         $phone_view = Products::orderBy('viewed_number','desc')->get();
+        $news = News::orderBy('created_at','desc')->paginate(3);
         return view('front-end.home',['slides'=>$slides,
             'phones'=>$phones,
             'category' => $category,
             'cart' => $cart,
             'phone_views' => $phone_view,
             'phone_sells' => $phone_sell,
+            'news' => $news
         ])
             ->with('i', (request()->input('page', 1) - 1) * 15);
     }
     public function addcart($id, Request $request)
     {
         $pro = Products::find($id);
-        if($pro->promo1 != '') $pro->price = $pro->price - $pro->promo1/100 * $pro->price;
         if($request->qty == null) $request->qty = 1;
           Cart::add(['id' => $pro->id, 'name' => $pro->name, 'qty' => $request->qty, 'price' => $pro->price,'options' => ['img' => $pro->images]]);
-
         return redirect()->route('getcart');
     }
     public function getupdatecart($id,Request $request)
@@ -75,10 +83,14 @@ class PagesController extends Controller
     }
     public function getcart()
     {
+        $phone_relate = array();
         $cart = Cart::content();
+        foreach($cart as $c) {
+            array_push($phone_relate,Products::Join('pro_details','products.id','=','pro_details.pro_id')->select('products.*','pro_details.screen as screen','pro_details.os as os','pro_details.cpu as cpu')->find($c->id));    
+        }
         $total = Cart::subtotal();
         $subtotal = Cart::subtotal();
-        return view ('front-end.modules.cart',['cart'=>$cart,'total'=>$total,'subtotal'=>$subtotal]);
+        return view ('front-end.modules.cart',['phone_relate'=>$phone_relate,'cart'=>$cart,'total'=>$total,'subtotal'=>$subtotal]);
     }
     public function getoder(Request $request)
     {
@@ -145,99 +157,47 @@ class PagesController extends Controller
             $detail->save();
         }
         Cart::destroy();
-        return redirect()->route('getcart')
+        return redirect()->route('home')
             ->with(['flash_level'=>'result_msg','flash_massage'=>' Đơn hàng của bạn đã được gửi đi !']);
     }
 
     public function getNews() {
-      $news = News::join('admin_users','news.user_id','=','admin_users.id')->select('news.*','admin_users.name')->orderBy('created_at','desc')->paginate(3);
-      $cart = Cart::content();
-      return view('front-end.modules.blog',['news'=>$news, 'cart' => $cart]);
+      $news = News::orderBy('created_at','desc')->paginate(5);
+      return view('front-end.modules.blog',['news'=>$news]);
     }
-    public function getcate($cat)
-    {
-        if ($cat == 'mobile') {
-            // mobile
-            $mobile = DB::table('products')
-                ->join('category', 'products.cat_id', '=', 'category.id')
-                ->join('pro_details', 'pro_details.pro_id', '=', 'products.id')
-                ->where('category.parent_id','=','1')
-                ->select('products.*','pro_details.cpu','pro_details.ram','pro_details.screen','pro_details.vga','pro_details.storage','pro_details.exten_memmory','pro_details.cam1','pro_details.cam2','pro_details.sim','pro_details.connect','pro_details.pin','pro_details.os','pro_details.note')
-                ->paginate(12);
-            return view('category.mobile',['data'=>$mobile]);
-        }
-        elseif ($cat == 'laptop') {
-            // mobile
-            $lap = DB::table('products')
-                ->join('category', 'products.cat_id', '=', 'category.id')
-                ->join('pro_details', 'pro_details.pro_id', '=', 'products.id')
-                ->where('category.parent_id','=','2')
-                ->select('products.*','pro_details.cpu','pro_details.ram','pro_details.screen','pro_details.vga','pro_details.storage','pro_details.exten_memmory','pro_details.cam1','pro_details.cam2','pro_details.sim','pro_details.connect','pro_details.pin','pro_details.os','pro_details.note')
-                ->paginate(12);
-            return view('category.laptop',['data'=>$lap]);
-        }
-        elseif ($cat == 'pc') {
-            // mobile
-            $pc = DB::table('products')
-                ->join('category', 'products.cat_id', '=', 'category.id')
-                ->join('pro_details', 'pro_details.pro_id', '=', 'products.id')
-                ->where('category.parent_id','=','19')
-                ->select('products.*','pro_details.cpu','pro_details.ram','pro_details.screen','pro_details.vga','pro_details.storage','pro_details.exten_memmory','pro_details.cam1','pro_details.cam2','pro_details.sim','pro_details.connect','pro_details.pin','pro_details.os','pro_details.note')
-                ->paginate(8);
-            return view('category.pc',['data'=>$pc]);
-        }
-        elseif ($cat == 'tin-tuc') {
-            $new =  DB::table('news')
-                ->orderBy('created_at', 'desc')
-                ->paginate(3);
-            $top1 = $new->shift();
-            $all =  DB::table('news')
-                ->orderBy('created_at', 'desc')
-                ->paginate(5);
-            return view('category.news',['data'=>$new,'hot1'=>$top1,'all'=>$all]);
-        }
-        // else{
-        //     return redirect()->route('index');
-        // }
+   
+    public function getNewsDetail($id) {
+      $new = News::find($id);
+      $next = News::where('id','>',$id)->max('id');
+      $prev = News::where('id','<',$id)->min('id');     
+      if (!isset($next)) { $next=$id; }
+      if (!isset($prev)) { $prev=$id; }
+      
+      return view('front-end.modules.blog_detail',['new'=>$new, 'next' => $next, 'prev' => $prev]);
     }
-    public function detail($cat,$id,$slug)
-    {
-        if ($cat =='tin-tuc') {
-            $new = News::where('id',$id)->first();
-            return view('detail.news',['data'=>$new,'slug'=>$slug]);
-        } elseif ($cat =='mobile') {
-            $mobile = Products::where('id',$id)->first();
-            if (empty($mobile)) {
-                return view ('errors.503');
-            } else {
-                return view ('detail.mobile',['data'=>$mobile,'slug'=>$slug]);
-            }
-        }
-        elseif ($cat =='laptop') {
-            $lap = Products::where('id',$id)->first();
-            if (empty($lap)) {
-                return redirect()->route('index');
-            } else {
-                return view ('detail.laptop',['data'=>$lap,'slug'=>$slug]);
-            }
-        }
-        elseif ($cat =='pc') {
-            $pc = Products::where('id',$id)->first();
-            if (empty($pc)) {
-                return redirect()->route('index');
-            } else {
-                return view ('detail.pc',['data'=>$pc,'slug'=>$slug]);
-            }
-        } else {
-            return redirect()->route('index');
-        }
-    }
+   
     public function getProducts($id = null) {
-        $products1 = Products::latest()->paginate(20);
+        $products1 = Products::Join('pro_details','products.id','=',
+        'pro_details.pro_id')->
+        select('products.*','pro_details.screen as screen',
+        'pro_details.os as os','pro_details.cpu as cpu',
+        'pro_details.cam1 as cam1',
+        'pro_details.cam2 as cam2',
+        'pro_details.storage as rom',
+        'pro_details.pin as pin',
+        'pro_details.sim as sim')->distinct()->latest()->paginate(20);
         $cart = Cart::content();
         $cat= Category::all();
         if ($id != 'null' && $id != 'all') {
-            $products = Products::where('cat_id','=',$id)->orderby('id')->paginate(20);
+            $products = Products::Join('pro_details','products.id','=',
+        'pro_details.pro_id')->
+        select('products.*','pro_details.screen as screen',
+        'pro_details.os as os','pro_details.cpu as cpu',
+        'pro_details.cam1 as cam1',
+        'pro_details.cam2 as cam2',
+        'pro_details.storage as rom',
+        'pro_details.pin as pin',
+        'pro_details.sim as sim')->where('cat_id','=',$id)->distinct()->orderby('id')->paginate(20);
             if($products->count() == 0)
                 return view('front-end.modules.shop',['products'=>$products1, 'cart' => $cart, 'loai' => 'all', 'cat' => $cat])
                     ->withErrors('Category Not Exists!!');
@@ -257,20 +217,22 @@ class PagesController extends Controller
         $phone = Products::find($id);
         $phone->viewed_number += 1;
         $phone->save();
-        $phone_detail = DB::table('detail_img')->where('pro_id','=',$id)->get();
+        $img_detail = DB::table('detail_img')->where('pro_id','=',$id)->get();
         $phone_info = Pro_details::where('pro_id','=',$id)->first();
         $cart = Cart::content();
         $phoneIphone = Products::find($id)->where('cat_id', '=', $phone->cat_id)->orderBy('price')->get();
         $phone_recently = Products::latest()->paginate(5);
-        $review = Review::where('status','>',1)->orderBy('created_at')->paginate(5);
+        $review = Review::where('status','>',0)->orderBy('created_at')->paginate(5);
+        $phone_relate = Products::Join('pro_details','products.id','=','pro_details.pro_id')->select('products.*','pro_details.screen as screen','pro_details.os as os','pro_details.cpu as cpu')->where('cat_id',$phone->cat_id)->distinct()->orderby('created_at','DESC')->paginate(5);
         return view('front-end.modules.detail',[
             'phone'=>$phone,
-            'phone_detail'=>$phone_detail,
+            'img_detail' => $img_detail,
             'phone_info' => $phone_info,
             'phoneIphone' => $phoneIphone,
             'cart' => $cart,
             'phone_recently' => $phone_recently,
-            'reviews' => $review
+            'reviews' => $review,
+            'phone_relate' => $phone_relate
         ]);
     }
 
@@ -293,15 +255,15 @@ class PagesController extends Controller
     }
 
     public function activeReview($id, $review_id, $token){
-        $review = Review::where('id', '=', $review_id)->first();
+        // $review = Review::where('id', '=', $review_id)->first();
 
-        if($token == $review->token)
-        {
-            if($review->status == 0);
-                $review->status = 1;
-            $review->save();
-            return redirect()->action('PagesController@getDetail',['id' => $id])->with(['success' => 'Active review Successfully!!']);
-        }
-        else return redirect()->action('PagesController@getDetail',['id' => $id])->withErrors('Can not active review!!');
+        // if($token == $review->token)
+        // {
+        //     if($review->status == 0);
+        //         $review->status = 1;
+        //     $review->save();
+        //     return redirect()->action('PagesController@getDetail',['id' => $id])->with(['success' => 'Active review Successfully!!']);
+        // }
+        // else return redirect()->action('PagesController@getDetail',['id' => $id])->withErrors('Can not active review!!');
     }
 }

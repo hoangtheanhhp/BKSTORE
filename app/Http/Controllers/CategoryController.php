@@ -23,17 +23,15 @@ class CategoryController extends Controller
    public function postadd(Request $rq)
    {
       $cat = new Category();
-      $cat->parent_id= $rq->sltCate;
       $cat->name= $rq->txtCateName;
-       $f = $rq->file('txtimg')->getClientOriginalName();
-       $filename = time().'_'.$f;
-       $cat->slug = $filename;
-       $rq->file('txtimg')->move('images/category/', $filename);
+      $f = $rq->file('txtimg')->getClientOriginalName();
+      $filename = time().'_'.$f;
+      $cat->image = $filename;
+      $rq->file('txtimg')->move('images/category/', $filename);
       $cat->created_at = new DateTime;
       $cat->save();
       return redirect()->route('getcat')
       ->with(['flash_level'=>'result_msg','flash_massage'=>' Đã thêm thành công !']);
-         
    }
    public function getedit($id)   {
       $cat = Category::all();

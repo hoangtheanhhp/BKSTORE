@@ -2,19 +2,6 @@
 @section('pageTitle', 'Quang pro')
 @section('content')
 
-    {{--<div class="product-big-title-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="product-bit-title text-center">
-                        <h2>BK STORE</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
---}}
-
     <div class="maincontent-area">
         <div class="zigzag-bottom"></div>
         <div class="container">
@@ -58,31 +45,55 @@
                                 </ul>
                             </div>
                         @endif
-                            <div class="row">
+                            <div class="row">   
+     
                             @foreach($products as $phone)
-                                <div class="col-md-3" style="margin-top: 30px;">
-                                <div class="single-product">
-                                    <div class="product-f-image">
-                                        <img src="/images/phone/{{$phone->images}}" alt="" style="max-width: 70%;">
-                                        <div class="product-hover">
-                                            <a href="{{url('/gio-hang/addcart/'.$phone->id)}}" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                            <a href="/detail/{{$phone->id}}" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                        </div>
+                               <div class="col-md-2 element">
+                                    <a href='/detail/{{$phone->id}}'>
+                                 <div class="element">
+                                    <div>
+                                        <img src="/images/phone/{{$phone->images}}" class="img-responsive">
+                                        <hr>
+                                        <p class="name">
+                                            <strong class="text-primary">{{$phone->name}}</strong>
+                                        </p>
+                                        <p class="price">
+                                            <strong class="text-danger">{{number_format($phone->price)}}
+                                                <sup>
+                                                    <u>đ</u>
+                                                </sup>
+                                            </strong>
+                                        </p>
+                                        <p class="promotion text-muted">
+                                            @if($phone->promo1!='')
+                                            <p>Khuyến mãi:</p>
+                                            <ul>
+                                                <li>{{$phone->promo1}}</li>
+                                                @if($phone->promo2!='')
+                                                <li>{{$phone->promo2}}</li>
+                                                @endif
+                                                @if($phone->promo3!='')
+                                                <li>{{$phone->promo3}}</li>
+                                                @endif
+                                            </ul>
+                                            @endif
+                                        </p>
                                     </div>
-
-                                    <h2><a href="{{ url('/detail/'.$phone->id) }}">{{strtoupper($phone->name)}}</a></h2>
-
-                                    <div class="product-carousel-price">
-                                        @if($phone->promo1 == '')
-                                            <ins>{{ $phone->price }}</ins>
-                                        @else
-                                            <ins>{{ $phone->price - $phone->promo1/100 * $phone->price }}$</ins> <del>{{$phone->price}}$</del>
-                                        @endif
+                                    <div class="info">
+                                        <p class="name"><strong class="text-primary">{{$phone->name}}</strong></p>
+                                        <p class="price"><strong class="text-danger">{{number_format($phone->price)}}<sup><u>đ</u></sup></strong></p>
+                                        <p>Màn hình: {{$phone->screen}}</p>
+                                        <p>HĐH: {{$phone->os}}</p>
+                                        <p>CPU: {{$phone->cpu}}</p>
+                                        <p>RAM: {{$phone->ram}}, ROM: {{$phone->rom}}</p>
+                                        <p>Camera: {{$phone->cam1}}, Selfie: {{$phone->cam2}}</p>
+                                        <p>PIN: {{$phone->pin}}, SIM: {{$phone->sim}}</p>
                                     </div>
                                 </div>
-                                </div>
+                                </a>
+                               </div>
                             @endforeach
-                        </div>
+                            </div>
                         </div>
 
                 </div>

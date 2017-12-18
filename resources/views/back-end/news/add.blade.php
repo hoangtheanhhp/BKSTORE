@@ -58,7 +58,7 @@
 				      		<div class="form-group">				      			
 				      			<div class="row">
 					      			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-					      				Hình ảnh : <input type="file" name="txtimg" accept="image/*" id="inputtxtimg" value="{{ old('txtimg') }}" class="form-control" required="required">
+					      				Hình ảnh : <input type="file" name="txtimg" accept="image/*" id="inputtxtimg" value="{{ old('txtimg') }}" required="required">
 					      			</div>					      		
 					      			<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
 					      				Trạng thái : <select name="slstatus" id="inputSlstatus" class="form-control" required="required">

@@ -11,7 +11,7 @@
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header"><small>Thêm mới sản phẩm: {!!$loai!!}</small></h1>
+				<h1 class="page-header"><small>Thêm mới sản phẩm: {!!$cat->name!!}</small></h1>
 			</div>
 		</div><!--/.row-->		
 		<div class="row">
@@ -33,14 +33,14 @@
 					        </ul>
 					    </div>
 					@endif
-						<form action="{{url('admin/sanpham/'.$loai.'/add')}}" method="POST" role="form" enctype="multipart/form-data">
+						<form action="{{url('admin/sanpham/'.$cat->id.'/add')}}" method="POST" role="form" enctype="multipart/form-data">
 				      		{{ csrf_field() }}
 				      		<div class="form-group">
 					      		<label for="input-id">Chọn danh mục</label>
 					      		<select name="sltCate" id="inputSltCate" required class="form-control">
 					      			<option value="">--Chọn thương hiệu--</option>
-					      			@foreach($cat as $dt)
-					      				<option value="{!!$dt->id!!}" >{!!'--|--|'.$dt->name!!}</option> 	
+					      			@foreach($category as $dt)
+					      				<option value="{!!$dt->id!!}" >{{$dt->name}}</option> 	
 					      			@endforeach	
 					      		</select>
 				      		</div>
@@ -77,7 +77,7 @@
 				      		<div class="form-group">				      			
 				      			<div class="row">
 					      			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-					      				Hình ảnh : <input type="file" name="txtimg" accept="image/png" id="inputtxtimg" value="{{ old('txtimg') }}" class="form-control" required="required">
+					      				Hình ảnh : <input type="file" name="txtimg" accept="image/png" id="inputtxtimg" value="{{ old('txtimg') }}"  required="required">
 					      			</div>
 					      			<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
 					      				Giá bán : <input type="number" name="txtprice" id="inputtxtprice" class="form-control" value="{{ old('txtprice') }}" required="required">
@@ -107,9 +107,7 @@
 					      			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 					      				Màn hình : <input type="text" name="txtScreen" id="inputtxtscreen" value="{{ old('txtScreen') }}" class="form-control" >
 					      			</div>
-					      			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-					      				VGA : <input type="text" name="txtVga" id="inputtxtVga" value="{{ old('txtVga') }}" class="form-control">
-					      			</div>
+					      			
 					      			<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
 					      				Webcam - Cam sau <input type="text" name="txtCam1" id="inputtxtCam1" value="{{ old('txtCam1') }}" class="form-control" >
 					      			</div>

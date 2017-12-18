@@ -1,21 +1,51 @@
 @extends('front-end.layout.master')
 @section('content')
-
-    <div class="slider-area">
+    <div class='row'>
+    <div class='col-md-8'>
+        <div class="slider-area">
         	<!-- Slider -->
 			<div class="block-slider block-slider4">
 
 				<ul class="" id="bxslider-home4">
           @foreach($slides as $slide)
-					<li><img src="/images/slide/{{ $slide->image }}" width="90%" alt="Slide">
+					<li><img src="/images/slide/{{ $slide->image }}" class='img img-responsive' width="100%" alt="Slide">
 
 					</li>
           @endforeach
 				</ul>
 			</div>
-			<!-- ./Slider -->
-    </div> <!-- End slider area -->
 
+			<!-- ./Slider -->
+        </div> <!-- End slider area -->
+    </div>
+    <div class="col-md-4">
+			<div class="title">
+                <a href="/blog">
+				<div class="col-sm-5">
+					<p>TIN CÔNG NGHỆ</p>
+				</div>
+                </a>
+			</div>
+			<div>
+                @foreach($news as $new)
+                    <a href='/blog_detail/{{$new->id}}'>
+                   <div class="element">
+					<div class="centent col-xs-8">
+						<p>{{$new->title}}</p>
+						<p class="text-muted">{{$new->created_at->diffForHumans()}}</p>
+					</div>
+					<div class="imgs col-xs-4">
+						<img src="/uploads/news/{{$new->images}}" class="img-responsive">
+					</div>
+					<hr>
+				    </div>
+                    </a>
+                @endforeach
+				
+			</div>
+		</div>
+    </div>
+    </div>
     <div class="promo-area">
         <div class="zigzag-bottom"></div>
         <div class="container">
@@ -57,28 +87,48 @@
                         <h2 class="section-title">Latest Products</h2>
                         <div class="product-carousel">
                             @foreach($phones as $phone)
-                                <div class="single-product">
-                                    <div class="product-f-image">
-                                        <img src="images/phone/{{$phone->images}}" alt="">
-                                        <div class="product-hover">
-                                            <a href="{{url('/gio-hang/addcart/'.$phone->id)}}" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                            <a href="/detail/{{$phone->id}}" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                        </div>
+                                <a href='/detail/{{$phone->id}}'>
+                                 <div class="element">
+                                    <div>
+                                        <img src="/images/phone/{{$phone->images}}" class="img-responsive">
+                                        <hr>
+                                        <p class="name">
+                                            <strong class="text-primary">{{$phone->name}}</strong>
+                                        </p>
+                                        <p class="price">
+                                            <strong class="text-danger">{{number_format($phone->price)}}
+                                                <sup>
+                                                    <u>đ</u>
+                                                </sup>
+                                            </strong>
+                                        </p>
+                                        <p class="promotion text-muted">
+                                            @if($phone->promo1!='')
+                                            <p>Khuyến mãi:</p>
+                                            <ul>
+                                                <li>{{$phone->promo1}}</li>
+                                                @if($phone->promo2!='')
+                                                <li>{{$phone->promo2}}</li>
+                                                @endif
+                                                @if($phone->promo3!='')
+                                                <li>{{$phone->promo3}}</li>
+                                                @endif
+                                            </ul>
+                                            @endif
+                                        </p>
                                     </div>
-
-                                    <h2><a href="{{ url('/detail/'.$phone->id) }}">{{strtoupper($phone->name)}}</a></h2>
-
-                                    <div class="product-carousel-price">
-                                        @if($phone->status == 0 ||$phone->number < 0)
-                                            <p style="color: #c9302c;">Hết hàng</p>
-                                        @endif
-                                        @if($phone->promo1 == '')
-                                        <ins>{{ $phone->price }}</ins>
-                                        @else
-                                            <ins>{{ $phone->price - $phone->promo1/100 * $phone->price }}$</ins> <del>{{$phone->price}}$</del>
-                                        @endif
+                                    <div class="info">
+                                        <p class="name"><strong class="text-primary">{{$phone->name}}</strong></p>
+                                        <p class="price"><strong class="text-danger">{{number_format($phone->price)}}<sup><u>đ</u></sup></strong></p>
+                                        <p>Màn hình: {{$phone->screen}}</p>
+                                        <p>HĐH: {{$phone->os}}</p>
+                                        <p>CPU: {{$phone->cpu}}</p>
+                                        <p>RAM: {{$phone->ram}}, ROM: {{$phone->rom}}</p>
+                                        <p>Camera: {{$phone->cam1}}, Selfie: {{$phone->cam2}}</p>
+                                        <p>PIN: {{$phone->pin}}, SIM: {{$phone->sim}}</p>
                                     </div>
                                 </div>
+                                </a>
                             @endforeach
                         </div>
                     </div>
@@ -94,26 +144,48 @@
                         <h2 class="section-title">Top Sellers</h2>
                         <div class="product-carousel">
                             @foreach($phone_sells as $phone)
-                                <div class="single-product">
-                                    <div class="product-f-image">
-                                        <img src="images/phone/{{$phone->images}}" alt="">
-                                        <div class="product-hover">
-                                            <a href="{{url('/gio-hang/addcart/'.$phone->id)}}" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                            <a href="/detail/{{$phone->id}}" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                        </div>
+                                <a href='/detail/{{$phone->id}}'>
+                                 <div class="element">
+                                    <div>
+                                        <img src="/images/phone/{{$phone->images}}" class="img-responsive">
+                                        <hr>
+                                        <p class="name">
+                                            <strong class="text-primary">{{$phone->name}}</strong>
+                                        </p>
+                                        <p class="price">
+                                            <strong class="text-danger">{{number_format($phone->price)}}
+                                                <sup>
+                                                    <u>đ</u>
+                                                </sup>
+                                            </strong>
+                                        </p>
+                                        <p class="promotion text-muted">
+                                            @if($phone->promo1!='')
+                                            <p>Khuyến mãi:</p>
+                                            <ul>
+                                                <li>{{$phone->promo1}}</li>
+                                                @if($phone->promo2!='')
+                                                <li>{{$phone->promo2}}</li>
+                                                @endif
+                                                @if($phone->promo3!='')
+                                                <li>{{$phone->promo3}}</li>
+                                                @endif
+                                            </ul>
+                                            @endif
+                                        </p>
                                     </div>
-                                    <h2><a href="{{ url('/detail/'.$phone->id) }}">{{strtoupper($phone->name)}}</a></h2>
-                                    <div class="product-carousel-price">
-                                        @if($phone->status == 0 ||$phone->number < 0)
-                                            <p style="color: #c9302c;">Hết hàng</p>
-                                        @endif
-                                        @if($phone->promo1 == '')
-                                            <ins>{{ $phone->price }}</ins>
-                                        @else
-                                            <ins>{{ $phone->price - $phone->promo1/100 * $phone->price }}$</ins> <del>{{$phone->price}}$</del>
-                                        @endif
+                                    <div class="info">
+                                        <p class="name"><strong class="text-primary">{{$phone->name}}</strong></p>
+                                        <p class="price"><strong class="text-danger">{{number_format($phone->price)}}<sup><u>đ</u></sup></strong></p>
+                                        <p>Màn hình: {{$phone->screen}}</p>
+                                        <p>HĐH: {{$phone->os}}</p>
+                                        <p>CPU: {{$phone->cpu}}</p>
+                                        <p>RAM: {{$phone->ram}}, ROM: {{$phone->rom}}</p>
+                                        <p>Camera: {{$phone->cam1}}, Selfie: {{$phone->cam2}}</p>
+                                        <p>PIN: {{$phone->pin}}, SIM: {{$phone->sim}}</p>
                                     </div>
                                 </div>
+                                </a>
                             @endforeach
                         </div>
                     </div>

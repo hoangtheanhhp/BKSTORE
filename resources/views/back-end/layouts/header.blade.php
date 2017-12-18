@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>My Shops : Trang quản trị - Dashboard</title>
+<title>BKSTORE : Trang quản trị - Dashboard</title>
 
 <link href="/back-end/css/bootstrap.min.css" rel="stylesheet">
 <link href={{ asset('back-end/css/datepicker3.css')}} rel="stylesheet">

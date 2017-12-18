@@ -33,20 +33,25 @@
             <div class="row">
                 <div class="col-md-4">
                   <div class="single-sidebar">
-                      <h2 class="sidebar-title">Products</h2>
-                      @foreach($cart as $row)
-                      <div class="thubmnail-recent">
-                          <img src="/images/phone/{{$row->options->img}}" class="recent-thumb" alt="">
-                          <h2><a href="detail/{{$row->id}}">{{strtoupper($row->name)}}</a></h2>
-                          <div class="product-sidebar-price">
-                              @if($row->promo1 == '')
-                                  <ins>{{ $row->price }}$</ins>
-                              @else
-                                  <ins>{{ $row->price - $row->promo1/100 * $row->price }}$</ins> <del>{{$row->price}}$</del>
-                              @endif
-                          </div>
-                      </div>
-                      @endforeach
+                        <h2 class="sidebar-title">Giỏ hàng</h2>
+                        <div>
+                            @foreach($phone_relate as $row)
+                            <div>
+                                <div class="col-xs-3">
+                                    <img src="/images/phone/{{$row->images}}" class="img-responsive">
+                                </div>
+                                <div class="col-xs-9">
+                                    <p><b class="text-primary">Điện thoại {{$row->name}}</b></p>
+                                    <p class="price"><span class="text-danger">{{number_format($row->price)}}<sup><u>đ</u></sup></span></p>
+                                    <div class="text-muted">
+                                        <p>Màn hình: {{$row->screen}}</p>
+                                        <p>HĐH: {{$row->os}}</p>
+                                        <p>CPU: {{$row->cpu}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
                   </div>
                 </div>
                 <div class="col-md-8">
@@ -86,7 +91,7 @@
 
                                             <td class="product-quantity">
                                                 <div class="quantity buttons_added">
-                                                    <input type="number" name="{{$row->id}}" size="4" class="input-text qty text" title="Qty" value="{{$row->qty}}" min="0" step="1">
+                                                    <input type="number" name="{{$row->id}}" size="100" class="input-text qty text" title="Qty" value="{{$row->qty}}" min="0" step="1">
                                                 </div>
                                             </td>
 

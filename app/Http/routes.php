@@ -1,14 +1,10 @@
 <?php
 
 Route::auth();
-Route::get('/user', 'HomeController@index');
-Route::get('/user/edit', 'HomeController@edit');
-
 // admin route
 Route::get('admin/login', ['as'  => 'getlogin', 'uses' =>'Admin\AuthController@showLoginForm']);
 Route::post('admin/login', ['as'  => 'postlogin', 'uses' =>'Admin\AuthController@login']);
 Route::get('admin/password/reset', ['as'  => 'getreser', 'uses' =>'Admin\AuthController@email']);
-
 Route::get('admin/getRegister',function(){
   return view('back-end.auth.register');
 })->middleware('CheckAdmin');
@@ -17,15 +13,14 @@ Route::post('products/search', 'PagesController@searchProducts');
 
 Route::get('admin/logout', ['as'  => 'getlogin', 'uses' =>'Admin\AuthController@logout']);
 
-Route::get('/',function(){
-  return view('back-end.home');
-})->middleware('auth:admin');
 Route::get('/', ['as'  => 'index', 'uses' =>'PagesController@index']);
 Route::get('products/{id}', ['as'  => 'getproducts', 'uses' =>'PagesController@getProducts']);
 Route::get('detail/{id}', ['as'  => 'getdetail', 'uses' =>'PagesController@getDetail']);
 Route::post('detail/{id}/message', 'PagesController@message');
 Route::get('detail/{id}/{review_id}/{token}', 'PagesController@activeReview');
 Route::get('blog',['as'=>'getblog','uses'=>'PagesController@getNews']);
+Route::get('blog_detail/{id}',['as'=>'getblogdetail','uses'=>'PagesController@getNewsDetail']);
+
 // cart - oder
 Route::get('gio-hang', ['as'  => 'getcart', 'uses' =>'PagesController@getcart']);
 // them vao gio hang
@@ -43,11 +38,9 @@ Route::get('/{cat}', ['as'  => 'getcate', 'uses' =>'PagesController@getcate']);
 Route::get('/{cat}/{id}-{slug}', ['as'  => 'getdetail', 'uses' =>'PagesController@detail']);
 
 Route::resource('payment', 'PayMentController');
-
 // --------------------------------cac cong viec trong admin (back-end)---------------------------------------
 Route::group(['middleware' => 'admin'], function () {
       Route::group(['prefix' => 'admin'], function() {
-
        	Route::get('/home', function() {
          return view('back-end.home');
        });
