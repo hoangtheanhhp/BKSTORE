@@ -146,24 +146,10 @@ class ProductsController extends Controller
         $dt = Products::where('id',$id)->first();
         $c_id= $dt->cat_id;
         $loai= Category::where('id',$c_id)->first();
-        $p_id = $loai->parent_id;
         $cat= Category::where('id','>=', '0')->get();
         $pro = Products::where('id',$id)->first();
         return view('back-end.products.edit-mobile',['pro'=>$pro,'cat'=>$cat,'loai'=>$name]);
 
-    /*	if ($p_id == 1) {
-            $cat= Category::where('parent_id', '1')->get();
-            $pro = Products::where('id',$id)->first();
-            return view('back-end.products.edit-mobile',['pro'=>$pro,'cat'=>$cat,'loai'=>'Điện thoại']);    
-        } elseif ($p_id ==2) {
-            $cat= Category::where('parent_id', 2)->get();
-            $pro = Products::where('id',$id)->first();
-            return view('back-end.products.edit-mobile',['pro'=>$pro,'cat'=>$cat,'loai'=>'Laptop']);       
-        } elseif ($p_id ==19) {
-            $cat= Category::where('parent_id', 19)->get();
-            $pro = Products::where('id',$id)->first();
-            return view('back-end.products.edit-mobile',['pro'=>$pro,'cat'=>$cat,'loai'=>$p_id]);     
-        }*/
     }
     public function postedit($loai,$id,EditProductsRequest $rq)
     {

@@ -204,7 +204,7 @@
                     <div class="brand-wrapper">
                         <div class="brand-list">
                             @foreach($category as $row)
-                            <img src="{!!url('images/category/'.$row->slug)!!}" alt="" >
+                            <img src="{!!url('images/category/'.$row->image)!!}" alt="" >
                                 @endforeach
                         </div>
                     </div>
@@ -220,7 +220,6 @@
                 <div class="col-md-4">
                     <div class="single-product-widget">
                         <h2 class="product-wid-title">Top Sellers</h2>
-                        <a href="" class="wid-view-more">View All</a>
                         @foreach($phone_sells as $key => $phone_sell)
                             @if($key == 3)
                                 @break
@@ -228,19 +227,8 @@
                         <div class="single-wid-product">
                             <a href="{{ url('/detail/'.$phone_sell->id) }}"><img src="/images/phone/{{$phone_sell->images}}" alt="" class="product-thumb"></a>
                             <h2><a href="{{ url('/detail/'.$phone_sell->id) }}">{{$phone_sell->name}}</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
                             <div class="product-wid-price">
-                                @if($phone_sell->promo1 == null)
-                                    <ins>{{ $phone_sell->price }}</ins>
-                                @else
-                                    <ins>{{ $phone_sell->price - $phone_sell->promo1/100 * $phone_sell->price }}$</ins> <del>{{$phone_sell->price}}$</del>
-                                @endif
+                                    <ins>{{ number_format($phone_sell->price)}}</ins>
                             </div>
                         </div>
                         @endforeach
@@ -250,7 +238,6 @@
                 <div class="col-md-4">
                     <div class="single-product-widget">
                         <h2 class="product-wid-title">Top Viewed</h2>
-                        <a href="#" class="wid-view-more">View All</a>
                         @foreach($phone_views as $key => $phone_view)
                             @if($key == 3)
                                 @break
@@ -258,19 +245,9 @@
                         <div class="single-wid-product">
                             <a href="{{ url('/detail/'.$phone_view->id) }}"><img src="/images/phone/{{$phone_view->images}}" alt="" class="product-thumb"></a>
                             <h2><a href="{{ url('/detail/'.$phone_view->id) }}">{{$phone_view->name}}</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
+                          
                             <div class="product-wid-price">
-                                @if($phone_view->promo1 == null)
-                                    <ins>{{ $phone_view->price }}</ins>
-                                @else
-                                    <ins>{{ $phone_view->price - $phone_view->promo1/100 * $phone_view->price }}$</ins> <del>{{$phone_view->price}}$</del>
-                                @endif
+                                    <ins>{{ number_format($phone_view->price) }}</ins>
                             </div>
                         </div>
                         @endforeach
@@ -279,7 +256,6 @@
                 <div class="col-md-4">
                     <div class="single-product-widget">
                         <h2 class="product-wid-title">Top New</h2>
-                        <a href="#" class="wid-view-more">View All</a>
                         @foreach($phones as $key => $phone)
                         <div class="single-wid-product">
                             @if($key == 3)
@@ -287,19 +263,8 @@
                             @endif
                             <a href="{{ url('/detail/'.$phone->id) }}"><img src="images/phone/{{$phone->images}}" alt="" class="product-thumb"></a>
                             <h2><a href="{{ url('/detail/'.$phone->id) }}">{{$phone->name}}</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
                             <div class="product-wid-price">
-                                @if($phone->promo1 == null)
-                                    <ins>{{ $phone->price }}</ins>
-                                @else
-                                    <ins>{{ $phone->price - $phone->promo1/100 * $phone->price }}$</ins> <del>{{$phone->price}}$</del>
-                                @endif
+                                <ins>{{ number_format($phone->price) }}</ins>
                             </div>
                         </div>
                         @endforeach

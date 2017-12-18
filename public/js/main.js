@@ -3,9 +3,11 @@ jQuery(document).ready(function($){
     // jQuery sticky Menu
     $('.hide-button').click(() => {
         $('.hide').removeClass('hide');
-        $(this).slideUp();
+        $(this).hide();
     });
 
+    
+    
 	$(".mainmenu-area").sticky({topSpacing:0});
     
     

@@ -35,15 +35,7 @@
 					@endif
 						<form action="" method="POST" role="form" enctype="multipart/form-data">
 				      		{{ csrf_field() }}
-				      		<div class="form-group">
-					      		<label for="input-id">Chọn danh mục</label>
-					      		<select name="sltCate" id="inputSltCate" required class="form-control">
-					      			<option value="">--Chọn danh mục--</option>
-					      			@foreach($cat as $dt)
-					      				<option value="{!!$dt->id!!}" >{!!'--|--|'.$dt->name!!}</option> 	
-					      			@endforeach	
-					      		</select>
-				      		</div>
+				      		
 				      		<div class="form-group">
 				      			<label for="input-id">Tiêu đề bản tin</label>
 				      			<input type="text" name="txtTitle" id="inputTxtTitle" class="form-control" value="{{ old('txtTitle') }}"  >

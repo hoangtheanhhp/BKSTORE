@@ -37,20 +37,12 @@
 						<form action="{{url('admin/danhmuc/edit/'.$data['id'])}}" method="POST" role="form" enctype="multipart/form-data">
 				      		{{ csrf_field() }}
 				      		<div class="form-group">
-					      		<label for="input-id">Danh mục cha</label>
-					      		<select name="sltCate" id="inputSltCate" class="form-control">
-					      			<option value="0">-ROOT --</option>
-					      			<?php MenuMulti($cat,0,$str='---| ',$data['parent_id']); ?>  		
-					      		</select>
-				      		</div>
-				      		<div class="form-group">
 				      			<label for="input-id">Tên danh mục</label>
 				      			<input type="text" name="txtCateName" id="inputTxtCateName" class="form-control" value="{!! old('txtCateName', isset($data['name']) ? $data['name'] : null)!!}" required="required">
 				      		</div>
 							<div class="row">
 								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-									Hình ảnh : <input type="file" name="txtimg" accept="image/*" id="inputtxtimg" class="form-control" required="required">
-									Ảnh cũ: <img src="{!!url('images/category/'.$data['slug'])!!}" alt="" width="80" height="60">
+									Hình ảnh : <input type="file" name="txtimg" id="inputtxtimg" class="form-control" required="required">
 								</div>
 							</div>
 				      		<input type="submit" name="btnCateAdd" class="btn btn-primary" value="Sua danh mục" class="button" />

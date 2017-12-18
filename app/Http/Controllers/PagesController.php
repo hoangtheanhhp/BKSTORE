@@ -34,16 +34,22 @@ class PagesController extends Controller
         'pro_details.cam2 as cam2',
         'pro_details.storage as rom',
         'pro_details.pin as pin',
-        'pro_details.sim as sim')->distinct()->latest()->paginate(15);
+        'pro_details.sim as sim')->distinct()->paginate(15);
         $category = Category::all();
-        $cart = Cart::content();
-        $phone_sell = Products::orderBy('sell_number','desc')->get();
+        $phone_sell =Products::Join('pro_details','products.id','=',
+        'pro_details.pro_id')->
+        select('products.*','pro_details.screen as screen',
+        'pro_details.os as os','pro_details.cpu as cpu',
+        'pro_details.cam1 as cam1',
+        'pro_details.cam2 as cam2',
+        'pro_details.storage as rom',
+        'pro_details.pin as pin',
+        'pro_details.sim as sim')->orderBy('sell_number','desc')->distinct()->get();
         $phone_view = Products::orderBy('viewed_number','desc')->get();
         $news = News::orderBy('created_at','desc')->paginate(3);
         return view('front-end.home',['slides'=>$slides,
             'phones'=>$phones,
             'category' => $category,
-            'cart' => $cart,
             'phone_views' => $phone_view,
             'phone_sells' => $phone_sell,
             'news' => $news
@@ -90,7 +96,7 @@ class PagesController extends Controller
         }
         $total = Cart::subtotal();
         $subtotal = Cart::subtotal();
-        return view ('front-end.modules.cart',['phone_relate'=>$phone_relate,'cart'=>$cart,'total'=>$total,'subtotal'=>$subtotal]);
+        return view ('front-end.modules.cart',['phone'=>$phone_relate,'cart'=>$cart,'total'=>$total,'subtotal'=>$subtotal]);
     }
     public function getoder(Request $request)
     {
@@ -255,15 +261,15 @@ class PagesController extends Controller
     }
 
     public function activeReview($id, $review_id, $token){
-        // $review = Review::where('id', '=', $review_id)->first();
+        $review = Review::where('id', '=', $review_id)->first();
 
-        // if($token == $review->token)
-        // {
-        //     if($review->status == 0);
-        //         $review->status = 1;
-        //     $review->save();
-        //     return redirect()->action('PagesController@getDetail',['id' => $id])->with(['success' => 'Active review Successfully!!']);
-        // }
-        // else return redirect()->action('PagesController@getDetail',['id' => $id])->withErrors('Can not active review!!');
+        if($token == $review->token)
+        {
+            if($review->status == 0);
+                $review->status = 1;
+            $review->save();
+            return redirect()->action('PagesController@getDetail',['id' => $id])->with(['success' => 'Active review Successfully!!']);
+        }
+        else return redirect()->action('PagesController@getDetail',['id' => $id])->withErrors('Can not active review!!');
     }
 }

@@ -35,7 +35,6 @@ class NewsController extends Controller
     	$n->source = $rq->txtSource;
     	$n->intro = $rq->txtIntro;
     	$n->full = $rq->txtFull;
-    	$n->cat_id = $rq->sltCate;
     	$n->user_id = Auth::guard('admin')->user()->id;
     	$n->created_at = new datetime;
 
@@ -51,7 +50,7 @@ class NewsController extends Controller
     public function getedit($id)
     {
         $n = News::where('id',$id)->first();
-        $cat= Category::where('parent_id','>=',0)->get();
+        $cat= Category::all();
     	return view('back-end.news.edit',['data'=>$n,'cat'=>$cat]);
     }
     public function postedit(EditNewsRequest $rq,$id)
@@ -64,7 +63,6 @@ class NewsController extends Controller
     	$n->source = $rq->txtSource;
     	$n->intro = $rq->txtIntro;
     	$n->full = $rq->txtFull;
-    	$n->cat_id = $rq->sltCate;
     	$n->user_id = Auth::guard('admin')->user()->id;
     	$n->created_at = new datetime;
 

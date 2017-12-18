@@ -35,7 +35,7 @@
                   <div class="single-sidebar">
                         <h2 class="sidebar-title">Giỏ hàng</h2>
                         <div>
-                            @foreach($phone_relate as $row)
+                            @foreach($phone as $row)
                             <div>
                                 <div class="col-xs-3">
                                     <img src="/images/phone/{{$row->images}}" class="img-responsive">
@@ -100,7 +100,6 @@
                                             </td>
                                         </tr>
                                         @endforeach
-
                                         <div class="cart-collaterals col-md-offset-3 c">
 
                                             <div class="cart_totals ">
@@ -137,5 +136,5 @@
     </div>
 
 
-
+    
   @endsection('content')

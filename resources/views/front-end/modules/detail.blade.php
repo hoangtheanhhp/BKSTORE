@@ -45,9 +45,10 @@
 				<a href="/gio-hang/addcart/{{$phone->id}}"><button type="button" class="btn btn-warning">
 					MUA NGAY<br>
 					Giao tận nơi hoặc đén siêu thị xem hàng
+					</button></a>
 				<hr>
 				<p>Bộ bán hàng chuẩn: <b>{{$phone->packet}}</b></p>
-				<p>Bảo hành chính hãng: <b>thân máy 1 năm, pin 1 năm, sạc 6 tháng, tai nghe 6 tháng</b><a href="#" class="text-primary"></p>
+				<p>Bảo hành chính hãng: <b>thân máy 1 năm, pin 1 năm, sạc 6 tháng, tai nghe 6 tháng</b></p>
 			</div>
 			<div class="col-md-2"></div>
 		</div>
@@ -55,7 +56,7 @@
 			<div class="col-sm-8 detail">
                 <div><?=$phone->r_intro?></div>
 				<p class='text-primary hide-button text-center'>Đọc thêm <span class='fa fa-caret-down'><span></p>
-                <div class"hide"><?=$phone->review?></div>
+                <div class="hide"><?=$phone->review?></div>
 			</div>
 			<div class="col-sm-4">
 				<table class="table table-striped table-hover">
