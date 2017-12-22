@@ -25,9 +25,8 @@ Route::get('blog_detail/{id}',['as'=>'getblogdetail','uses'=>'PagesController@ge
 Route::get('gio-hang', ['as'  => 'getcart', 'uses' =>'PagesController@getcart']);
 // them vao gio hang
 Route::get('gio-hang/addcart/{id}', ['as'  => 'getcartadd', 'uses' =>'PagesController@addcart']);
-Route::get('gio-hang/update/{id}/{qty}-{dk}', ['as'  => 'getupdatecart', 'uses' =>'PagesController@getupdatecart']);
-Route::get('gio-hang/delete/{id}', ['as'  => 'getdeletecart', 'uses' =>'PagesController@getdeletecart']);
-Route::get('gio-hang/xoa', ['as'  => 'getempty', 'uses' =>'PagesController@xoa']);
+Route::get('gio-hang/update', ['as'  => 'getupdatecart', 'uses' =>'PagesController@getupdatecart']);
+Route::get('gio-hang/delete', ['as'  => 'getdeletecart', 'uses' =>'PagesController@getdeletecart']);
 // tien hanh dat hang
 
 Route::get('dat-hang',  ['as'  => 'getoder', 'uses' =>'PagesController@getoder']);

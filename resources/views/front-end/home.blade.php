@@ -1,4 +1,5 @@
 @extends('front-end.layout.master')
+@section('pageTitle', 'BKSTORE:Home')
 @section('content')
     <div class='row'>
     <div class='col-md-8'>

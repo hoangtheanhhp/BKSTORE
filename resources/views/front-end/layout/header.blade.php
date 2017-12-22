@@ -9,7 +9,7 @@
 
             <div class="col-sm-6">
                 <div class="shopping-item">
-                    <a href="{{url('gio-hang')}}">Cart - {{$cartTotal}} <span class="cart-amunt"></span> <i class="fa fa-shopping-cart"></i> <span class="product-count">{{$cartTotalItems}}</span></a>
+                    <a href="{{url('gio-hang')}}" id='subtotal'>Cart - {{$cartTotal}}VND<span class="cart-amunt"></span> <i class="fa fa-shopping-cart"></i> <span class="product-count" id='countCart'>{{$cartTotalItems}}</span></a>
                 </div>
             </div>
         </div>

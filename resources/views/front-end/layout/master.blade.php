@@ -44,8 +44,12 @@
 
 <!-- include js files -->
 <!-- Latest jQuery form server -->
+
 <script src="https://code.jquery.com/jquery.min.js"></script>
 <script src="/js/jquery.min.js"></script>
+
+<script src="/js/bootstrap-slider.js"></script>
+
 <!-- Bootstrap JS form CDN -->
 
 <!-- jQuery sticky menu -->
@@ -61,6 +65,7 @@
 <!-- Slider -->
 <script type="text/javascript" src={{ asset('js/bxslider.min.js') }}></script>
 <script type="text/javascript" src="/js/script.slider.js"></script>
+
 
 </body>
 </html>

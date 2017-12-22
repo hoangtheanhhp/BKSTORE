@@ -1,5 +1,5 @@
 @extends('front-end.layout.master')
-@section('pageTitle','handsome')
+@section('pageTitle','BKSTORE:Checkout')
 @section('content')
     <div class="product-big-title-area">
         <div class="container">
@@ -24,7 +24,7 @@
                         @foreach($cart as $row)
                         <div class="thubmnail-recent">
                             <img src="/images/phone/{{$row->options['img']}}" class="recent-thumb" alt="">
-                            <h2><a href="single-product.html" style="color: #5bc0de;">{{strtoupper($row->name)}}</a></h2>
+                            <h2><a href="/detail/{{$row->id}}" style="color: #5bc0de;">{{strtoupper($row->name)}}</a></h2>
                             <div class="product-sidebar-price">
                                 <ins>{{$row->prime}}</ins>
                             </div>

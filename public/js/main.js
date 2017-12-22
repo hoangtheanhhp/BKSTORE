@@ -1,9 +1,9 @@
 jQuery(document).ready(function($){
-    
+
     // jQuery sticky Menu
     $('.hide-button').click(() => {
         $('.hide').removeClass('hide');
-        $(this).hide();
+        $('.hide-button').css('display','none');
     });
 
     

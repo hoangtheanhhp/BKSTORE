@@ -63,29 +63,23 @@ class PagesController extends Controller
           Cart::add(['id' => $pro->id, 'name' => $pro->name, 'qty' => $request->qty, 'price' => $pro->price,'options' => ['img' => $pro->images]]);
         return redirect()->route('getcart');
     }
-    public function getupdatecart($id,Request $request)
+    public function getupdatecart(Request $request)
     {
-        if ($dk=='up') {
-            $qt = $qty+1;
-            Cart::update($id, $qt);
-            return redirect()->route('getcart');
-        } elseif ($dk=='down') {
-            $qt = $qty-1;
-            Cart::update($id, $qt);
-            return redirect()->route('getcart');
-        } else {
-            return redirect()->route('getcart');
+        $updateItems = json_decode($request->items);
+        $cart = Cart::content();
+        $index = 0;
+        foreach ($cart as $item) {
+            Cart::update($item->rowId, intval($updateItems[$index]->quantity));
+            $index++;
         }
+        $data = $this->infoCart();
+        return response()->json($data);
     }
-    public function getdeletecart($id)
+    public function getdeletecart(Request $request)
     {
-        Cart::remove($id);
-        return redirect()->route('getcart');
-    }
-    public function xoa()
-    {
-        Cart::destroy();
-        return redirect()->route('index');
+        Cart::remove($request->id);
+        $data = $this->infoCart();
+        return response()->json($data);
     }
     public function getcart()
     {
@@ -98,6 +92,18 @@ class PagesController extends Controller
         $subtotal = Cart::subtotal();
         return view ('front-end.modules.cart',['phone'=>$phone_relate,'cart'=>$cart,'total'=>$total,'subtotal'=>$subtotal]);
     }
+
+    public function infoCart()
+    {
+        $data = array(
+            'subtotal' => Cart::subtotal(),
+            'tax' => Cart::tax(),
+            'total' => Cart::total(),
+            'count' => Cart::count()
+        );
+        return $data;
+    }
+
     public function getoder(Request $request)
     {
         $cart = Cart::content();

@@ -1,5 +1,5 @@
 @extends('front-end.layout.master')
-@section('pageTitle','handsome')
+@section('pageTitle','BKSTORE:Detail')
 @section('content')
 <div class="container">
 		<legend>
