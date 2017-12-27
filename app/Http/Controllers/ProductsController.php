@@ -183,13 +183,11 @@ class ProductsController extends Controller
             $rq->file('txtimg')->move('images/phone/',$filename);
         }       
         $pro->save();
-
         $admin_user = Auth::guard('admin')->user();
         $admin_user->products()->attach($id, ['updated_at' => $pro->updated_at]);
 
-        $detail = new Pro_details();
-
-       if ($rq->txtCam1=='') {
+        $detail = Pro_details::where('pro_id',$id)->first();
+        if ($rq->txtCam1=='') {
             $rq->cam1='không có';
         }
         if ($rq->txtCam2=='') {

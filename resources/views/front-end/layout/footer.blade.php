@@ -8,9 +8,9 @@
                     <p>BK Store Là sản phẩm của một nhóm sinh viên khoa Việt Nhật đại học Bách Khoa Hà Nội.
                         Nhóm rất mong được sự góp ý của mọi người </p>
                     <div class="footer-social">
-                        <a href="https://www.facebook.com/quang.peter.7" target="_blank"><i class="fa fa-facebook"></i></a>
-                        <a href="https://twitter.com/Quang4334" target="_blank"><i class="fa fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/channel/UCBa-hBRDwTLAxCmXq_r9rpg?view_as=subscriber" target="_blank"><i class="fa fa-youtube"></i></a>
+                        <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a href="#"_blank"><i class="fa fa-youtube"></i></a>
                         <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
                     </div>
                 </div>
@@ -33,11 +33,9 @@
                 <div class="footer-menu">
                     <h2 class="footer-wid-title">Danh mục</h2>
                     <ul>
-                        <li><a href="{{url('products/all')}}">Điện thoại</a></li>
-                        <li><a href="/index/accesseries">Đồ gia dụng</a></li>
-                        <li><a href="/index/TV">TV</a></li>
-                        <li><a href="/index/Computer">Máy tính</a></li>
-                        <li><a href="/index/Gadets">Thiết bị cầm tay</a></li>
+                        @foreach($category as $row) 
+                            <li><a href='/detail/{{$row->id}}'>{{$row->name}}</a></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

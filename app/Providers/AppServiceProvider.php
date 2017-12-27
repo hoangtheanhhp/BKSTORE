@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Cart;
 use View;
+use App\Category;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +20,11 @@ class AppServiceProvider extends ServiceProvider
          View::composer('front-end.layout.header', function($view)
         {
             return $view->with(['cartTotal'=> Cart::subtotal(), 'cartTotalItems'=>Cart::count()]);
+        });
+
+         View::composer('front-end.layout.footer', function($view)
+        {
+            return $view->with(['category'=> Category::all()]);
         });
     }
 
