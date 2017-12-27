@@ -21,7 +21,7 @@
         <div class="zigzag-bottom"></div>
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3">
                   <div class="single-sidebar">
                         <h2 class="sidebar-title">Giỏ hàng</h2>
                         <div>
@@ -44,7 +44,7 @@
                         </div>
                   </div>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-9">
                     <div class="product-content-right">
                         <div class="woocommerce">
                             <form action="/cart-dat-hang" method="POST">
@@ -52,12 +52,12 @@
                                 <table cellspacing="0" class="shop_table cart">
                                     <thead>
                                         <tr>
-                                            <th>Actions</th>
-                                            <th>Image</th>
-                                            <th class="product-name">Product</th>
-                                            <th class="product-price">Price</th>
-                                            <th class="product-quantity">Quantity</th>
-                                            <th class="product-subtotal">Total</th>
+                                            <th>Xóa sản phẩm</th>
+                                            <th>Hình ảnh</th>
+                                            <th class="product-name">Tên sản phẩm</th>
+                                            <th class="product-price">Giá</th>
+                                            <th class="product-quantity">Số lượng</th>
+                                            <th class="product-subtotal">Giá</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -99,15 +99,15 @@
                                         <div class="cart-collaterals col-md-offset-3 c">
                                             <div class="cart_totals ">
                                                 <table cellspacing="0">
-                                                    <h2>Cart Totals</h2>
+                                                    <h2>Tổng số</h2>
 
                                                     <tbody>
                                                     <tr class="cart-subtotal">
-                                                        <th>Cart total</th>
+                                                        <th>Tổng số tiền</th>
                                                         <td><span class="amount subtotal">{{$subtotal}}VND</span></td>
                                                     </tr>
                                                     <tr class="order-total">
-                                                        <th>Order Total (+ 0%VAT)</th>
+                                                        <th>Tổng giá trị đơn hàng Total (+ 0%VAT)</th>
                                                         <td><strong><span class="amount subtotal">{{$total}}VND</span></strong> </td>
                                                     </tr>
                                                     </tbody>
@@ -117,7 +117,7 @@
                                         </tr>
                                         <tr>
                                             <td class="actions" colspan="6">
-                                                <input type="submit" value="Checkout" class="checkout-button button alt wc-forward">
+                                                <input type="submit" value="Thanh Toán" class="checkout-button button alt wc-forward">
                                             </td>
                                         </tr>
                                         </tbody>

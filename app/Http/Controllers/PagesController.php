@@ -117,10 +117,10 @@ class PagesController extends Controller
             {
                 $products = Products::where('id','=',$c->id)->first();
                if($c->qty > $products->number)
-                   return redirect()->action('PagesController@getcart')->withErrors($products->name.' not enough quantity for your oder!! Please input again!!');
+                   return redirect()->action('PagesController@getcart')->withErrors($products->name.' Đã vượt quá số lượng cho phép!!');
             };
         if($cart->count() == 0)
-            return redirect()->action('PagesController@getProducts', ['id' => 'all'])->withErrors('Please buy any things before checkout!!');
+            return redirect()->action('PagesController@getProducts', ['id' => 'all'])->withErrors('Hãy mua gì trước ');
 
         $total = Cart::subtotal();
         $subtotal = Cart::subtotal();
@@ -169,13 +169,18 @@ class PagesController extends Controller
             $detail->save();
         }
         Cart::destroy();
-        return redirect()->route('home')
+        return redirect('gio-hang')
             ->with(['flash_level'=>'result_msg','flash_massage'=>' Đơn hàng của bạn đã được gửi đi !']);
     }
 
     public function getNews() {
       $news = News::orderBy('created_at','desc')->paginate(5);
-      return view('front-end.modules.blog',['news'=>$news]);
+      $phones = Products::latest()->get();
+      return view('front-end.modules.blog',[
+          'news'=>$news,
+          'phones' => $phones
+
+      ]);
     }
    
     public function getNewsDetail($id) {
@@ -212,15 +217,14 @@ class PagesController extends Controller
         'pro_details.sim as sim')->where('cat_id','=',$id)->distinct()->orderby('id')->paginate(20);
             if($products->count() == 0)
                 return view('front-end.modules.shop',['products'=>$products1, 'cart' => $cart, 'loai' => 'all', 'cat' => $cat])
-                    ->withErrors('Category Not Exists!!');
-
+                    ->withErrors('Thương hiệu này chưa có sản phẩm nào!!');
             return view('front-end.modules.shop',['products'=> $products,'cart' =>$cart, 'cat'=>$cat,'loai'=>$id]);
         }
         return view('front-end.modules.shop',['products'=>$products1, 'cart' => $cart, 'loai' => 'all', 'cat' => $cat]);
     }
 
     public function searchProducts(Request $request) {
-        $products = Products::where('name','like','%'.$request->search.'%')->paginate(20);
+        $products = Products::where('name','like','%'.$request->searchItem.'%')->paginate(20);
         $cart = Cart::content();
         $cat = Category::all();
         return view('front-end.modules.shop',['products'=>$products, 'cart' => $cart,'loai' => 'all', 'cat' => $cat]);
@@ -251,7 +255,7 @@ class PagesController extends Controller
     public function message($id, Request $request)
     {
         if(!isset($request->rating))
-             return back()->withErrors('Please rating for us!!');
+             return back()->withErrors('Xin hãy đánh giá !!');
         $review = new Review();
         $review->customer_name = $request->name;
         $review->customer_email = $request->email;
@@ -263,7 +267,7 @@ class PagesController extends Controller
         Mail::send('emails.review',['review' => $review], function($m) use ($review) {
             $m->to($review->customer_email)->subject('Accept your review!!');
         });
-        return back()->with(['success' => 'We have been received your review. We will check and active it as soon!! ']);
+        return back()->with(['success' => 'Chúng tôi đã nhận được review của bạn. Chúng tôi sẽ phản hồi sớm.']);
     }
 
     public function activeReview($id, $review_id, $token){
@@ -274,8 +278,8 @@ class PagesController extends Controller
             if($review->status == 0);
                 $review->status = 1;
             $review->save();
-            return redirect()->action('PagesController@getDetail',['id' => $id])->with(['success' => 'Active review Successfully!!']);
+            return redirect()->action('PagesController@getDetail',['id' => $id])->with(['success' => 'Xác nhận review thành công!!']);
         }
-        else return redirect()->action('PagesController@getDetail',['id' => $id])->withErrors('Can not active review!!');
+        else return redirect()->action('PagesController@getDetail',['id' => $id])->withErrors('Không thể xác nhận r!!');
     }
 }

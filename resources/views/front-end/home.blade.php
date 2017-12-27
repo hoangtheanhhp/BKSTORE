@@ -28,7 +28,7 @@
                 </a>
 			</div>
 			<div>
-                @foreach($news as $new)
+                @foreach($news as $key => $new)
                     <a href='/blog_detail/{{$new->id}}'>
                    <div class="element">
 					<div class="centent col-xs-8">
@@ -41,6 +41,9 @@
 					<hr>
 				    </div>
                     </a>
+                    @if($key == 2)
+                        @break
+                    @endif
                 @endforeach
 				
 			</div>
@@ -85,7 +88,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="latest-product">
-                        <h2 class="section-title">Latest Products</h2>
+                        <h2 class="section-title">Sản phẩm mới nhất</h2>
                         <div class="product-carousel">
                             @foreach($phones as $phone)
                                 <a href='/detail/{{$phone->id}}'>
@@ -142,7 +145,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="latest-product">
-                        <h2 class="section-title">Top Sellers</h2>
+                        <h4 class="section-title">Sản phẩm bán chạy nhất</h4>
                         <div class="product-carousel">
                             @foreach($phone_sells as $phone)
                                 <a href='/detail/{{$phone->id}}'>
@@ -215,12 +218,12 @@
     </div> <!-- End brands area -->
 
     <div class="product-widget-area">
-        <div class="zigzag-bottom"></div>
         <div class="container">
-            <div class="row">
+            <div class="col-md-12 ">
+            <div class="row" style="justify-content: space-between; margin-left:20px;">
                 <div class="col-md-4">
                     <div class="single-product-widget">
-                        <h2 class="product-wid-title">Top Sellers</h2>
+                        <h2 class="product-wid-title">Bán chạy</h2>
                         @foreach($phone_sells as $key => $phone_sell)
                             @if($key == 3)
                                 @break
@@ -238,7 +241,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="single-product-widget">
-                        <h2 class="product-wid-title">Top Viewed</h2>
+                        <h2 class="product-wid-title">Nhiều lượt xem</h2>
                         @foreach($phone_views as $key => $phone_view)
                             @if($key == 3)
                                 @break
@@ -256,7 +259,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="single-product-widget">
-                        <h2 class="product-wid-title">Top New</h2>
+                        <h2 class="product-wid-title">Sản phẩm mới </h2>
                         @foreach($phones as $key => $phone)
                         <div class="single-wid-product">
                             @if($key == 3)
@@ -274,7 +277,7 @@
                 </div>
             </div>
         </div>
+        </div>
     </div> <!-- End product widget area -->
-
 
 @endsection('content')

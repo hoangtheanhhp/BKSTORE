@@ -8,9 +8,9 @@
 				<div class="col-sm-3">
 					<div class="left-sidebar">
                         <div> 
-                            <form method="POST" action='/products/search' >
+                            <form method="POST" action='{{url('/products/search')}}' >
                               {{ csrf_field() }}
-                                <input type="text" name="searchItem" id="input_search" placeholder="Search Products">
+                                <input type="text" name="searchItem" id="input_search" placeholder="Search Products" required="required">
                                 <button class="button_search" id="search">Search</button>
                             </form>
                         </div>

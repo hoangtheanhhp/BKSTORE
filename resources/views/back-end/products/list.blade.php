@@ -42,7 +42,7 @@
                                     {{ csrf_field() }}
                                     <div class="form-group">
                                         <label for="search-products"></label>
-                                        <input type="text" class="form-control" id="search" placeholder="Products Name" name="search" value="{{old('search')}}">
+                                        <input type="text" class="form-control" id="search" placeholder="Products Name" name="search" value="{{old('search')}}" required="required">
                                         <button type="submit" class="btn btn-success">Search Products</button>
                                     </div>
                                 </form>

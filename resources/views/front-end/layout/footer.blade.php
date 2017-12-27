@@ -5,7 +5,8 @@
             <div class="col-md-3 col-sm-6">
                 <div class="footer-about-us">
                     <h2>BK<span>Store</span></h2>
-                    <p>BK Store doing business as BK team is an BK VN web service team in HUST, HN that was founded by Minh Quang, The Anh, Thanh Binh and Van Duy on July 5, 2017.</p>
+                    <p>BK Store Là sản phẩm của một nhóm sinh viên khoa Việt Nhật đại học Bách Khoa Hà Nội.
+                        Nhóm rất mong được sự góp ý của mọi người </p>
                     <div class="footer-social">
                         <a href="https://www.facebook.com/quang.peter.7" target="_blank"><i class="fa fa-facebook"></i></a>
                         <a href="https://twitter.com/Quang4334" target="_blank"><i class="fa fa-twitter"></i></a>
@@ -15,44 +16,32 @@
                 </div>
             </div>
 
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-4 col-sm-6">
                 <div class="footer-menu">
-                    <h2 class="footer-wid-title">User Navigation </h2>
+                    <h2 class="footer-wid-title">Truy cập nhanh </h2>
                     <ul>
-                        <li><a href="#">My account</a></li>
-                        <li><a href="#">Order history</a></li>
-                        <li><a href="#">Wishlist</a></li>
-                        <li><a href="#">Vendor contact</a></li>
-                        <li><a href="#">Front page</a></li>
+                        <li><a href="/">Trang chủ</a></li>
+                        <li><a href="{{url('products/all')}}">Cửa hàng</a></li>
+                        <li><a href="/gio-hang">Giỏ hàng</a></li>
+                        <li><a href="/dat-hang">Thanh toán</a></li>
+                        <li><a href="/blog">Tin tức</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-4 col-sm-6">
                 <div class="footer-menu">
-                    <h2 class="footer-wid-title">Categories</h2>
+                    <h2 class="footer-wid-title">Danh mục</h2>
                     <ul>
-                        <li><a href="#">Mobile Phone</a></li>
-                        <li><a href="#">Home accesseries</a></li>
-                        <li><a href="#">LED TV</a></li>
-                        <li><a href="#">Computer</a></li>
-                        <li><a href="#">Gadets</a></li>
+                        <li><a href="{{url('products/all')}}">Điện thoại</a></li>
+                        <li><a href="/index/accesseries">Đồ gia dụng</a></li>
+                        <li><a href="/index/TV">TV</a></li>
+                        <li><a href="/index/Computer">Máy tính</a></li>
+                        <li><a href="/index/Gadets">Thiết bị cầm tay</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="col-md-3 col-sm-6">
-                <div class="footer-newsletter">
-                    <h2 class="footer-wid-title">Newsletter</h2>
-                    <p>Sign up to our newsletter and get exclusive deals you wont find anywhere else straight to your inbox!</p>
-                    <div class="newsletter-form">
-                        <form action="#">
-                            <input type="email" placeholder="Type your email">
-                            <input type="submit" value="Subscribe">
-                        </form>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div> <!-- End footer top area -->
@@ -62,7 +51,7 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="copyright">
-                    <p>&copy; 2017 P712Plus. All Rights Reserved. <a href="https://laravel.com/" target="_blank">Laravel Web</a></p>
+                    <p>&copy;Sản phẩm được thuộc bản quyền của nhóm P714Plus. Sử dụng <a href="https://laravel.com/" target="_blank">Laravel Web</a></p>
                 </div>
             </div>
 

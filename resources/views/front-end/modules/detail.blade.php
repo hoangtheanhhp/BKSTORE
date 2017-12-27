@@ -2,8 +2,8 @@
 @section('pageTitle','BKSTORE:Detail')
 @section('content')
 <div class="container">
-		<legend>
-		<h3>Điện thoại {{$phone->name}}</h3>
+		<legend style="margin-top: 20px;">
+		<h3>{{$phone->name}}</h3>
 		</legend>
 		<h3><strong>{{$phone->intro}}</strong></h3>
 		<div>
