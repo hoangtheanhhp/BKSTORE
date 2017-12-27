@@ -13,4 +13,6 @@
 	 {
 	  $("#tin-tuc-danh-gia").addClass('active');
 	 }
+
+	
  });

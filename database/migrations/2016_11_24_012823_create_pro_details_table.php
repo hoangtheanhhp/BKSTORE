@@ -17,7 +17,6 @@ class CreateProDetailsTable extends Migration
             $table->string('cpu');
             $table->string('ram');
             $table->string('screen');
-            $table->string('vga');
             $table->string('storage');
             $table->string('exten_memmory');
             $table->string('cam1');

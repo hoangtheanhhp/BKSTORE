@@ -13,7 +13,7 @@
 			<div class="col-lg-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						Sánh sách loại sản phẩm 
+						Danh sách loại sản phẩm
 						<a href="{!!url('admin/danhmuc/add')!!}" title=""><button type="button" class="btn btn-primary pull-right">Thêm mới danh mục</button></a>
 					</div>
 					@if (count($errors) > 0)
@@ -47,7 +47,7 @@
 									<tr>
 										<td>{!!$row->id!!}</td>
 										<td>{!!$row->name!!}</td>
-										<td> <img src="{!!url('images/category/'.$row->slug)!!}" alt="" width="120" height="40">  </td>
+										<td> <img src="{!!url('images/category/'.$row->image)!!}" alt="" width="120" height="40">  </td>
 										<td style="width: 200px;">
 											<a href="{!!url('admin/danhmuc/edit/'.$row->id)!!}"  title="Sua"><span class="glyphicon glyphicon-edit">edit</span> </a>
 											<a href="{!!url('admin/danhmuc/del/'.$row->id)!!}"  title="Xóa" onclick="return xacnhan('Xóa danh mục này ?')"><span class="glyphicon glyphicon-remove">remove</span> </a>

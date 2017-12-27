@@ -1,6 +1,12 @@
 jQuery(document).ready(function($){
-    
+
     // jQuery sticky Menu
+    $('.hide-button').click(() => {
+        $('.hide').removeClass('hide');
+        $('.hide-button').css('display','none');
+    });
+
+    
     
 	$(".mainmenu-area").sticky({topSpacing:0});
     

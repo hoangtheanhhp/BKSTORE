@@ -17,9 +17,11 @@
                                 <div class="form-group">
 								<div class="col-md-12">
 									<select name="sltCate" id="inputLoai" class="form-control">
-						      			<option value="0">- CHỌN MỘT THƯƠNG HIỆU --</option>
-						      			<?php MenuMulti($cat,0,$str='---| ',$loai); ?>   		
-						      		</select>
+						      			<option value="0">CHỌN MỘT THƯƠNG HIỆU</option>
+										  @foreach ($cat as $key => $value) 
+						      			<option value="{{$value->id}}"> {{$value->name}}</option>
+										  @endforeach
+									</select>
 									<script>
 									    document.getElementById("inputLoai").onchange = function() {
 									        if (this.selectedIndex!==0) {
@@ -40,7 +42,7 @@
                                     {{ csrf_field() }}
                                     <div class="form-group">
                                         <label for="search-products"></label>
-                                        <input type="text" class="form-control" id="search" placeholder="Products Name" name="search" value="{{old('search')}}">
+                                        <input type="text" class="form-control" id="search" placeholder="Products Name" name="search" value="{{old('search')}}" required="required">
                                         <button type="submit" class="btn btn-success">Search Products</button>
                                     </div>
                                 </form>
@@ -97,7 +99,7 @@
                                             <td>{!! App\Admin_users::find(DB::table('admin_products')->Where('pro_id', '=', $row->id)
                                             ->Where('created_at','=', $row->created_at)->first()->admin_id)->first()->name !!}</td>
 											<td>{!!$row->category->name!!}</td>
-											<td>{!!$row->price!!} $</td>
+											<td>{!!$row->price!!} VND</td>
 											<td>
 												@if($row->status ==1)
 													<span style="color:blue;">Còn hàng</span>

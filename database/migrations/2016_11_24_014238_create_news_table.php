@@ -17,14 +17,13 @@ class CreateNewsTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->string('author');            
-            $table->string('intro');
+            $table->text('intro');
             $table->text('full');
             $table->text('images');
             $table->integer('status');
             $table->text('source');
+            $table->integer('user_id');
             $table->integer('cat_id')->unsigned();
-            $table->foreign('cat_id')->references('id')->on('category')->onDelete('cascade');
-            $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('admin_users')->onDelete('cascade');
             $table->timestamps();
         });

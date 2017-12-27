@@ -7,3 +7,5 @@ function xacnhan(msg) {
     } 
     return false;
 }
+
+})

@@ -35,15 +35,7 @@
 					@endif
 						<form action="" method="POST" role="form" enctype="multipart/form-data">
 				      		{{ csrf_field() }}
-				      		<div class="form-group">
-					      		<label for="input-id">Chọn danh mục</label>
-					      		<select name="sltCate" id="inputSltCate" required class="form-control">
-					      			<option value="">--Chọn danh mục--</option>
-					      			@foreach($cat as $dt)
-					      				<option value="{!!$dt->id!!}" >{!!'--|--|'.$dt->name!!}</option> 	
-					      			@endforeach	
-					      		</select>
-				      		</div>
+				      		
 				      		<div class="form-group">
 				      			<label for="input-id">Tiêu đề bản tin</label>
 				      			<input type="text" name="txtTitle" id="inputTxtTitle" class="form-control" value="{{ old('txtTitle') }}"  >
@@ -58,7 +50,7 @@
 				      		<div class="form-group">				      			
 				      			<div class="row">
 					      			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-					      				Hình ảnh : <input type="file" name="txtimg" accept="image/*" id="inputtxtimg" value="{{ old('txtimg') }}" class="form-control" required="required">
+					      				Hình ảnh : <input type="file" name="txtimg" accept="image/*" id="inputtxtimg" value="{{ old('txtimg') }}" required="required">
 					      			</div>					      		
 					      			<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
 					      				Trạng thái : <select name="slstatus" id="inputSlstatus" class="form-control" required="required">

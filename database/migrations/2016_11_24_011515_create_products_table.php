@@ -30,8 +30,6 @@ class CreateProductsTable extends Migration
             $table->integer('status');
             $table->integer('cat_id')->unsigned();
             $table->foreign('cat_id')->references('id')->on('category')->onDelete('cascade');
-/*            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('admin_users')->onDelete('cascade');*/
             $table->timestamps();
         });
     }
