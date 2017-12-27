@@ -58,7 +58,7 @@
 				      		</div>
 							<div class="form-group">
 								<label for="input-id">Số lượng sản phẩm thêm vào: </label>
-								<input type="text" name="txtnumber" id="inputtxtnumber" value="{{ old('txtnumber') }}" class="form-control" >
+								<input type="text" name="txtnumber" id="inputtxtnumber" value="{{ old('txtnumber') }}" class="form-control" required="required" >
 							</div>
 				      		<div class="form-group">
 				      			<label for="input-id">Khuyễn mãi (tối đa 3 mục vào 3 ô)</label>
