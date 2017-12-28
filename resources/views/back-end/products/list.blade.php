@@ -93,7 +93,7 @@
 								<tbody>
 									@foreach($data as $row)
 										<tr>	
-											<td> <img src="{!!url('images/phone/'.$row->images)!!}" alt="iphone" width="50" height="40"></td>
+											<td> <img src="{!!url('images/phone/'.$row->images)!!}" alt="{{$row->name}}" width="50" height="40"></td>
 											<td>{!!$row->name!!}</td>
 											<td>{!!$row->created_at!!}</td>
                                             <td>{!! App\Admin_users::find(DB::table('admin_products')->Where('pro_id', '=', $row->id)
