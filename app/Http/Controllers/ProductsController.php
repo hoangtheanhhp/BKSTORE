@@ -60,7 +60,7 @@ class ProductsController extends Controller
     	$f = $rq->file('txtimg')->getClientOriginalName();
     	$filename = time().'_'.$f;
     	$pro->images = $filename;
-    	$rq->file('txtimg')->move('images/phone/',$filename);
+    	$rq->file('txtimg')->move('/images/phone/',$filename);
     	$pro_id = $pro->id;
         $pro->save();
     	//them vao bang admin_product
@@ -110,7 +110,7 @@ class ProductsController extends Controller
     				$img_detail->images_url = $name_img;
     				$img_detail->pro_id = $pro->id;
     				$img_detail->created_at = new datetime;
-    				$row->move('images/phone/details',$name_img);
+    				$row->move('/images/phone/details',$name_img);
     				$img_detail->save();
     			}
     		}
@@ -124,7 +124,7 @@ class ProductsController extends Controller
         $detail = Detail_img::where('pro_id',$id)->get();
         foreach ($detail as $row) {                
                $dt = Detail_img::find($row->id);
-               $pt = public_path('images/phone/details').$dt->images_url;
+               $pt = public_path('/images/phone/details').$dt->images_url;
                 if (file_exists($pt))
                 {
                     unlink($pt);
@@ -166,7 +166,7 @@ class ProductsController extends Controller
         $pro->cat_id = $rq->sltCate;
         $pro->updated_at = new datetime;
         $pro->status = '1';
-        $file_path = public_path('images/phone/').$pro->images;
+        $file_path = public_path('/images/phone/').$pro->images;
         if ($rq->hasFile('txtimg')) {
             if (file_exists($file_path))
                 {
@@ -176,7 +176,7 @@ class ProductsController extends Controller
             $f = $rq->file('txtimg')->getClientOriginalName();
             $filename = time().'_'.$f;
             $pro->images = $filename;       
-            $rq->file('txtimg')->move('images/phone/',$filename);
+            $rq->file('txtimg')->move('/images/phone/',$filename);
         }       
         $pro->save();
         $admin_user = Auth::guard('admin')->user();
@@ -222,7 +222,7 @@ class ProductsController extends Controller
             $df = $rq->file('txtdetail_img');
             foreach ($details as $row) {                
                $dt = Detail_img::find($row->id);
-               $pt = public_path('images/phone/details/').$dt->images_url;
+               $pt = public_path('/images/phone/details/').$dt->images_url;
                // dd($pt);   
                 if (file_exists($pt))
                 {
@@ -237,7 +237,7 @@ class ProductsController extends Controller
                     $img_detail->images_url = $name_img;
                     $img_detail->pro_id = $id;
                     $img_detail->created_at = new datetime;
-                    $row->move('images/phone/details/',$name_img);
+                    $row->move('/images/phone/details/',$name_img);
                     $img_detail->save();
                 }
             }
