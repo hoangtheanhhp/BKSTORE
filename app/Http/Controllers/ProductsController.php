@@ -98,9 +98,6 @@ class ProductsController extends Controller
     	$detail->os = $rq->txtOs;
         $detail->note = $rq->note;
     	$detail->pro_id = $pro->id;
-
-
-
     	$detail->created_at = new datetime;
     	$detail->save();
 
@@ -128,7 +125,6 @@ class ProductsController extends Controller
         foreach ($detail as $row) {                
                $dt = Detail_img::find($row->id);
                $pt = public_path('images/phone/details').$dt->images_url;
-               // dd($pt);   
                 if (file_exists($pt))
                 {
                     unlink($pt);
