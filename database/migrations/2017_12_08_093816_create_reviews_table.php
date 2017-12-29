@@ -14,7 +14,7 @@ class CreateReviewsTable extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('pro_id');
+            $table->integer('pro_id')->unsigned();
             $table->foreign('pro_id')->references('id')->on('products')->onDelete('cascade');
             $table->string('customer_email');
             $table->string('customer_name');
@@ -22,7 +22,7 @@ class CreateReviewsTable extends Migration
             $table->string('review');
             $table->string('token')->nullable();
             $table->integer('status')->default('0');
-            $table->integer('admin_id')->nullable();
+            $table->integer('admin_id')->unsigned();
             $table->foreign('admin_id')->references('id')->on('admin_users')->onDelete('cascade');
             $table->timestamps();
         });

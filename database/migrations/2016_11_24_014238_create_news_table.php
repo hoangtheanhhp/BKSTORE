@@ -22,7 +22,7 @@ class CreateNewsTable extends Migration
             $table->text('images');
             $table->integer('status');
             $table->text('source');
-            $table->integer('user_id');
+            $table->integer('user_id')->unsigned();
             $table->integer('cat_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('admin_users')->onDelete('cascade');
             $table->timestamps();
