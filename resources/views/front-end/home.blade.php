@@ -136,7 +136,6 @@
                             @endforeach
                         </div>
                     </div>
-                    {!! $phones->links() !!}
 
                 </div>
             </div>
@@ -193,7 +192,6 @@
                             @endforeach
                         </div>
                     </div>
-                    {!! $phones->links() !!}
 
                 </div>
             </div>
