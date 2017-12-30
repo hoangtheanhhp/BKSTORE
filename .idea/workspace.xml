@@ -4,9 +4,12 @@
     <list default="true" id="cfb2185d-aa05-4978-85ac-68bbebda5e57" name="Default" comment="">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/category/1514480109_oppo.png" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/category/1514485729_nokia.png" afterPath="" />
 =======
+=======
+>>>>>>> parent of 71aaf08... end update before deadline
 =======
 >>>>>>> parent of 71aaf08... end update before deadline
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -15,6 +18,9 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2017_12_08_093816_create_reviews_table.php" afterPath="$PROJECT_DIR$/database/migrations/2017_12_08_093816_create_reviews_table.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/back-end/products/list.blade.php" afterPath="$PROJECT_DIR$/resources/views/back-end/products/list.blade.php" />
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 71aaf08... end update before deadline
+=======
 >>>>>>> parent of 71aaf08... end update before deadline
 =======
 >>>>>>> parent of 71aaf08... end update before deadline
@@ -71,6 +77,7 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       <file leaf-file-name="PagesController.php" pinned="false" current-in-tab="false">
@@ -132,6 +139,9 @@
         </entry>
       </file>
       <file leaf-file-name="list.blade.php" pinned="false" current-in-tab="false">
+=======
+      <file leaf-file-name="list.blade.php" pinned="false" current-in-tab="true">
+>>>>>>> parent of 71aaf08... end update before deadline
 =======
       <file leaf-file-name="list.blade.php" pinned="false" current-in-tab="true">
 >>>>>>> parent of 71aaf08... end update before deadline
@@ -486,8 +496,12 @@
       <workItem from="1514512898071" duration="1285000" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       <workItem from="1514530345938" duration="8410000" />
       <workItem from="1514640771336" duration="741000" />
+=======
+      <workItem from="1514530345938" duration="2469000" />
+>>>>>>> parent of 71aaf08... end update before deadline
 =======
       <workItem from="1514530345938" duration="2469000" />
 >>>>>>> parent of 71aaf08... end update before deadline
@@ -500,7 +514,11 @@
   <component name="TimeTrackingManager">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="212105000" />
+=======
+    <option name="totallyTimeSpent" value="205423000" />
+>>>>>>> parent of 71aaf08... end update before deadline
 =======
     <option name="totallyTimeSpent" value="205423000" />
 >>>>>>> parent of 71aaf08... end update before deadline
@@ -794,6 +812,9 @@
       </provider>
     </entry>
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 71aaf08... end update before deadline
+=======
 >>>>>>> parent of 71aaf08... end update before deadline
 =======
 >>>>>>> parent of 71aaf08... end update before deadline
@@ -963,6 +984,7 @@
           <folding>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             <marker date="1514641604934" expanded="true" signature="481:11181" ph="{...}" />
             <marker date="1514641604934" expanded="true" signature="511:578" ph="{...}" />
             <marker date="1514641604934" expanded="true" signature="6781:8279" ph="..." />
@@ -990,10 +1012,16 @@
             <marker date="1514532813276" expanded="true" signature="3893:4059" ph="..." />
             <marker date="1514532813276" expanded="true" signature="4005:4039" ph="..." />
 >>>>>>> parent of 71aaf08... end update before deadline
+=======
+            <marker date="1514532813276" expanded="true" signature="3870:4076" ph="..." />
+            <marker date="1514532813276" expanded="true" signature="3893:4059" ph="..." />
+            <marker date="1514532813276" expanded="true" signature="4005:4039" ph="..." />
+>>>>>>> parent of 71aaf08... end update before deadline
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/resources/views/back-end/oders/detail.blade.php">
@@ -1020,6 +1048,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> parent of 71aaf08... end update before deadline
 =======
 >>>>>>> parent of 71aaf08... end update before deadline
 =======

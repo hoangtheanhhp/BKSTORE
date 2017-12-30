@@ -1,7 +1,6 @@
 .element{
-	/*overflow: hidden;*/
-  height: 400px;
-	/*margin-top: 2px;*/
+	overflow: hidden;
+	margin-top: 2px;
 
 }
 hr{
