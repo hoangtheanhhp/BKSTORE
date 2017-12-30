@@ -55,13 +55,13 @@
                             <!-- @if($key%4==0)  -->
                                 <!-- <div class='row'> -->
                             <!-- @endif -->
-                               <div class="col-md-3">
+                               <div class="col-md-3" style="margin-bottom: 10px;">
                                     <a href='/detail/{{$phone->id}}'>
                                         <div class="element" >
                                             <div>
                                                 <img src="/images/phone/{{$phone->images}}" class="img-responsive">
                                                 <hr>
-                                                <p class="name">
+                                                <p class="name" style="height: 30px;">
                                                     <strong class="text-primary">{{$phone->name}}</strong>
                                                 </p>
                                                 <p class="price">

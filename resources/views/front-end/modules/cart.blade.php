@@ -118,7 +118,7 @@
                                         </tr>
                                         <tr>
                                             <td class="actions" colspan="6">
-                                                <input type="submit" value="Thanh Toán" class="checkout-button button alt wc-forward">
+                                                <input type="submit" value="Thanh Toán" class="checkout-button button alt wc-forward" style="margin-top: 20px;">
                                             </td>
                                         </tr>
                                         </tbody>

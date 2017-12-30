@@ -97,7 +97,7 @@
                                                 <div class="clear"></div>
 
                                             </div>
-                                            <div class="form-row place-order">
+                                            <div class="form-row place-order" style="margin-bottom: 20px;">
                                                 <input type="submit" data-value="Place order" value="Place order" id="place_order" name="woocommerce_checkout_place_order" class="button alt">
                                             </div>
                                             <div class="clear"></div>
