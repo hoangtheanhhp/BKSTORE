@@ -30,7 +30,9 @@
 										</div>
 										<hr/>
 										@endforeach
+											{{$news->links()}}
 									</div>
+
 								</div>
 								<div class="col-md-3 col-md-offset-1">
 									<div class="row">

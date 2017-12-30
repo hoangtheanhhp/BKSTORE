@@ -179,7 +179,6 @@ class PagesController extends Controller
       return view('front-end.modules.blog',[
           'news'=>$news,
           'phones' => $phones
-
       ]);
     }
    

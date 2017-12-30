@@ -29,17 +29,24 @@
 			</div>
 			<div>
                 @foreach($news as $key => $new)
-                    <a href='/blog_detail/{{$new->id}}'>
-                   <div class="element">
-					<div class="centent col-xs-8">
-						<p>{{$new->title}}</p>
-						<p class="text-muted">{{$new->created_at->diffForHumans()}}</p>
-					</div>
+                    <div class = "row">
+                        <div class="col-sm-4 image-news">
+                            <img src="/uploads/news/{{$new->images}}" class="img-responsive">
+                        </div>
+                        <div class="col-sm-offset-0 col-sm-7">
+                            <a href='/blog_detail/{{$new->id}}'>
+                                <div class="element">
+                                    <div class="centent col-xs-12">
+                                        <p>{{$new->title}}</p>
+                                        <p class="text-muted">{{$new->created_at->diffForHumans()}}</p>
+                                    </div>
 
-					<hr>
-				    </div>
-                    </a>
-                    @if($key == 2)
+                                <hr>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    @if($key == 1)
                         @break
                     @endif
                 @endforeach
@@ -127,6 +134,10 @@
                                         <p>RAM: {{$phone->ram}}, ROM: {{$phone->rom}}</p>
                                         <p>Camera: {{$phone->cam1}}, Selfie: {{$phone->cam2}}</p>
                                         <p>PIN: {{$phone->pin}}, SIM: {{$phone->sim}}</p>
+                                        @if($phone->number >= 1)
+                                        <p>Còn: <span style="color: red;">{{$phone->number}}</span> sản phẩm</p>
+                                            @else <p style="color: red;">Hết hàng</p>
+                                            @endif
                                     </div>
                                 </div>
                                 </a>
@@ -183,7 +194,10 @@
                                         <p>RAM: {{$phone->ram}}, ROM: {{$phone->rom}}</p>
                                         <p>Camera: {{$phone->cam1}}, Selfie: {{$phone->cam2}}</p>
                                         <p>PIN: {{$phone->pin}}, SIM: {{$phone->sim}}</p>
-                                    </div>
+                                        @if($phone->number >= 1)
+                                            <p>Còn: <span style="color: red;">{{$phone->number}}</span> sản phẩm</p>
+                                        @else <p style="color: red;">Hết hàng</p>
+                                        @endif                                    </div>
                                 </div>
                                 </a>
                             @endforeach

@@ -10,7 +10,7 @@
                         <div> 
                             <form method="POST" action='{{url('/products/search')}}' >
                               {{ csrf_field() }}
-                                <input type="text" name="searchItem" id="input_search" placeholder="Search Products" required="required">
+                                <input type="text" name="searchItem" id="input_search" placeholder="Search Products" required="required" value="{{old('searchItem')}}">
                                 <button class="button_search" id="search">Search</button>
                             </form>
                         </div>
@@ -83,8 +83,13 @@
                                                         <li>{{$phone->promo3}}</li>
                                                         @endif
                                                     </ul>
+
                                                     @endif -->
                                                 <!-- </p> -->
+                                                @if($phone->number >= 1)
+                                                    <p>Còn: <span style="color: red;">{{$phone->number}}</span> sản phẩm</p>
+                                                @else <p style="color: red;">Hết hàng</p>
+                                                @endif
                                             </div>
                                             <div class="info">
                                                 <p class="name"><strong class="text-primary">{{$phone->name}}</strong></p>
@@ -95,6 +100,7 @@
                                                 <p>RAM: {{$phone->ram}}, ROM: {{$phone->rom}}</p>
                                                 <p>Camera: {{$phone->cam1}}, Selfie: {{$phone->cam2}}</p>
                                                 <p>PIN: {{$phone->pin}}, SIM: {{$phone->sim}}</p>
+
                                             </div>
                                         </div>
                                     </a>

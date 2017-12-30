@@ -63,7 +63,6 @@
 												@endif
 											</td>
 											<td>
-											    <a href="{!!url('admin/khachhang/edit/'.$row->id)!!}" title="Chi tiết"> Cập nhật</a> &nbsp;
 											    <a href="{!!url('admin/khachhang/del/'.$row->id)!!}"  title="Xóa" onclick="return xacnhan('Xóa danh mục này ?')">Xóa bỏ</a>
 											</td>
 										</tr>
