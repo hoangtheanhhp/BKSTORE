@@ -55,7 +55,7 @@
 											<td>{!!$row->user->phone!!}</td>
 											<td>{!!$row->user->email!!}</td>
 											<td>{!!$row->created_at!!}</td>
-											<td>{!!$row->total!!} d</td>
+											<td>{!!$row->total!!} $</td>
 											<td>
 												@if($row->status ==0)
 													<span style="color:#d35400;">Chưa xác nhận</span>

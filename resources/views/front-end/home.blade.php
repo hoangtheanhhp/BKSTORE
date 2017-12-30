@@ -35,9 +35,7 @@
 						<p>{{$new->title}}</p>
 						<p class="text-muted">{{$new->created_at->diffForHumans()}}</p>
 					</div>
-					<div class="imgs col-xs-4">
-						<img src="/uploads/news/{{$new->images}}" class="img-responsive">
-					</div>
+
 					<hr>
 				    </div>
                     </a>
@@ -48,7 +46,6 @@
 				
 			</div>
 		</div>
-    </div>
     </div>
     <div class="promo-area">
         <div class="zigzag-bottom"></div>

@@ -106,7 +106,6 @@ class PagesController extends Controller
 
     public function getoder(Request $request)
     {
-
         $cart = Cart::content();
         if(count($request->all()) > 1)
             foreach($cart as $c)
@@ -170,13 +169,12 @@ class PagesController extends Controller
             $detail->save();
         }
         Cart::destroy();
-
         return redirect('gio-hang')
             ->with(['flash_level'=>'result_msg','flash_massage'=>' Đơn hàng của bạn đã được gửi đi !']);
     }
 
     public function getNews() {
-        $news = News::orderBy('created_at','desc')->paginate(5);
+      $news = News::orderBy('created_at','desc')->paginate(5);
       $phones = Products::latest()->get();
       return view('front-end.modules.blog',[
           'news'=>$news,
@@ -222,7 +220,6 @@ class PagesController extends Controller
                     ->withErrors('Thương hiệu này chưa có sản phẩm nào!!');
             return view('front-end.modules.shop',['products'=> $products,'cart' =>$cart, 'cat'=>$cat,'loai'=>$id]);
         }
-
         return view('front-end.modules.shop',['products'=>$products1, 'cart' => $cart, 'loai' => 'all', 'cat' => $cat]);
     }
 
@@ -230,7 +227,6 @@ class PagesController extends Controller
         $products = Products::where('name','like','%'.$request->searchItem.'%')->paginate(20);
         $cart = Cart::content();
         $cat = Category::all();
-
         return view('front-end.modules.shop',['products'=>$products, 'cart' => $cart,'loai' => 'all', 'cat' => $cat]);
     }
     public function getDetail($id) {
@@ -241,11 +237,9 @@ class PagesController extends Controller
         $phone_info = Pro_details::where('pro_id','=',$id)->first();
         $cart = Cart::content();
         $phoneIphone = Products::find($id)->where('cat_id', '=', $phone->cat_id)->orderBy('price')->get();
-
         $phone_recently = Products::latest()->paginate(5);
         $review = Review::where('status','>',0)->orderBy('created_at')->paginate(5);
         $phone_relate = Products::Join('pro_details','products.id','=','pro_details.pro_id')->select('products.*','pro_details.screen as screen','pro_details.os as os','pro_details.cpu as cpu')->where('cat_id',$phone->cat_id)->distinct()->orderby('created_at','DESC')->paginate(5);
-
         return view('front-end.modules.detail',[
             'phone'=>$phone,
             'img_detail' => $img_detail,
