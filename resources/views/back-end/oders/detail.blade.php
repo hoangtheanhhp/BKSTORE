@@ -49,7 +49,7 @@
 											<td>{!!$oder->user->address!!}</td>
 											<td>{!!$oder->user->phone!!}</td>
 											<td>{!!$oder->created_at!!}</td>
-											<td>{!! number_format($oder->total) !!} $</td>
+											<td>{!! number_format($oder->total) !!} d</td>
 										</tr>
 									</tbody>
 								</table>
