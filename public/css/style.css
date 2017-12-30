@@ -1,6 +1,8 @@
 .element{
-	overflow: hidden;
-	margin-top: 1px;
+	/*overflow: hidden;*/
+  height: 400px;
+	/*margin-top: 2px;*/
+
 }
 hr{
 	clear: both;
@@ -496,6 +498,9 @@ z-index: 999;}
 .product-carousel {
   padding-top: 40px;
 }
+.latest-product {
+  margin: 2px 10px;
+}
 .latest-product .owl-nav {
   position: absolute;
   right: 0;
@@ -505,7 +510,7 @@ z-index: 999;}
 .latest-product .owl-nav div, .related-products-wrapper .owl-nav div {
   background:#fa8072;
   color:#FFF;
-  display: inline-block;
+  /*display: inline-block;*/
   margin-left: 15px;
   padding: 1px 10px;
 }

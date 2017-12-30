@@ -17,6 +17,7 @@
             </ul>
         </div>
     @endif
+       <div id='update-alert'></div>
     <div class="single-product-area">
         <div class="zigzag-bottom"></div>
         <div class="container">
@@ -92,7 +93,7 @@
                                         @endforeach
                                         <tr>
                                             <td colspan="6">
-                                                <a href="#" class="btn btn-primary" id='update'>Update Cart</a>
+                                                <div class="btn btn-info" id='update'>Cập nhật giỏ hàng</div>
                                             </td>
                                         </tr>
                                         <tr>
@@ -184,6 +185,7 @@
             data : {items : jsonItems},
             url : '/gio-hang/update',
             success: function (data) {
+                $('#update-alert').html(' <div  class="alert alert-success"><p>Cập nhật thành công</></div>');
             }
         });
 	}	
@@ -206,7 +208,7 @@
             total+=price;
             qty+=m.quantity;
     	});
-        $('#subtotal').html("Cart - "+total.toLocaleString('en')+"VND<span class='cart-amunt'></span> <i class='fa fa-shopping-cart'></i> <span class='product-count'>"+ parseInt(qty) +"</span>");
+        $('#subtotal').html("Giỏ hàng - "+total.toLocaleString('en')+"VND<span class='cart-amunt'></span> <i class='fa fa-shopping-cart'></i> <span class='product-count'>"+ parseInt(qty) +"</span>");
         $('.subtotal').html(total.toLocaleString('en')+"VND");
     }
 </script>

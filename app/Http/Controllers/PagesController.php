@@ -216,7 +216,7 @@ class PagesController extends Controller
         'pro_details.cam2 as cam2',
         'pro_details.storage as rom',
         'pro_details.pin as pin',
-        'pro_details.sim as sim')->where('cat_id','=',$id)->distinct()->orderby('id')->paginate(20);
+        'pro_details.sim as sim')->where('cat_id','=',$id)->distinct()->orderby('id')->get();
             if($products->count() == 0)
                 return view('front-end.modules.shop',['products'=>$products1, 'cart' => $cart, 'loai' => 'all', 'cat' => $cat])
                     ->withErrors('Thương hiệu này chưa có sản phẩm nào!!');
