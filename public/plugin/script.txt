@@ -1,0 +1,24 @@
+﻿B1 : Download CKEditor và CKFinder
+http://ckeditor.com/download
+https://cksource.com/ckfinder/download
+
+B2 : Nhúng Folder CKEditor và CKFinder vào Project
+
+B3 : Nhúng đoạn mã này vào trong cặp head
+<script type="text/javascript" src="{!! asset('public/qt64_admin/templates/js/plugin/ckeditor/ckeditor.js') !!}"></script>
+
+B4 : Vào trang cần nhúng CKEditor nhúng đoạn mã này sau thẻ </textarea>
+<script type="text/javascript">
+	var editor = CKEDITOR.replace('txtIntro',{
+		language:'vi',
+		filebrowserImageBrowseUrl : '../../public/qt64_admin/templates/js/plugin/ckfinder/ckfinder.html?Type=Images',
+		filebrowserFlashBrowseUrl : '../../public/qt64_admin/templates/js/plugin/ckfinder/ckfinder.html?Type=Flash',
+		filebrowserImageUploadUrl : '../../public/qt64_admin/templates/js/plugin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+		filebrowserFlashUploadUrl : '../../public/qt64_admin/templates/js/plugin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',
+	});
+</script>
+
+B5 : Tạo folder để upload hình
+
+B6 : Cấu hình đường dẫn cho CKFinder upload hình trong ckfinder/config.php
+'baseUrl'      => 'http://lar.dev/public/upload/',
