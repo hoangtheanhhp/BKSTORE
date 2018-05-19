@@ -33,13 +33,14 @@ Route::get('dat-hang',  ['as'  => 'getoder', 'uses' =>'PagesController@getoder']
 Route::post('cart-dat-hang',  ['as'  => 'getoder', 'uses' =>'PagesController@getoder']);
 Route::post('dat-hang', ['as'  => 'postoder', 'uses' =>'PagesController@postoder']);
 // category
-Route::get('/{cat}', ['as'  => 'getcate', 'uses' =>'PagesController@getcate']);
+Route::get('/{cat}', ['as'  => 'getcate', 'uses' =>'PagesController@getcart']);
 Route::get('/{cat}/{id}-{slug}', ['as'  => 'getdetail', 'uses' =>'PagesController@detail']);
 
 Route::resource('payment', 'PayMentController');
 // --------------------------------cac cong viec trong admin (back-end)---------------------------------------
-Route::group(['middleware' => 'admin'], function () {
-      Route::group(['prefix' => 'admin'], function() {
+
+Route::group(['prefix' => 'admin'], function() {
+    Route::group(['middleware' => 'admin'], function () {
        	Route::get('/home', function() {
          return view('back-end.home');
        });
