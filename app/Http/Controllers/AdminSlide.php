@@ -30,7 +30,7 @@ class AdminSlide extends Controller
         $filename = time().'_'.$f;
         $slide->link = 1;
         $slide->image = $filename;
-        $request->file('txtimg')->move('/images/slide/',$filename);
+        $request->file('txtimg')->move('/public/images/slide/',$filename);
         $slide->save();
         return redirect()->action('AdminSlide@list')->with(['success', 'Create Slide Successfully!!']);
     }

@@ -60,7 +60,7 @@ class ProductsController extends Controller
     	$f = $rq->file('txtimg')->getClientOriginalName();
     	$filename = time().'_'.$f;
     	$pro->images = $filename;
-    	$rq->file('txtimg')->move('/images/phone/',$filename);
+    	$rq->file('txtimg')->move('/public/images/phone/',$filename);
     	$pro_id = $pro->id;
         $pro->save();
     	//them vao bang admin_product
@@ -113,7 +113,7 @@ class ProductsController extends Controller
     				$img_detail->images_url = $name_img;
     				$img_detail->pro_id = $pro->id;
     				$img_detail->created_at = new datetime;
-    				$row->move('images/phone/details',$name_img);
+    				$row->move('/public/images/phone/details',$name_img);
     				$img_detail->save();
     			}
     		}
@@ -180,7 +180,7 @@ class ProductsController extends Controller
             $f = $rq->file('txtimg')->getClientOriginalName();
             $filename = time().'_'.$f;
             $pro->images = $filename;       
-            $rq->file('txtimg')->move('/images/phone/',$filename);
+            $rq->file('txtimg')->move('/public/images/phone/',$filename);
         }       
         $pro->save();
         $admin_user = Auth::guard('admin')->user();
@@ -241,7 +241,7 @@ class ProductsController extends Controller
                     $img_detail->images_url = $name_img;
                     $img_detail->pro_id = $id;
                     $img_detail->created_at = new datetime;
-                    $row->move('/images/phone/details/',$name_img);
+                    $row->move('/public/images/phone/details/',$name_img);
                     $img_detail->save();
                 }
             }

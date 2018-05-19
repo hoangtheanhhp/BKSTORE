@@ -27,7 +27,7 @@ class CategoryController extends Controller
       $f = $rq->file('txtimg')->getClientOriginalName();
       $filename = time().'_'.$f;
       $cat->image = $filename;
-      $rq->file('txtimg')->move('/images/category/', $filename);
+      $rq->file('txtimg')->move('/public/images/category/', $filename);
       $cat->created_at = new DateTime;
       $cat->save();
       return redirect()->route('getcat')
@@ -52,7 +52,7 @@ class CategoryController extends Controller
            $f = $request->file('txtimg')->getClientOriginalName();
            $filename = time().'_'.$f;
            $cat->image = $filename;
-           $request->file('txtimg')->move('/images/category/',$filename);
+           $request->file('txtimg')->move('/public/images/category/',$filename);
        }
       $cat->updated_at = new DateTime;
       $cat->save();

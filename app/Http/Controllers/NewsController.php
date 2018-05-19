@@ -41,7 +41,7 @@ class NewsController extends Controller
     	$f = $rq->file('txtimg')->getClientOriginalName();
     	$filename = time().'_'.$f;
     	$n->images = $filename;    	
-    	$rq->file('txtimg')->move('/uploads/news/',$filename);
+    	$rq->file('txtimg')->move('/public/uploads/news/',$filename);
 
     	$n->save();
     	return redirect('admin/news')
@@ -76,7 +76,7 @@ class NewsController extends Controller
             $f = $rq->file('txtimg')->getClientOriginalName();
             $filename = time().'_'.$f;
             $n->images = $filename;       
-            $rq->file('txtimg')->move('/uploads/news/',$filename);
+            $rq->file('txtimg')->move('/public/uploads/news/',$filename);
         }
 
     	$n->save();
