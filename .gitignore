@@ -6,3 +6,5 @@ Homestead.json
 .env
 /public/images
 /public/uploads
+.idea/BKSTORE.iml
+.idea/php.xml

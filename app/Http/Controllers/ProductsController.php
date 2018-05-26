@@ -226,7 +226,7 @@ class ProductsController extends Controller
             $df = $rq->file('txtdetail_img');
             foreach ($details as $row) {                
                $dt = Detail_img::find($row->id);
-               $pt = public_path('images/phone/details/').$dt->images_url;
+               $pt = public_path('phone/details/').$dt->images_url;
                // dd($pt);   
                 if (file_exists($pt))
                 {
